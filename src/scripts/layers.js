@@ -67,14 +67,13 @@ require([
             "showGroupHeading": false,
             "includeInLayerList": false,
             "layers": {
-                "pest layer": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/swTrendSites/MapServer/0",
+                "Magnitude of change": {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest/MapServer/0",
                     "options": {
                         "id": "pestSites",
-                        "opacity": 1.00,
                         "mode": FeatureLayer.MODE_SNAPSHOT,
                         "outFields": ["*"],
-                        "visible": false
+                        "visible": true
                     },
                     "wimOptions": {
                         "type": "layer",
@@ -84,8 +83,8 @@ require([
                         "includeLegend": true
                     }
                 },
-                "Eco Sites layer" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/swTrendSites/MapServer/1",
+                "Pricipal Aquifers" : {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/DecadalMap/MapServer/1",
                     "options": {
                         "id": "ecoSites",
                         "opacity": 1.00,
@@ -101,11 +100,11 @@ require([
                         "includeLegend" : true
                     }
                 },
-                "WRTDS Concentration Sites" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/swTrendSites/MapServer/2",
+                "Land use 2001" : {
+                    "url": "https://raster.nationalmap.gov/arcgis/rest/services/LandCover/conus_01/MapServer",
+                    "visibleLayers": [0],
                     "options": {
                         "id": "wrtdsSites",
-                        "opacity": 1.00,
                         "mode": FeatureLayer.MODE_SNAPSHOT,
                         "outFields": ["wrtds_sites.Station_nm","wrtds_sites.Site_no","wrtds_sites.staAbbrev","wrtds_sites.agency1","wrtds_trends_wm_new.agency_1_full","wrtds_trends_wm_new.agency_2_full","wrtds_sites.db_source","wrtds_sites.dec_lat_va","wrtds_sites.dec_long_va","wrtds_sites.drainSqKm","wrtds_sites.huc_cd","wrtds_trends_wm_new.DA"],
                         "visible": false
@@ -118,25 +117,23 @@ require([
                         "includeLegend" : true
                     }
                 },
-                "WRTDS Flux Sites" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/swTrendSites/MapServer/3",
+                "Network Boundaries" : {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NetworkBoundaries/MapServer/0",
                     "options": {
-                        "id": "wrtdsFluxSites",
-                        "opacity": 1.00,
+                        "id": "networkBoundaries",
                         "mode": FeatureLayer.MODE_SNAPSHOT,
-                        "outFields": ["wrtds_sites.Station_nm","wrtds_sites.Site_no","wrtds_sites.staAbbrev","wrtds_sites.agency1","wrtds_trends_wm_new.agency_1_full","wrtds_trends_wm_new.agency_2_full","wrtds_sites.db_source","wrtds_sites.dec_lat_va","wrtds_sites.dec_long_va","wrtds_sites.drainSqKm","wrtds_sites.huc_cd","wrtds_trends_wm_new.DA"],
-                        "visible": false
+                        "visible": true
                     },
                     "wimOptions": {
                         "type": "layer",
                         "layerType": "agisFeature",
-                        "includeInLayerList": false,
+                        "includeInLayerList": true,
                         "hasOpacitySlider": true,
                         "includeLegend" : true
                     }
                 },
-                "2012": {
-                    "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu2012_100515_test/ImageServer",
+                "Trend sites": {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites/MapServer",
                     "options": {
                         "id": "lu2012",
                         "opacity": 0.5,
@@ -144,15 +141,15 @@ require([
                     },
                     "wimOptions": {
                         "type": "layer",
-                        "layerType": "agisImage",
+                        /*"layerType": "agisImage",*/
                         "includeInLayerList": true,
                         "exclusiveGroupName":"Land use",
                         "hasOpacitySlider": true,
                         "includeLegend": true
                     }
                 },
-                "2002": {
-                    "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu2002_100515_test/ImageServer",
+                "Principal Aquifers": {
+                    "url": "https://nwis-mapper.s3.amazonaws.com/pr_aq/${level}/${row}/${col}.png",
                     "options": {
                         "id": "lu2002",
                         "opacity": 0.5,
@@ -160,7 +157,7 @@ require([
                     },
                     "wimOptions": {
                         "type": "layer",
-                        "layerType": "agisImage",
+                        "layerType": "webTiledLayer",
                         "includeInLayerList": true,
                         "exclusiveGroupName":"Land use",
                         "hasOpacitySlider": true,
