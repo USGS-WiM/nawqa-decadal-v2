@@ -58,7 +58,7 @@
 
     <!-- Google Analytics -->
 
-    <script>
+    <!-- <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -67,7 +67,7 @@
     ga('create', 'UA-########-##', 'auto');
     ga('send', 'pageview');
 
-    </script>
+    </script> -->
 
 </head>
 <body>
@@ -104,13 +104,16 @@
             <span id="printButtonText"> Print</span>
         </button>
 
-        <button id="faqNav" class="pull-right" onclick="ga('send','event','navbar','click','FAQ', 1);">
+        <button id="faqNav" class="pull-right" onclick="ga('send','event','navbar','click','FAQ');">
             <i class="fa fa-question-circle"></i><span class="hidden-xs">&nbsp;&nbsp;FAQ</span>
         </button>
-        <button id="userGuideNav" class="pull-right" onclick="ga('send','event','navbar','click','User Guide', 1);">
+        <button id="userGuideNav" class="pull-right" onclick="ga('send','event','navbar','click','User Guide');">
             <i class="fa fa-book"></i><span class="hidden-xs">&nbsp;&nbsp;User Guide</span>
         </button>
-        <button id="aboutNav" class="pull-right" onclick="ga('send','event','navbar','click','About', 1);">
+        <button id="dataNav" class="pull-right" onclick="ga('send','event','navbar','click','Data Tab');">
+            <i class="fa fa-table"></i><span class="hidden-xs">&nbsp;&nbsp;Data</span>
+        </button>
+        <button id="aboutNav" class="pull-right" onclick="ga('send','event','navbar','click','About');">
             <i class="fa fa-info-circle"></i><span class="hidden-xs">&nbsp;&nbsp;About</span>
         </button>
         <!-- comment -->
@@ -523,7 +526,113 @@
     </div> <!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
+<div id="dataModal" class="modal fade" tabindex="-1" role="dialog" >
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true" style="color:gray;">&times;</button>
+                <h4 class="modal-title">Download the Data</h4>
+            </div>
+            <div id="aboutModalBody" class="modal-body">
+                <ul class="nav nav-tabs" id="aboutModalTabs">
+                    <li role="presentation" class="active"><a id="downloadTab" href="#downloadPane" data-toggle="tab"><i class="fa fa-download"></i>&nbsp;Download Data</a></li>
+                    <li role="presentation"><a id="techTab" href="#techPane" data-toggle="tab" onclick="ga('send','event','Data Modal','click','Learn More');"><i class="fa fa-exclamation-circle"></i>&nbsp;Technical Information</a></li>
+                    <li role="presentation"><a id="citeTab" href="#citesPane" data-toggle="tab" onclick="ga('send','event','Data Modal','click','Learn More');"><i class="fa fa-bookmark"></i>&nbsp;References Cited</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="downloadPane">
+                        <div>
+                            <h3>Download the Data</h3>
+                                <p>
+                                    <a target="_blank" href="./files/Data_archive_inorganic.xlsx"><button type="button" class="btn btn-secondary dataButton">Inorganic Data&nbsp;&nbsp;<span class="fa fa-download"></span></button></a>
+                                    <br>
+                                    <a target="_blank" href="./files/Data_archive_VOC.xlsx"><button type="button" class="btn btn-secondary dataButton">Volitile Organic Compound Data&nbsp;&nbsp;<span class="fa fa-download"></span></button></a>
+                                    <br>
+                                    <a target="_blank" href="./files/Data_archive_pesticide.xlsx"><button type="button" class="btn btn-secondary dataButton" href="files/Data_archive_pesticide.xlsx">Pesticide Data&nbsp;&nbsp;<span class="fa fa-download"></span></button></a>
+                                </p>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="techPane">
+                        <div class="user-guide-item">
+                            <p><b>Mapping Criteria and Benchmarks</b>
+                            The NAWQA Project has developed an interactive mapping tool that displays decadal changes in concentrations. From among the more than 300 constituents sampled during the two decades, 24 constituents were prioritized for analysis for decadal change based on the following criteria:
+                                        <ol>
+                                            <li> They exceeded a human health benchmark in at least 1 percent of the wells used as a source of drinking-water public supply wells (Toccalino and Hopple, 2010) or domestic supply wells (Desimone, 2009),</li> 
+                                            <li> they exceeded a U.S. Environmental Protection Agency (EPA) secondary maximum contaminant level (SMCL) in at least 1 percent of the wells used as a source of drinking water,</li> 
+                                            <li> they were among the five most frequently detected volatile organic compounds (VOCs) in the Nation (Zogorski and others, 2006), or</li> 
+                                            <li> they were among the five most frequently detected pesticides in the Nation (Gilliom and others, 2006).</li>
+                                        </ol>
+                            Other constituents were added to this list based on regional importance. Radium, radon, and gross alpha (α) activity met the criteria for analysis, but do not have sufficient data for analysis; thus, they are not included in the mapping tool. 
+                            Benchmarks used to prioritize the constituents were: EPA maximum contaminant levels (MCLs) (U.S. Environmental Protection Agency, 2012), USGS Health-Based Screening Levels (HBSLs) (Toccalino and others, 2014b), and nonregulatory SMCLs (U.S. Environmental Protection Agency, 2012). Of these benchmarks, only MCLs are legally enforceable (regulatory) drinking-water standards; all but SMCLs are human-health benchmarks. For more information about these benchmarks, <a id="showFAQ14">click here</a>. For a listing of the 24 constituents selected for analysis and the reason they were selected, <a href="./files/Constituent_table.pdf" target="_blank">click here</a>.
+                            </p>
+                        </div>               
+                        <div class="user-guide-item">
+                            <p><b>Changing the basemap style</b>The "Basemaps" sidebar allows a user to show various geographic information or landscape imagery as a background layer beneath the trend results.</p>
+                        </div>               
+                        <div class="user-guide-item">
+                            <p><b>Changing the basemap style</b>The "Basemaps" sidebar allows a user to show various geographic information or landscape imagery as a background layer beneath the trend results.</p>
+                        </div>               
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="citesPane">
+                        <span class="user-guide-header">References Cited</span>
+                        <div>
+                            <p>DeSimone, L.A., 2009, Quality of water from domestic wells in principal aquifers of the United States, 1991–2004: U.S. Geological Survey Scientific Investigations Report 2008–5227, 139 p. Also available at <a target="_blank" href="http://pubs.usgs.gov/sir/2008/5227/"> http://pubs.usgs.gov/sir/2008/5227/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>DeSimone, L.A., McMahon, P.B., and Rosen, M.R., 2014, The quality of our Nation’s waters—Water quality in Principal Aquifers of the United States, 1991–2010: U.S. Geological Survey Circular 1360, 151 p., [Also available at <a target="_blank" href="http://dx.doi.org/10.3133/cir1360">http://dx.doi.org/10.3133/cir1360</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Eberts, S.M., Thomas, M.A., and Jagucki, M.L., 2013, The quality of our Nation’s waters—Factors affecting public-supply-well vulnerability to contamination—Understanding observed water quality and anticipating future water quality: U.S. Geological Survey Circular 1385, 120 p. [Also available online at <a href="http://pubs.usgs.gov/circ/1385/" target="_blank">http://pubs.usgs.gov/circ/1385/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Gilliom, R.J., Barbash, J.E., Crawford, C.G., Hamilton, P.A., Martin, J.D., Nakagaki, Naomi, Nowell, L.H., Scott, J.C., Stackelberg, P.E., Thelin, G.P., and Wolock, D.M., 2006, The quality of our Nation’s waters—Pesticides in the Nation’s streams and ground water, 1992–2001: U.S. Geological Survey Circular 1291, 172 p. [Also available at <a href="http://pubs.usgs.gov/circ/2005/1291/" target="_blank">http://pubs.usgs.gov/circ/2005/1291/</a></p>
+                        </div>
+                        <div>
+                            <p>Lapham, W.W., Wilde, F.D., and Koterba, M.T., 1995, Ground-water data-collection protocols and procedures for the National Water-Quality Assessment Program—Selection, installation, and documentation of wells, and collection of related data: U.S. Geological Survey Open-File Report 95–398, 71 p. [Also available at <a href="http://pubs.usgs.gov/of/1995/ofr-95-398/" target="_blank">http://pubs.usgs.gov/of/1995/ofr-95-398/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Lindsey, B.D., and Rupert, M.G., 2012, Methods for evaluating temporal groundwater quality data and results of decadal-scale changes in chloride, dissolved solids, and nitrate concentrations in groundwater in the United States, 1988–2010: U.S. Geological Survey Scientific Investigations Report 2012–5049, 46 p. [Also available at <a href="http://pubs.usgs.gov/sir/2012/5049/" target="_blank">http://pubs.usgs.gov/sir/2012/5049/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Maupin, M.A., Kenny, J.F., Hutson, S.S., Lovelace, J.K., Barber, N.L., and Linsey, K.S., 2014, Estimated use of water in the United States in 2010: U.S. Geological Survey Circular 1405, 56 p. [Also available at <a href="http://pubs.usgs.gov/circ/1405/" target="_blank">http://pubs.usgs.gov/circ/1405/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Pratt, J.W., 1959, Remarks on zeros and ties in the Wilcoxon signed rank procedures: American Statistical Association Journal, v. 54, no. 287, p. 655–667. [Also available at <a href="http://www.jstor.org/stable/2282543" target="_blank">http://www.jstor.org/stable/2282543</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Rosen, M.R., and Lapham, W.W., 2008, Introduction to the U.S. Geological Survey National Water-Quality Assessment (NAWQA) of ground-water quality trends and comparison to other national programs: the Journal of Environmental Quality, v. 37, no. 5, Supplement, p. S–190–S–198. [Also available at <a href="http://dx.doi.org/10.2134/jeq2008.0049" target="_blank">http://dx.doi.org/10.2134/jeq2008.0049</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Toccalino, P.L., and Hopple, J.A., 2010, The quality of our Nation’s waters—Quality of water from public supply wells in the United States, 1993–2007—Overview of major findings: U.S. Geological Survey Circular 1346, 58 p. [Also available at <a href="http://pubs.usgs.gov/circ/1346/" target="_blank">http://pubs.usgs.gov/circ/1346/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Toccalino, P.L., Gilliom, R.J., Lindsey, B.D., and Rupert, M.G., 2014a, Pesticides in groundwater of the United States—Decadal-scale changes, 1993–2011: Groundwater, v. 52, Supplement S1, p. 112–125. [Also available at <a href="http://dx.doi.org/10.1111/gwat.12176" targer="_blank">http://dx.doi.org/10.1111/gwat.12176</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Toccalino, P.L., Norman, J.E., and Schoephoester, K.M., 2014b, Health-based screening levels for evaluating water-quality data: U.S. Geological Survey, Health-Based Screening Levels (HBSL) Web site, accessed July 13, 2015, at <a href="http://dx.doi.org/10.5066/F71C1TWP" target="_blank">http://dx.doi.org/10.5066/F71C1TWP</a>.</p>
+                        </div>
+                        <div>
+                            <p>U.S. Environmental Protection Agency, 2012, 2012 edition of the drinking water standards and health advisories: U.S. Environmental Protection Agency, Office of Water, EPA 822–S–12–001, 20 p. [Also available at <a href="http://nepis.epa.gov/Exe/ZyPDF.cgi/P100N01H.PDF?Dockey=P100N01H.PDF" target="_blank">http://nepis.epa.gov/Exe/ZyPDF.cgi/P100N01H.PDF?Dockey=P100N01H.PDF</a>.]</p>
+                        </div>
+                        <div>
+                            <p>U.S. Environmental Protection Agency, 2013, Human health benchmarks for pesticides—2013 update: U.S. Environmental Protection Agency, Office of Water, EPA–820–F–13–019, 2 p. [Also available at <a href="http://www.epa.gov/sites/production/files/2015-10/documents/hh-benchmarks-factsheet.pdf" target="_blank">http://www.epa.gov/sites/production/files/2015-10/documents/hh-benchmarks-factsheet.pdf</a>.]</p>
+                        </div>
+                        <div>
+                            <p>U.S. Geological Survey, variously dated, National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1–A10, accessed July 31, 2009, at <a href="http://water.usgs.gov/owq/FieldManual/" target="_blank">http://water.usgs.gov/owq/FieldManual/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Zogorski, J.S., Carter, J.M., Ivahnenko, Tamara, Lapham, W.W., Moran, M.J., Rowe, B.L., Squillace, P.J., and Toccalino, P.L., 2006, The quality of our Nation’s waters—Volatile organic compounds in the Nation’s ground water and drinking-water supply wells: U.S. Geological Survey Circular 1292, 101 p. [Also available at <a href="http://pubs.usgs.gov/circ/circ1292/" target="_blank">http://pubs.usgs.gov/circ/circ1292/</a></p>
+                        </div>                           
+                    </div>
+                </div>
+            </div>
+            <form id="disclaimerButtons" id="disclaimer-form" class="form-inline" style="text-align:center;">
+                <!--<button id="otherButton" type="button" class="btn btn-success btn-fixed" data-dismiss="modal"> More Info?</button>-->
+                <button id="enterMapper" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </form>
+        </div><!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <div id="trendResultHelpModal" class="modal fade"  tabindex="-1" role="dialog" >
     <div class="modal-dialog  modal-lg">
@@ -918,7 +1027,7 @@
             <!--<button id="legendClose" type="button" class="close" data-dismiss="legend" aria-label="Close" aria-hidden="true">x</button>-->
             <!--<h4><b>Explanation</b></h4>-->
             <!--<div id="legendDiv"></div>-->
-            <!--</div>-->
+            <!--</div><--></-->
 
             <div id="mapDiv">
 

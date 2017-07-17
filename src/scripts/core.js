@@ -1149,6 +1149,8 @@ require([
             $('#iconTab').trigger('click');
             console.log("Opening tab 2 user guide");
         });
+
+        
         // Show User Guide tab3
         $('.showUserGuide3').click(function(){
             $('#geosearchModal').modal('hide');
@@ -1162,11 +1164,23 @@ require([
             $('#userGuideModal').modal('show');
             $('#searchTab').trigger('click');
         });
+        $('#dataNav').click(function(){
+            $('#dataModal').modal('show');
+        });
         $('#trendResultHelp').click(function(){
             $('#trendResultsHelpBox').slideToggle(200);
         });
         $('#faqNav').click(function(){
             $('#faqModal').modal('show');
+        });
+        // Show FAQ 14
+        $('#showFAQ14').click(function(){
+            $('#geosearchModal').modal('hide');
+            $('#aboutModal').modal('hide');
+            $('#userGuideModal').modal('hide');
+            $('#dataModal').modal('hide');
+            $('#faqModal').modal('show');
+            $('#faq14header').trigger('click');
         });
 
         function showChartModal () {
