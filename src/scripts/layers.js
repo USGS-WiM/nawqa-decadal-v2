@@ -192,7 +192,7 @@ require([
                         /*"layerType": "agisImage",*/
                         "includeInLayerList": true,
                         "hasOpacitySlider": true,
-                        "includeLegend": true
+                        "includeLegend": false
                     }
                 },
                 "Principal Aquifers": {
