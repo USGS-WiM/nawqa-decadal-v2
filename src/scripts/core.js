@@ -1173,15 +1173,30 @@ require([
         $('#faqNav').click(function(){
             $('#faqModal').modal('show');
         });
-        // Show FAQ 14
-        $('#showFAQ14').click(function(){
+
+         $("#showFAQ14").click(function() {
             $('#geosearchModal').modal('hide');
             $('#aboutModal').modal('hide');
             $('#userGuideModal').modal('hide');
             $('#dataModal').modal('hide');
             $('#faqModal').modal('show');
             $('#faq14header').trigger('click');
-        });
+            
+            // scrolling to FAQ 14
+            $(document).ready(function(){
+                setTimeout(function(){
+                    $('#faqModal').animate({
+                        scrollTop: $("#faq14header").offset().top -80
+                    }, 500); 
+                }, 800);  
+            }); 
+        }); 
+
+        
+        
+
+
+
 
         function showChartModal () {
             if (currentLayer == "pestSites") {
@@ -1677,6 +1692,7 @@ require([
         'esri/SpatialReference',
         'esri/layers/WMSLayer',
         'esri/layers/WMSLayerInfo',
+        "esri/layers/WebTiledLayer",
         'dijit/form/CheckBox',
         'dijit/form/RadioButton',
         'dojo/query',
@@ -1698,6 +1714,7 @@ require([
         SpatialReference,
         WMSLayer,
         WMSLayerInfo,
+        WebTiledLayer,
         CheckBox,
         RadioButton,
         query,
@@ -1751,6 +1768,17 @@ require([
 
                 else if (layerDetails.wimOptions.layerType === 'agisWMS') {
                     var layer = new WMSLayer(layerDetails.url, {resourceInfo: layerDetails.options.resourceInfo, visibleLayers: layerDetails.options.visibleLayers }, layerDetails.options);
+                    //check if include in legend is true
+                    if (layerDetails.wimOptions && layerDetails.wimOptions.includeLegend == true){
+                        legendLayers.push({layer:layer, title: legendLayerName});
+                    }
+                    //map.addLayer(layer);
+                    addLayer(group.groupHeading, group.showGroupHeading, layer, layerName, exclusiveGroupName, layerDetails.options, layerDetails.wimOptions);
+                    //addMapServerLegend(layerName, layerDetails);
+                }
+
+                else if (layerDetails.wimOptions.layerType === 'webTiledLayer') {
+                    var layer = new WebTiledLayer(layerDetails.url, {resourceInfo: layerDetails.options.resourceInfo, visibleLayers: layerDetails.options.visibleLayers }, layerDetails.options);
                     //check if include in legend is true
                     if (layerDetails.wimOptions && layerDetails.wimOptions.includeLegend == true){
                         legendLayers.push({layer:layer, title: legendLayerName});

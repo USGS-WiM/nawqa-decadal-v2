@@ -536,8 +536,8 @@
             <div id="aboutModalBody" class="modal-body">
                 <ul class="nav nav-tabs" id="aboutModalTabs">
                     <li role="presentation" class="active"><a id="downloadTab" href="#downloadPane" data-toggle="tab"><i class="fa fa-download"></i>&nbsp;Download Data</a></li>
-                    <li role="presentation"><a id="techTab" href="#techPane" data-toggle="tab" onclick="ga('send','event','Data Modal','click','Learn More');"><i class="fa fa-exclamation-circle"></i>&nbsp;Technical Information</a></li>
-                    <li role="presentation"><a id="citeTab" href="#citesPane" data-toggle="tab" onclick="ga('send','event','Data Modal','click','Learn More');"><i class="fa fa-bookmark"></i>&nbsp;References Cited</a></li>
+                    <li role="presentation"><a id="techTab" href="#techPane" data-toggle="tab" onclick="ga('send','event','Data Modal','click','Technical Information');"><i class="fa fa-exclamation-circle"></i>&nbsp;Technical Information</a></li>
+                    <li role="presentation"><a id="citeTab" href="#citesPane" data-toggle="tab" onclick="ga('send','event','Data Modal','click','References Cited');"><i class="fa fa-bookmark"></i>&nbsp;References Cited</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="downloadPane">
@@ -567,10 +567,13 @@
                             </p>
                         </div>               
                         <div class="user-guide-item">
-                            <p><b>Changing the basemap style</b>The "Basemaps" sidebar allows a user to show various geographic information or landscape imagery as a background layer beneath the trend results.</p>
+                            <p><b>Data Preparation Steps</b>
+                            In preparation for statistical analysis, environmental water-quality data for selected sites are retrieved from the USGS National Water Information System database. A maximum common reporting level (CRLMAX) is chosen for the data analysis, usually the lowest reporting level that still retains the maximum amount of data for analysis. The CRLMAX and the value used for recoding nondetections are reported for each constituent in the “readme” tab of the data files and details are provided ‘details on data preparation’ link. Analysis is completed for networks with at least 10 pairs of samples. Once a CRLMAX is selected for a given constituent, all nondetections with a reporting level greater than the CRLMAX are deleted from the dataset. All nondetections and reported values less than the CRLMAX are recoded to a unique value selected to specifically represent values below the CRLMAX. The value used for recoding is typically slightly less than the CLRMAX, but its exact value does not affect the statistical analysis, which calculates results using the ranking of values relative to each other rather than using the actual values themselves. The selection of a CRLMAX and the recoding are done to make correct comparisons among nondetections and between nondetections and low-level detections; for example, if a CRLMAX of 0.2 is selected, reported results of < 0.1 and < 0.2 are recoded as 0.19 before statistical analysis so that the statistical program does not interpret these two nondetections as different values and also to distinguish both from a reported value of 0.2. Reported results of 0.17 (a detection) and < 0.2 (a nondetection) are also recoded as 0.19 before statistical analysis because it is not possible to determine if the two values differ. The CRLMAX and the value used for recoding nondetections are reported for each constituent in the “readme” tab of the data files. Data for the pesticide compounds atrazine, prometon, metolachlor, simazine, dieldrin and deethylatrazine (a degradate of atrazine) are prepared using a different method, as described in Toccalino and others (2014a). Differences in data preparation for pesticide compounds and degradates include that concentrations were adjusted for recovery and that nondetections were replaced with a single value less than the lowest detection (rather than a value less than the CRLMAX). For methyl tert-butyl ether, the CRLMAX was determined for each pair rather than for the entire data set.
+                            </p>
                         </div>               
                         <div class="user-guide-item">
-                            <p><b>Changing the basemap style</b>The "Basemaps" sidebar allows a user to show various geographic information or landscape imagery as a background layer beneath the trend results.</p>
+                            <p><b>Statistical Analysis</b>
+                                For each constituent, data are analyzed for statistically significant changes between the decadal samples within a network using the Wilcoxon-Pratt signed-rank test (Pratt, 1959) using the R-statistical software. Details of this method are described in Lindsey and Rupert (2012). Briefly, the method first calculates changes in concentrations at individual wells and then uses the pattern of those changes to determine whether or not there has been a statistically significant change for a well network as a whole. For these tests, a 90-percent confidence level, or a p-value of less than 0.10, is used to signify a statistically significant change. Because the R-statistical program cannot analyze networks if all the data are tied (no differences in any pair), networks with all ties are assumed to have no significant change.</p>
                         </div>               
                     </div>
                     <div role="tabpanel" class="tab-pane" id="citesPane">
@@ -914,7 +917,7 @@
                     </h4>
                 </div>
                 <div id="constPanel" class="panel-collapse collapse in constituent-panel" role="tabpanel" aria-labelledby="constPanelHeader">
-                    <div id="constDropdowns" style="padding: 2px 2px;">
+                    <!-- <div id="constDropdowns" style="padding: 2px 2px;">
                         <label for="typeSelect">Constituent group:</label>
                         <span>
                             <select id="typeSelect">
@@ -928,6 +931,15 @@
                                 <option value="Salinity" select="#salinitySelect">Salinity</option>
                                 <option value="Sediment" select="#sedimentSelect">Sediment</option>
                             </select>
+                        </span>
+                    </div> -->
+                    <div id="trendTypes" style="align-content: center; width: 100%; padding-top: 20px; text-align: left;">
+                        <label>Trend type</label>
+                        <span class="sidebar-radio-wrapper">
+                            <input id="cocentration" name="trendType" class="trendType" type="radio" value="concentration" checked> Concentration
+                        </span>
+                        <span class="sidebar-radio-wrapper">
+                            <input id="load" name="trendType" class="trendType" type="radio" value="load"> Load
                         </span>
                     </div>
                     <div>
@@ -980,16 +992,7 @@
                         </span>
                     </div>
 
-                    <div id="trendTypes" style="align-content: center; width: 100%; padding-top: 20px; text-align: left;">
-                        <label>Trend type</label>
-                        <span class="sidebar-radio-wrapper">
-                            <input id="cocentration" name="trendType" class="trendType" type="radio" value="concentration" checked> Concentration
-                        </span>
-                        <span class="sidebar-radio-wrapper">
-                            <input id="load" name="trendType" class="trendType" type="radio" value="load"> Load
-                        </span>
-                    </div>
-                    <div style="width: 100%; padding-top: 20px; text-align: left;">
+                    <!-- <div style="width: 100%; padding-top: 20px; text-align: left;">
                         <label>Trend period</label>
                         <span id="trend4" class="sidebar-radio-wrapper">
                             <input id="trend4input" name="trendPeriod" class="trendPeriod" type="radio" value="P40"> 1972-2012
@@ -1003,7 +1006,7 @@
                         <span id="trend1" class="sidebar-radio-wrapper">
                             <input id="trend1input" name="trendPeriod" class="trendPeriod" type="radio" value="P10" checked> 2002-2012
                         </span>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
