@@ -534,7 +534,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .esriLegendLayer svg{
-    height: 30px;
+    height: 40px;
     line-height: 30px;
 }
 
@@ -719,8 +719,6 @@ input[type="checkbox"], input[type="radio"] {
     padding: 35px 15px 35px 0;
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
-
-
 
 /*Nav Tweaks*/
 #aboutNav,
