@@ -25,6 +25,7 @@ a:hover{
 
 #aboutNav,
 #userGuideNav,
+#dataNav,
 #faqNav{
     /*background-color: #474747;*/
     background: 0 0;
@@ -47,6 +48,7 @@ a:hover{
 
 #aboutNav,
 #userGuideNav,
+#dataNav,
 #faqNav{
     letter-spacing: 2px;
     position: relative; top: 2px;
@@ -55,6 +57,7 @@ a:hover{
 }
 #aboutNav:hover,
 #userGuideNav:hover,
+#dataNav:hover,
 #faqNav:hover{
     cursor: pointer;
     color: rgba(255,255,255,1);
@@ -62,6 +65,7 @@ a:hover{
 }
 #aboutNav:focus,
 #userGuideNav:focus,
+#dataNav:focus,
 #faqNav:focus{
     outline: none;
 }
@@ -530,7 +534,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .esriLegendLayer svg{
-    height: 30px;
+    height: 40px;
     line-height: 30px;
 }
 
@@ -709,11 +713,17 @@ input[type="checkbox"], input[type="radio"] {
     padding-bottom: 10px;
 }
 
-
+/* Site Modal */
+.cites-item {
+    box-sizing: border-box;
+    padding: 35px 15px 35px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
 
 /*Nav Tweaks*/
 #aboutNav,
 #faqNav,
+#dataNav,
 #userGuideNav{
     color: rgba(255,255,255,0.8);
 }
@@ -723,6 +733,12 @@ input[type="checkbox"], input[type="radio"] {
 }
 #geosearchNav:hover{
     background-color: rgba(69,116,204, 1) !important;
+}
+
+/* .btn,
+.btn-secondary, */
+.dataButton{
+ margin-bottom: 10px;
 }
 
 

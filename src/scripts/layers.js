@@ -8,6 +8,7 @@ require([
     "esri/geometry/Extent",
     "esri/layers/WMSLayerInfo",
     "esri/layers/FeatureLayer",
+    "esri/layers/WebTiledLayer",
     "esri/renderers/UniqueValueRenderer",
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleMarkerSymbol",
@@ -16,50 +17,94 @@ require([
     Extent,
     WMSLayerInfo,
     FeatureLayer,
+    WebTiledLayer,
     UniqueValueRenderer,
     SimpleLineSymbol,
     SimpleMarkerSymbol
 ) {
 
     var defaultSymbol = null;
-    renderer = new UniqueValueRenderer(defaultSymbol, "all_pest_trends.trend_int");
 
-    var over50 = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 15,
-        new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-            new esri.Color([255,0,0]), 1),
-        new esri.Color([255,0,0,0.25]));
-    var midUp = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10,
-        new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-            new esri.Color([255,0,0]), 1),
-        new esri.Color([255,0,0,0.25]));
-    var under25 = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 5,
-        new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-            new esri.Color([255,0,0]), 1),
-        new esri.Color([255,0,0,0.25]));
-    var zero = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 5,
-        new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-            new esri.Color([255,255,255]), 1),
-        new esri.Color([0,0,0,0.25]));
-    var under0 = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 5,
-        new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-            new esri.Color([0,255,0]), 1),
-        new esri.Color([0,255,0,0.25]));
-    var underNeg25 = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10,
-        new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-            new esri.Color([0,255,0]), 1),
-        new esri.Color([0,255,0,0.25]));
-    var underNeg50 = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 15,
-        new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-            new esri.Color([0,255,0]), 1),
-        new esri.Color([0,255,0,0.25]));
+	var count = 2;
+    renderer = new esri.renderer.UniqueValueRenderer(defaultSymbol, "network_centroids.P00940_Chloride");
+	renderer2 = new esri.renderer.UniqueValueRenderer(defaultSymbol);
 
-    renderer.addValue(3, over50);
-    renderer.addValue(2, midUp);
-    renderer.addValue(1, under25);
-    renderer.addValue(0, zero);
-    renderer.addValue(-1, under0);
-    renderer.addValue(-2, underNeg25);
-    renderer.addValue(-3, underNeg50);
+	orangeBigSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/orange_large.png", 45, 45);
+	greenBigSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/green_large.png", 45, 45);
+	noChangeSymbolSmall = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/no_change.png", 45, 25);
+	noChangeSymbolLarge = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/no_change.png", 75, 40);
+	orangeSmallSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/orange_small.png", 45, 25);
+	greenSmallSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/green_small.png", 45, 25);
+	blankSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/blank.png", 45, 25);
+	noDataSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/no_data.png", 45, 25);
+
+	renderer.addValue({
+		value: "2", 
+		symbol: orangeBigSymbol,
+		label: "Large increase"
+	});
+    renderer.addValue({
+		value: "1", 
+		symbol: orangeSmallSymbol,
+		label: "Small increase"
+	});
+    /*renderer.addValue({
+    	value: "0", 
+    	symbol: new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE, 9,
+							new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,
+							new dojo.Color([155,155,155,0]), 0),
+							new dojo.Color([0,0,0,1])),
+    	label: "No change"
+    });*/
+	renderer.addValue({
+		value: "0",
+		symbol: noChangeSymbolSmall,
+		label: "No significant change"
+	});
+    renderer.addValue({
+		value: "-1", 
+		symbol: greenSmallSymbol,
+		label: "Small decrease"
+	});
+    renderer.addValue({
+		value: "-2", 
+		symbol: greenBigSymbol,
+		label: "Large decrease"
+	});
+	renderer.addValue({
+		value: "-999", 
+		symbol: noDataSymbol,
+		label: "Trend data not available"
+	});
+	
+	renderer2.addValue({
+		value: "1", 
+		symbol: orangeSmallSymbol,
+		label: "Increase"
+	});
+    /*renderer2.addValue({
+    	value: "0", 
+    	symbol: new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE, 9,
+							new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,
+							new dojo.Color([0,0,0]), 1),
+							new dojo.Color([0,0,0,1])),
+    	label: "No change"
+    });*/
+	renderer2.addValue({
+		value: "0",
+		symbol: noChangeSymbolSmall,
+		label: "No significant change"
+	});
+    renderer2.addValue({
+		value: "-1", 
+		symbol: greenSmallSymbol,
+		label: "Decrease"
+	});
+	renderer2.addValue({
+		value: "-999", 
+		symbol: noDataSymbol,
+		label: "Trend data not available"
+	});
 
     allLayers = [//
         {
@@ -67,25 +112,27 @@ require([
             "showGroupHeading": false,
             "includeInLayerList": false,
             "layers": {
-                "pest layer": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/swTrendSites/MapServer/0",
+                "Magnitude of change": {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest/MapServer/0",
                     "options": {
                         "id": "pestSites",
-                        "opacity": 1.00,
-                        "mode": FeatureLayer.MODE_SNAPSHOT,
-                        "outFields": ["*"],
-                        "visible": false
+                        /* "visibleLayers": [0], */
+                        "mode": esri.layers.FeatureLayer.MODE_ONDEMAND,
+                        /* "outFields": ["*"],
+                        "orderByFields": [ "network_centroids.P00940_Chloride DESC" ], */
+                        "visible": true
                     },
                     "wimOptions": {
                         "type": "layer",
                         "layerType": "agisFeature",
-                        "includeInLayerList": false,
+                        "includeInLayerList": true,
                         "hasOpacitySlider": true,
-                        "includeLegend": true
+                        "includeLegend": true,
+                        "renderer": renderer
                     }
                 },
-                "Eco Sites layer" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/swTrendSites/MapServer/1",
+                "Pricipal Aquifers" : {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/DecadalMap/MapServer/1",
                     "options": {
                         "id": "ecoSites",
                         "opacity": 1.00,
@@ -101,42 +148,40 @@ require([
                         "includeLegend" : true
                     }
                 },
-                "WRTDS Concentration Sites" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/swTrendSites/MapServer/2",
+                "Land use 2001" : {
+                    "url": "https://raster.nationalmap.gov/arcgis/rest/services/LandCover/conus_01/MapServer",
+                    "visibleLayers": [0],
                     "options": {
                         "id": "wrtdsSites",
-                        "opacity": 1.00,
-                        "mode": FeatureLayer.MODE_SNAPSHOT,
-                        "outFields": ["wrtds_sites.Station_nm","wrtds_sites.Site_no","wrtds_sites.staAbbrev","wrtds_sites.agency1","wrtds_trends_wm_new.agency_1_full","wrtds_trends_wm_new.agency_2_full","wrtds_sites.db_source","wrtds_sites.dec_lat_va","wrtds_sites.dec_long_va","wrtds_sites.drainSqKm","wrtds_sites.huc_cd","wrtds_trends_wm_new.DA"],
+                        "opacity": 0.75,
                         "visible": false
                     },
                     "wimOptions": {
                         "type": "layer",
-                        "layerType": "agisFeature",
-                        "includeInLayerList": false,
+                        "layerType": "agisDynamic",
+                        "includeInLayerList": true,
                         "hasOpacitySlider": true,
                         "includeLegend" : true
                     }
                 },
-                "WRTDS Flux Sites" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/swTrendSites/MapServer/3",
+                "Network Boundaries" : {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NetworkBoundaries/MapServer",
+                    "visibleLayers": [0],
                     "options": {
-                        "id": "wrtdsFluxSites",
-                        "opacity": 1.00,
-                        "mode": FeatureLayer.MODE_SNAPSHOT,
-                        "outFields": ["wrtds_sites.Station_nm","wrtds_sites.Site_no","wrtds_sites.staAbbrev","wrtds_sites.agency1","wrtds_trends_wm_new.agency_1_full","wrtds_trends_wm_new.agency_2_full","wrtds_sites.db_source","wrtds_sites.dec_lat_va","wrtds_sites.dec_long_va","wrtds_sites.drainSqKm","wrtds_sites.huc_cd","wrtds_trends_wm_new.DA"],
-                        "visible": false
+                        "id": "networkBoundaries",
+                        "opacity": 0.75,
+                        "visible": true
                     },
                     "wimOptions": {
                         "type": "layer",
-                        "layerType": "agisFeature",
-                        "includeInLayerList": false,
+                        "layerType": "agisDynamic",
+                        "includeInLayerList": true,
                         "hasOpacitySlider": true,
-                        "includeLegend" : true
+                        "includeLegend" : false
                     }
                 },
-                "2012": {
-                    "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu2012_100515_test/ImageServer",
+                "Trend sites": {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites/MapServer",
                     "options": {
                         "id": "lu2012",
                         "opacity": 0.5,
@@ -144,15 +189,14 @@ require([
                     },
                     "wimOptions": {
                         "type": "layer",
-                        "layerType": "agisImage",
+                        /*"layerType": "agisImage",*/
                         "includeInLayerList": true,
-                        "exclusiveGroupName":"Land use",
                         "hasOpacitySlider": true,
-                        "includeLegend": true
+                        "includeLegend": false
                     }
                 },
-                "2002": {
-                    "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu2002_100515_test/ImageServer",
+                "Principal Aquifers": {
+                    "url": "https://nwis-mapper.s3.amazonaws.com/pr_aq/${level}/${row}/${col}.png",
                     "options": {
                         "id": "lu2002",
                         "opacity": 0.5,
@@ -160,30 +204,13 @@ require([
                     },
                     "wimOptions": {
                         "type": "layer",
-                        "layerType": "agisImage",
+                        "layerType": "webTiledLayer",
                         "includeInLayerList": true,
-                        "exclusiveGroupName":"Land use",
                         "hasOpacitySlider": true,
                         "includeLegend": true
                     }
                 },
-                "1992": {
-                    "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu1992_100515_test/ImageServer",
-                    "options": {
-                        "id": "lu1992",
-                        "opacity": 0.5,
-                        "visible": false
-                    },
-                    "wimOptions": {
-                        "type": "layer",
-                        "layerType": "agisImage",
-                        "includeInLayerList": true,
-                        "exclusiveGroupName":"Land use",
-                        "hasOpacitySlider": true,
-                        "includeLegend": true
-                    }
-                },
-                "1982": {
+                /* "Inorganic": {
                     "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu1982_100515_test/ImageServer",
                     "options": {
                         "id": "lu1982",
@@ -194,12 +221,11 @@ require([
                         "type": "layer",
                         "layerType": "agisImage",
                         "includeInLayerList": true,
-                        "exclusiveGroupName":"Land use",
                         "hasOpacitySlider": true,
                         "includeLegend": true
                     }
                 },
-                "1974": {
+                "Organic": {
                     "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu1974_100515_test/ImageServer",
                     "options": {
                         "id": "lu1974",
@@ -210,11 +236,10 @@ require([
                         "type": "layer",
                         "layerType": "agisImage",
                         "includeInLayerList": true,
-                        "exclusiveGroupName":"Land use",
                         "hasOpacitySlider": true,
                         "includeLegend": true
                     }
-                }
+                } */
             }
         }
     ]

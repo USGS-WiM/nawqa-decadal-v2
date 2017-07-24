@@ -58,16 +58,16 @@
 
     <!-- Google Analytics -->
 
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <!-- <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-########-##', 'auto');
-    ga('send', 'pageview');
+        ga('create', 'UA-61219868-5', 'auto');
+        ga('send', 'pageview');
 
-    </script>
+    </script> -->
 
 </head>
 <body>
@@ -104,13 +104,16 @@
             <span id="printButtonText"> Print</span>
         </button>
 
-        <button id="faqNav" class="pull-right" onclick="ga('send','event','navbar','click','FAQ', 1);">
+        <button id="faqNav" class="pull-right" onclick="ga('send','event','navbar','click','FAQ');">
             <i class="fa fa-question-circle"></i><span class="hidden-xs">&nbsp;&nbsp;FAQ</span>
         </button>
-        <button id="userGuideNav" class="pull-right" onclick="ga('send','event','navbar','click','User Guide', 1);">
+        <button id="userGuideNav" class="pull-right" onclick="ga('send','event','navbar','click','User Guide');">
             <i class="fa fa-book"></i><span class="hidden-xs">&nbsp;&nbsp;User Guide</span>
         </button>
-        <button id="aboutNav" class="pull-right" onclick="ga('send','event','navbar','click','About', 1);">
+        <button id="dataNav" class="pull-right" onclick="ga('send','event','navbar','click','Data Tab');">
+            <i class="fa fa-table"></i><span class="hidden-xs">&nbsp;&nbsp;Data</span>
+        </button>
+        <button id="aboutNav" class="pull-right" onclick="ga('send','event','navbar','click','About');">
             <i class="fa fa-info-circle"></i><span class="hidden-xs">&nbsp;&nbsp;About</span>
         </button>
         <!-- comment -->
@@ -285,84 +288,65 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="learnMoreTabPane">
                         <h3>Learn More</h3>
-                        <p>Since passage of the Clean Water Act in 1972, Federal, State, and local governments have invested billions of dollars to reduce pollution entering streams and rivers. In order to understand the return on these investments, and to more effectively manage and protect the Nation's water resources in the future, we need to know: Has water quality has been changing over time?</p>
-                        <p>Answering that question is one of the major goals of the U.S. Geological Survey's (USGS) National Water-Quality Assessment project. To support that goal, they have conducted long-term consistent and comparable monitoring on streams and rivers throughout the Nation since 1992. Other USGS programs, as well as many other Federal, State, regional, and local monitoring organizations, also have collected long-term water-quality data to support their own assessments of changing water- quality conditions. For the first time, data from these organizations have been aggregated, screened, standardized, and used to support the most comprehensive assessment of stream-quality trends conducted to date in the United States. Collectively, these trend results will be used to provide insight into how natural features and human activities have contributed to water-quality changes over time in the Nation's streams and rivers.</p>
-                        <p>Trends in water quality and aquatic ecology were evaluated for four time periods: 1972-2012, 1982- 2012, 1992-2012, and 2002-2012. Trends in the water-quality constituents were evaluated for both concentration and load. Concentration is the amount of the constituent in the stream. Load is the mass of the constituent transported past the sampling point in a stream during a period of time.</p>
-                        <p>All of the water-quality and aquatic-ecology trends reported in this mapper are normalized for climatic variability. The specific terminology for the water-quality trends is "flow normalized".</p>
+                        <h3 style="border-bottom: 1px solid rgba(0,0,0,0.4); padding: 15px 0 8px 0; margin-bottom: 8px;display:inline-block;">Evaluating Decadal Changes in Groundwater Quality</h3>
+                        <p>Groundwater quality data were collected in 5,000 wells between 1988 and 2001 by the National Water-Quality Assessment Project. About 1,500 of these wells were sampled again between 2002 and 2012 to evaluate decadal changes in groundwater quality. Monitoring wells, domestic-supply wells, and some public-supply wells were included in this study. All water was collected before treatment.</p>
+                        <p>Groundwater samples used to evaluate decadal change were collected from networks of wells with similar characteristics. Some networks, consisting of domestic or public-supply wells, were used to assess changes in the quality of groundwater used for drinking-water supply. Other networks, consisting of monitoring wells, assessed changes in the quality of shallow groundwater underlying key land-use types such as agricultural or urban lands. Networks were chosen based on geographic distribution across the Nation and to represent the most important water-supply aquifers and specific land-use types.</p>
+                        <br/><br/>
+                        <h3 style="border-bottom: 1px solid rgba(0,0,0,0.4); padding: 15px 0 8px 0; margin-bottom: 8px;display:inline-block;">Decadal changes in groundwater quality were assessed for these constituents:</h3>
+                        <div style="background-color:#ECEEF3;">
+                            <div style="float: left; width: 50%;background-color:#ECEEF3;">
+                                <ul style="list-style:none;">
+                                    <li style="padding-bottom:5px;"><b>Inorganics</b></li>
+                                    <li>Arsenic</li>
+                                    <li>Boron</li>
+                                    <li>Chloride</li>
+                                    <li>Fluoride</li>
+                                    <li>Iron</li>
+                                    <li>Manganese</li>
+                                    <li>Molybdenum</li>
+                                    <li>Nitrate</li>
+                                    <li>Orthophosphate</li>
+                                    <li>Strontium</li>
+                                    <li>Sulfate</li>
+                                    <li>Total Dissolved Solids</li>
+                                    <li>Uranium</li>
+                                </ul>
+                            </div>
+                            <div style="float: right; width: 50%;background-color:#ECEEF3;">
+                                <ul style="list-style:none;">
+                                    <li style="padding-bottom:5px;"><b>Organics</b></li>
+                                    <li>Atrazine</li>
+                                    <li>Chloroform</li>
+                                    <li>Deethylatrazine</li>
+                                    <li>Dieldrin</li>
+                                    <li>Methyl tert-butyl ether</li>
+                                    <li>Metolachlor</li>
+                                    <li>Prometon</li>
+                                    <li>Simazine</li>
+                                    <li>Tetrachlorothene</li>
+                                    <li>Toluene</li>
+                                    <li>Trichloroethene</li>
+                                </ul>
+                            </div>
+                        </div>
                         <br/><br/>
 
+                        <h3 style="border-bottom: 1px solid rgba(0,0,0,0.4); padding: 15px 0 8px 0; margin-bottom: 8px;display:inline-block;">Online Mapper Showing Decadal Changes in Groundwater Quality</h3>
 
-                        <p style="text-align: center;">The water-quality and aquatic-ecology constituents included in the analysis were:</p>
+                        <img src="images/popup2.jpg" style="display: block; margin: 0 auto; width: 90%; max-width: 440px;margin-top: 15px; margin-bottom: 15px;"/>
 
-                        <h3 style="border-bottom: 1px solid rgba(0,0,0,0.4); padding: 15px 0 8px 0; margin-bottom: 8px;">Water Quality</h3>
+                        <p>Decadal changes in concentrations of pesticides, nutrients, metals, and organic contaminants in groundwater were evaluated in 67 networks across the Nation and displayed on an interactive web mapping tool.</p>
+                        <p>Decadal changes in median concentrations for a network are classified as large, small, or no change in comparison to a benchmark concentration (such as a Maximum Contaminant Level); for example, a large change in chloride concentrations indicates that the median of all differences in concentrations in a network is greater than 5 percent of the chloride benchmark. For chloride, this would mean the change in concentration exceeded 12.5 milligrams per liter.</p>
 
-                        <p style="text-align: center;">[mg/L, milligrams per liter. kg/year, kilograms per year;  umohs/cm, micromhos per centimeter; N, nitrogen; P, phosphorus; CaCO<sub>3</sub>, calcium carbonate; S, sulfate.]</p>
+                        <h3 style="border-bottom: 1px solid rgba(0,0,0,0.4); padding: 15px 0 8px 0; margin-bottom: 8px;display:inline-block;">Decadal Groundwater Quality Networks</h3>
+                        
+                        <img src="images/Pilot_cy1networks.jpg" style="display: block; margin: 0 auto; width: 90%; max-width: 440px;margin-top: 15px; margin-bottom: 15px;"/>
 
+                        <p style="text-align:center;">230 networks were sampled from 1998 to 2001 to assess the status of the Nation’s groundwater quality. Each dot represents a network of about 20 to 30 wells.</p>
 
-                        <img src="images/learnmore1.png" style="display: block; margin: 0 auto; width: 90%; max-width: 440px;"/>
-                        <img src="images/learnmore2.png" style="display: block; margin: 0 auto; width: 90%; max-width: 440px;"/>
-                        <img src="images/learnmore3.png" style="display: block; margin: 0 auto; width: 90%; max-width: 440px; margin-bottom: 25px;"/>
+                        <img src="images/Trend_nets.jpg" style="display: block; margin: 0 auto; width: 90%; max-width: 440px;margin-top: 15px; margin-bottom: 15px;"/>
 
-                        <p><a href="https://nwis.waterdata.usgs.gov/usa/nwis/pmcodes?radio_pm_search=param_group&pm_group=Organics%2C+pesticide&pm_search=&casrn_search=&srsname_search=&format=html_table&show=parameter_group_nm&show=parameter_nm&show=casrn&show=srsname&show=parameter_units" target="_blank">The CAS registry number and SRS name for these pesticides are available from the parameter code dictionary for the U.S Geological Survey's National Water Information System (NWIS) data base.</a>
-
-
-                        <h3 style="border-bottom: 1px solid rgba(0,0,0,0.4); padding: 15px 0 8px 0; margin-bottom: 8px;">Aquatic Ecology</h3>
-                        <div class="learn-more-aquatic-row"><span><b>Code</b></span><span><b>Metrics</b></span></div>
-                        <h5 style="text-align: center;"><b>Fish</b></h5>
-                        <h6 style="text-align: center;"><b>Community composition</b></h6>
-                        <div class="learn-more-aquatic-row"><span>FishRich</span><span>The total number of different fish species</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishDiv</span><span>Shannon and Weaver diversity</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishLTsim</span><span>Fish Bray-Curtis Similarity value between each year and the start year in the trend period</span></div>
-                        <h6 style="text-align: center;"><b>Assessment Indicator</b></h6>
-                        <div class="learn-more-aquatic-row"><span>FishO/E</span><span>Ratio of observed (O) fish taxa to the modeled number of expected (E) fish taxa (O/E) or multi-metric index (MMI) value standardized to O/E units</span></div>
-
-                        <h6 style="text-align: center;"><b>Tolerance</b></h6>
-                        <div class="learn-more-aquatic-row"><span>FishAmm</span><span>Average fish community tolerance to ammonia</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishCl</span><span>Average fish community tolerance to chloride</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishSC</span><span>Average fish community tolerance to specific conductance</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishDO</span><span>Average fish community tolerance to dissolved oxygen</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishNitraNitri</span><span>Average fish community tolerance to nitrite plus nitrate</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishpH</span><span>Average fish community tolerance to pH</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishPhos</span><span>Average fish community tolerance to phosphorus</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishSul</span><span>Average fish community tolerance to sulfate</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishSusSed</span><span>Average fish community tolerance to suspended sediment</span></div>
-                        <div class="learn-more-aquatic-row"><span>FishTemp</span><span>Average fish community tolerance to water temperature</span></div>
-
-                        <h5 style="text-align: center;"><b>Invertebrates</b></h5>
-                        <h6 style="text-align: center;"><b>Community composition</b></h6>
-                        <div class="learn-more-aquatic-row"><span>InvertRich</span><span>The total number of different invertebrate taxa</span></div>
-                        <div class="learn-more-aquatic-row"><span>InvertPerEPTr</span><span>Percent invertebrate taxa richness comprised of individuals belonging to the orders Ephemeroptera (mayflies), Plecoptera (stoneflies), and Trichoptera (caddisflies)</span></div>
-                        <div class="learn-more-aquatic-row"><span>InvertPnInr</span><span>Percent of invertebrate taxa richness comprised of non-insect taxa.</span></div>
-                        <div class="learn-more-aquatic-row"><span>InvertDiv</span><span>Invertebrate Shannon Weaver diversity</span></div>
-                        <div class="learn-more-aquatic-row"><span>InvertLTsim</span><span>Invertebrate Bray-Curtis Similarity value between each year and the start year in the trend period</span></div>
-
-                        <h6 style="text-align: center;"><b>Assessment indicator</b></h6>
-                        <div class="learn-more-aquatic-row"><span>InvertO/E</span><span>Ratio of observed (O) invertebrate taxa to the modeled number of expected (E) invertebrate taxa (O/E)</span></div>
-
-                        <h6 style="text-align: center;"><b>Tolerance</b></h6>
-                        <div class="learn-more-aquatic-row"><span>InvertIon</span><span>Average invertebrate community tolerance to major ions</span></div>
-                        <div class="learn-more-aquatic-row"><span>InvertNutr</span><span>Average invertebrate community tolerance to nutrients</span></div>
-                        <div class="learn-more-aquatic-row"><span>InvertDO/Temp</span><span>Average invertebrate community tolerance to dissolved oxygen and temperature</span></div>
-                        <div class="learn-more-aquatic-row"><span>InvertSusSec</span><span>Average invertebrate community tolerance to suspended sediment</span></div>
-                        <div class="learn-more-aquatic-row"><span>InvertFines</span><span>Average invertebrate community tolerance to fine sediment</span></div>
-
-                        <h5 style="text-align: center;"><b>Diatoms</b></h5>
-                        <h6 style="text-align: center;"><b>Community composition</b></h6>
-                        <div class="learn-more-aquatic-row"><span>DiaRich</span><span>The total number of different diatom taxa</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaDiv</span><span>Diatom Shannon Weaver diversity</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaLTsim</span><span>Diatom Bray-Curtis Similarity value between each year and the start year in the trend period</span></div>
-
-                        <h6 style="text-align: center;"><b>Tolerance</b></h6>
-                        <div class="learn-more-aquatic-row"><span>DiaSenBahlTol</span><span>The number of diatom taxa sensitive to general nutrient and organic enrichment</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaxHighCa</span><span>The number of diatom taxa with a calcium optima of greater than 40 milligrams per liter</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaLowCl</span><span>The number of diatom taxa with a chloride optima less than 15 milligrams per liter</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaLowO2</span><span>The number of diatom taxa that are known to tolerate down to 30 percent dissolved oxygen saturation</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaHigh02</span><span>The number of diatom taxa that require nearly 100 percent dissolved oxygen saturation</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaLowTN</span><span>The number of diatom taxa having a total nitrogen optima of less than or equal to 0.2 milligrams per liter as N</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaHighTN</span><span>The number of diatom taxa having a total nitrogen optima of greater than or equal to 3 milligrams per liter as N</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaLowTP</span><span>The number of diatom taxa having a total phosphorus optima of less than or equal to 10 micrograms per liter as P</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaHighTP</span><span>The number of diatom taxa having a total phosphorus optima of more than or equal to 100 micrograms per liter as P</span></div>
-                        <div class="learn-more-aquatic-row"><span>DiaHighMot</span><span>The number of diatom taxa that are considered highly motile (mobile) distinguished by the presence of an extensive raphe and/or are large in size</span></div>
+                        <p style="text-align:center;">67 networks were resampled from 2002 to 2012 to assess decadal changes in groundwater quality.</p>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="waterResourcesTabPane">
                         <h3>Related Resources</h3>
@@ -457,6 +441,10 @@
                             <div class="user-guide-item-image"><img src="images/userguide/home.png"/></div>
                             <p><b>Home Location</b>The crosshair button will zoom the map to your location, and the home button will center the US on the map.</p>
                         </div>
+                        <div class="user-guide-item">
+                            <div class="user-guide-item-image"><img src="images/userguide/home.png"/></div>
+                            <p><b>Print Map</b>The print map tab creates a .pdf file of the current map extent, including an explanation.</p>
+                        </div>
                         <!--<div class="user-guide-item">
                             <div class="user-guide-item-image"><img src="images/userguide/mappoints.png"/></div>
                             <p><b>Opening a site</b>Clicking on an arrow or circle at a site will bring up a window with details about the site, graphs of the original data and model predictions (for some constituents), and a table of the other trend results at the same site.</p>
@@ -478,20 +466,16 @@
                         </div>
                         <div class="user-guide-item">
                             <div class="user-guide-item-image"><img src="images/userguide/legendfull.png"/></div>
-                            <p><b>Using the Explanation</b>The expanded Explanation box  explains the arrows and circles that appear at the network centroid, displaying the statistical results.
-                            <br>
-                            <br>
-                            The size of the arrow indicates the magnitude of change for networks with statistically significant changes.
-                            <br>
-                            <br>
-                            Networks without any statistically significant change are displayed as a solid circle.
-                            <br>
-                            <br>
-                            Networks with insufficient data for analysis are displayed as hollow circles.</p>
-                            <br>
-                            <br>
-                            
+                            <p><b>Using the Explanation</b>The expanded Explanation box  explains the arrows and circles that appear at the network centroid, displaying the statistical results.</p>
+                            <p>The size of the arrow indicates the magnitude of change for networks with statistically significant changes.</p>
+                            <p>Networks without any statistically significant change are displayed as a solid circle.</p>
+                            <p>Networks with insufficient data for analysis are displayed as hollow circles.</p>
                         </div>
+                        <div class="user-guide-item">
+                            <div class="user-guide-item-image"><img src="images/userguide/explanationinfo.png"/></div>
+                            <p><b>More Information</b>
+                            For more Information, please visit <a href="https://nawqatrends.wim.usgs.gov/decadal/files/Map_icons1.pdf" target="_blank">https://nawqatrends.wim.usgs.gov/decadal/files/Map_icons1.pdf.</a></p>
+                        </div>       
                     </div>
                     <div role="tabpanel" class="tab-pane" id="layersTabPane">
                         <span class="user-guide-header">Map selection options</span>
@@ -507,6 +491,10 @@
                             <div class="user-guide-item-image"><img src="images/userguide/constituent.png"/></div>
                             <p><b>Selecting a constituent</b>The Constituent group selection allows a user to choose a constituent group and then choose a specific constituent from within that group. See About -&gt; Learn More for a list of constituents.</p>
                         </div>
+                        <div class="user-guide-item">
+                            <div class="user-guide-item-image"><img src="images/userguide/constituent.png"/></div>
+                            <p><b>Toggling Pricipal Aquifers, Network Boundaries, and Land use 2001 layers</b>The Constituent group selection allows a user to choose a constituent group and then choose a specific constituent from within that group. See About -&gt; Learn More for a list of constituents.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -519,7 +507,116 @@
     </div> <!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
+<div id="dataModal" class="modal fade" tabindex="-1" role="dialog" >
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true" style="color:gray;">&times;</button>
+                <h4 class="modal-title">Download the Data</h4>
+            </div>
+            <div id="aboutModalBody" class="modal-body">
+                <ul class="nav nav-tabs" id="aboutModalTabs">
+                    <li role="presentation" class="active"><a id="downloadTab" href="#downloadPane" data-toggle="tab"><i class="fa fa-download"></i>&nbsp;Download Data</a></li>
+                    <li role="presentation"><a id="techTab" href="#techPane" data-toggle="tab" onclick="ga('send','event','Data Modal','click','Technical Information');"><i class="fa fa-exclamation-circle"></i>&nbsp;Technical Information</a></li>
+                    <li role="presentation"><a id="citeTab" href="#citesPane" data-toggle="tab" onclick="ga('send','event','Data Modal','click','References Cited');"><i class="fa fa-bookmark"></i>&nbsp;References Cited</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="downloadPane">
+                        <div>
+                            <h3>Download the Data</h3>
+                                <p>
+                                    <a target="_blank" href="./files/Data_archive_inorganic.xlsx"><button type="button" class="btn btn-secondary dataButton">Inorganic Data&nbsp;&nbsp;<span class="fa fa-download"></span></button></a>
+                                    <br>
+                                    <a target="_blank" href="./files/Data_archive_VOC.xlsx"><button type="button" class="btn btn-secondary dataButton">Volitile Organic Compound Data&nbsp;&nbsp;<span class="fa fa-download"></span></button></a>
+                                    <br>
+                                    <a target="_blank" href="./files/Data_archive_pesticide.xlsx"><button type="button" class="btn btn-secondary dataButton" href="files/Data_archive_pesticide.xlsx">Pesticide Data&nbsp;&nbsp;<span class="fa fa-download"></span></button></a>
+                                </p>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="techPane">
+                        <div class="user-guide-item">
+                            <p><b>Mapping Criteria and Benchmarks</b>
+                            The NAWQA Project has developed an interactive mapping tool that displays decadal changes in concentrations. From among the more than 300 constituents sampled during the two decades, 24 constituents were prioritized for analysis for decadal change based on the following criteria:
+                                        <ol>
+                                            <li> They exceeded a human health benchmark in at least 1 percent of the wells used as a source of drinking-water public supply wells (Toccalino and Hopple, 2010) or domestic supply wells (Desimone, 2009),</li> 
+                                            <li> they exceeded a U.S. Environmental Protection Agency (EPA) secondary maximum contaminant level (SMCL) in at least 1 percent of the wells used as a source of drinking water,</li> 
+                                            <li> they were among the five most frequently detected volatile organic compounds (VOCs) in the Nation (Zogorski and others, 2006), or</li> 
+                                            <li> they were among the five most frequently detected pesticides in the Nation (Gilliom and others, 2006).</li>
+                                        </ol>
+                            Other constituents were added to this list based on regional importance. Radium, radon, and gross alpha (α) activity met the criteria for analysis, but do not have sufficient data for analysis; thus, they are not included in the mapping tool. 
+                            Benchmarks used to prioritize the constituents were: EPA maximum contaminant levels (MCLs) (U.S. Environmental Protection Agency, 2012), USGS Health-Based Screening Levels (HBSLs) (Toccalino and others, 2014b), and nonregulatory SMCLs (U.S. Environmental Protection Agency, 2012). Of these benchmarks, only MCLs are legally enforceable (regulatory) drinking-water standards; all but SMCLs are human-health benchmarks. For more information about these benchmarks, <a id="showFAQ14">click here</a>. For a listing of the 24 constituents selected for analysis and the reason they were selected, <a href="./files/Constituent_table.pdf" target="_blank">click here</a>.
+                            </p>
+                        </div>               
+                        <div class="user-guide-item">
+                            <p><b>Data Preparation Steps</b>
+                            In preparation for statistical analysis, environmental water-quality data for selected sites are retrieved from the USGS National Water Information System database. A maximum common reporting level (CRLMAX) is chosen for the data analysis, usually the lowest reporting level that still retains the maximum amount of data for analysis. The CRLMAX and the value used for recoding nondetections are reported for each constituent in the “readme” tab of the data files and details are provided ‘details on data preparation’ link. Analysis is completed for networks with at least 10 pairs of samples. Once a CRLMAX is selected for a given constituent, all nondetections with a reporting level greater than the CRLMAX are deleted from the dataset. All nondetections and reported values less than the CRLMAX are recoded to a unique value selected to specifically represent values below the CRLMAX. The value used for recoding is typically slightly less than the CLRMAX, but its exact value does not affect the statistical analysis, which calculates results using the ranking of values relative to each other rather than using the actual values themselves. The selection of a CRLMAX and the recoding are done to make correct comparisons among nondetections and between nondetections and low-level detections; for example, if a CRLMAX of 0.2 is selected, reported results of < 0.1 and < 0.2 are recoded as 0.19 before statistical analysis so that the statistical program does not interpret these two nondetections as different values and also to distinguish both from a reported value of 0.2. Reported results of 0.17 (a detection) and < 0.2 (a nondetection) are also recoded as 0.19 before statistical analysis because it is not possible to determine if the two values differ. The CRLMAX and the value used for recoding nondetections are reported for each constituent in the “readme” tab of the data files. Data for the pesticide compounds atrazine, prometon, metolachlor, simazine, dieldrin and deethylatrazine (a degradate of atrazine) are prepared using a different method, as described in Toccalino and others (2014a). Differences in data preparation for pesticide compounds and degradates include that concentrations were adjusted for recovery and that nondetections were replaced with a single value less than the lowest detection (rather than a value less than the CRLMAX). For methyl tert-butyl ether, the CRLMAX was determined for each pair rather than for the entire data set.
+                            </p>
+                        </div>               
+                        <div class="user-guide-item">
+                            <p><b>Statistical Analysis</b>
+                                For each constituent, data are analyzed for statistically significant changes between the decadal samples within a network using the Wilcoxon-Pratt signed-rank test (Pratt, 1959) using the R-statistical software. Details of this method are described in Lindsey and Rupert (2012). Briefly, the method first calculates changes in concentrations at individual wells and then uses the pattern of those changes to determine whether or not there has been a statistically significant change for a well network as a whole. For these tests, a 90-percent confidence level, or a p-value of less than 0.10, is used to signify a statistically significant change. Because the R-statistical program cannot analyze networks if all the data are tied (no differences in any pair), networks with all ties are assumed to have no significant change.</p>
+                        </div>               
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="citesPane">
+                        <span class="user-guide-header">References Cited</span>
+                        <div>
+                            <p>DeSimone, L.A., 2009, Quality of water from domestic wells in principal aquifers of the United States, 1991–2004: U.S. Geological Survey Scientific Investigations Report 2008–5227, 139 p. Also available at <a target="_blank" href="http://pubs.usgs.gov/sir/2008/5227/"> http://pubs.usgs.gov/sir/2008/5227/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>DeSimone, L.A., McMahon, P.B., and Rosen, M.R., 2014, The quality of our Nation’s waters—Water quality in Principal Aquifers of the United States, 1991–2010: U.S. Geological Survey Circular 1360, 151 p., [Also available at <a target="_blank" href="http://dx.doi.org/10.3133/cir1360">http://dx.doi.org/10.3133/cir1360</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Eberts, S.M., Thomas, M.A., and Jagucki, M.L., 2013, The quality of our Nation’s waters—Factors affecting public-supply-well vulnerability to contamination—Understanding observed water quality and anticipating future water quality: U.S. Geological Survey Circular 1385, 120 p. [Also available online at <a href="http://pubs.usgs.gov/circ/1385/" target="_blank">http://pubs.usgs.gov/circ/1385/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Gilliom, R.J., Barbash, J.E., Crawford, C.G., Hamilton, P.A., Martin, J.D., Nakagaki, Naomi, Nowell, L.H., Scott, J.C., Stackelberg, P.E., Thelin, G.P., and Wolock, D.M., 2006, The quality of our Nation’s waters—Pesticides in the Nation’s streams and ground water, 1992–2001: U.S. Geological Survey Circular 1291, 172 p. [Also available at <a href="http://pubs.usgs.gov/circ/2005/1291/" target="_blank">http://pubs.usgs.gov/circ/2005/1291/</a></p>
+                        </div>
+                        <div>
+                            <p>Lapham, W.W., Wilde, F.D., and Koterba, M.T., 1995, Ground-water data-collection protocols and procedures for the National Water-Quality Assessment Program—Selection, installation, and documentation of wells, and collection of related data: U.S. Geological Survey Open-File Report 95–398, 71 p. [Also available at <a href="http://pubs.usgs.gov/of/1995/ofr-95-398/" target="_blank">http://pubs.usgs.gov/of/1995/ofr-95-398/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Lindsey, B.D., and Rupert, M.G., 2012, Methods for evaluating temporal groundwater quality data and results of decadal-scale changes in chloride, dissolved solids, and nitrate concentrations in groundwater in the United States, 1988–2010: U.S. Geological Survey Scientific Investigations Report 2012–5049, 46 p. [Also available at <a href="http://pubs.usgs.gov/sir/2012/5049/" target="_blank">http://pubs.usgs.gov/sir/2012/5049/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Maupin, M.A., Kenny, J.F., Hutson, S.S., Lovelace, J.K., Barber, N.L., and Linsey, K.S., 2014, Estimated use of water in the United States in 2010: U.S. Geological Survey Circular 1405, 56 p. [Also available at <a href="http://pubs.usgs.gov/circ/1405/" target="_blank">http://pubs.usgs.gov/circ/1405/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Pratt, J.W., 1959, Remarks on zeros and ties in the Wilcoxon signed rank procedures: American Statistical Association Journal, v. 54, no. 287, p. 655–667. [Also available at <a href="http://www.jstor.org/stable/2282543" target="_blank">http://www.jstor.org/stable/2282543</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Rosen, M.R., and Lapham, W.W., 2008, Introduction to the U.S. Geological Survey National Water-Quality Assessment (NAWQA) of ground-water quality trends and comparison to other national programs: the Journal of Environmental Quality, v. 37, no. 5, Supplement, p. S–190–S–198. [Also available at <a href="http://dx.doi.org/10.2134/jeq2008.0049" target="_blank">http://dx.doi.org/10.2134/jeq2008.0049</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Toccalino, P.L., and Hopple, J.A., 2010, The quality of our Nation’s waters—Quality of water from public supply wells in the United States, 1993–2007—Overview of major findings: U.S. Geological Survey Circular 1346, 58 p. [Also available at <a href="http://pubs.usgs.gov/circ/1346/" target="_blank">http://pubs.usgs.gov/circ/1346/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Toccalino, P.L., Gilliom, R.J., Lindsey, B.D., and Rupert, M.G., 2014a, Pesticides in groundwater of the United States—Decadal-scale changes, 1993–2011: Groundwater, v. 52, Supplement S1, p. 112–125. [Also available at <a href="http://dx.doi.org/10.1111/gwat.12176" targer="_blank">http://dx.doi.org/10.1111/gwat.12176</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Toccalino, P.L., Norman, J.E., and Schoephoester, K.M., 2014b, Health-based screening levels for evaluating water-quality data: U.S. Geological Survey, Health-Based Screening Levels (HBSL) Web site, accessed July 13, 2015, at <a href="http://dx.doi.org/10.5066/F71C1TWP" target="_blank">http://dx.doi.org/10.5066/F71C1TWP</a>.</p>
+                        </div>
+                        <div>
+                            <p>U.S. Environmental Protection Agency, 2012, 2012 edition of the drinking water standards and health advisories: U.S. Environmental Protection Agency, Office of Water, EPA 822–S–12–001, 20 p. [Also available at <a href="http://nepis.epa.gov/Exe/ZyPDF.cgi/P100N01H.PDF?Dockey=P100N01H.PDF" target="_blank">http://nepis.epa.gov/Exe/ZyPDF.cgi/P100N01H.PDF?Dockey=P100N01H.PDF</a>.]</p>
+                        </div>
+                        <div>
+                            <p>U.S. Environmental Protection Agency, 2013, Human health benchmarks for pesticides—2013 update: U.S. Environmental Protection Agency, Office of Water, EPA–820–F–13–019, 2 p. [Also available at <a href="http://www.epa.gov/sites/production/files/2015-10/documents/hh-benchmarks-factsheet.pdf" target="_blank">http://www.epa.gov/sites/production/files/2015-10/documents/hh-benchmarks-factsheet.pdf</a>.]</p>
+                        </div>
+                        <div>
+                            <p>U.S. Geological Survey, variously dated, National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1–A10, accessed July 31, 2009, at <a href="http://water.usgs.gov/owq/FieldManual/" target="_blank">http://water.usgs.gov/owq/FieldManual/</a>.]</p>
+                        </div>
+                        <div>
+                            <p>Zogorski, J.S., Carter, J.M., Ivahnenko, Tamara, Lapham, W.W., Moran, M.J., Rowe, B.L., Squillace, P.J., and Toccalino, P.L., 2006, The quality of our Nation’s waters—Volatile organic compounds in the Nation’s ground water and drinking-water supply wells: U.S. Geological Survey Circular 1292, 101 p. [Also available at <a href="http://pubs.usgs.gov/circ/circ1292/" target="_blank">http://pubs.usgs.gov/circ/circ1292/</a></p>
+                        </div>                           
+                    </div>
+                </div>
+            </div>
+            <form id="disclaimerButtons" id="disclaimer-form" class="form-inline" style="text-align:center;">
+                <!--<button id="otherButton" type="button" class="btn btn-success btn-fixed" data-dismiss="modal"> More Info?</button>-->
+                <button id="enterMapper" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </form>
+        </div><!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <div id="trendResultHelpModal" class="modal fade"  tabindex="-1" role="dialog" >
     <div class="modal-dialog  modal-lg">
@@ -801,7 +898,7 @@
                     </h4>
                 </div>
                 <div id="constPanel" class="panel-collapse collapse in constituent-panel" role="tabpanel" aria-labelledby="constPanelHeader">
-                    <div id="constDropdowns" style="padding: 2px 2px;">
+                    <!-- <div id="constDropdowns" style="padding: 2px 2px;">
                         <label for="typeSelect">Constituent group:</label>
                         <span>
                             <select id="typeSelect">
@@ -815,6 +912,15 @@
                                 <option value="Salinity" select="#salinitySelect">Salinity</option>
                                 <option value="Sediment" select="#sedimentSelect">Sediment</option>
                             </select>
+                        </span>
+                    </div> -->
+                    <div id="trendTypes" style="align-content: center; width: 100%; padding-top: 20px; text-align: left;">
+                        <label>Trend type</label>
+                        <span class="sidebar-radio-wrapper">
+                            <input id="cocentration" name="trendType" class="trendType" type="radio" value="concentration" checked> Organic
+                        </span>
+                        <span class="sidebar-radio-wrapper">
+                            <input id="load" name="trendType" class="trendType" type="radio" value="load"> Inorganic
                         </span>
                     </div>
                     <div>
@@ -867,16 +973,7 @@
                         </span>
                     </div>
 
-                    <div id="trendTypes" style="align-content: center; width: 100%; padding-top: 20px; text-align: left;">
-                        <label>Trend type</label>
-                        <span class="sidebar-radio-wrapper">
-                            <input id="cocentration" name="trendType" class="trendType" type="radio" value="concentration" checked> Concentration
-                        </span>
-                        <span class="sidebar-radio-wrapper">
-                            <input id="load" name="trendType" class="trendType" type="radio" value="load"> Load
-                        </span>
-                    </div>
-                    <div style="width: 100%; padding-top: 20px; text-align: left;">
+                    <!-- <div style="width: 100%; padding-top: 20px; text-align: left;">
                         <label>Trend period</label>
                         <span id="trend4" class="sidebar-radio-wrapper">
                             <input id="trend4input" name="trendPeriod" class="trendPeriod" type="radio" value="P40"> 1972-2012
@@ -890,7 +987,7 @@
                         <span id="trend1" class="sidebar-radio-wrapper">
                             <input id="trend1input" name="trendPeriod" class="trendPeriod" type="radio" value="P10" checked> 2002-2012
                         </span>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -914,7 +1011,7 @@
             <!--<button id="legendClose" type="button" class="close" data-dismiss="legend" aria-label="Close" aria-hidden="true">x</button>-->
             <!--<h4><b>Explanation</b></h4>-->
             <!--<div id="legendDiv"></div>-->
-            <!--</div>-->
+            <!--</div><--></-->
 
             <div id="mapDiv">
 
@@ -954,7 +1051,7 @@
                         <div id="legendDiv" class="panel-body"></div>
                     </div>
                 </div>
-
+                <div> test </div>
             </div>
 
             <div onclick="ga('send','event','Map Button','click','Home icon');"><div id="homeButton"></div></div>
