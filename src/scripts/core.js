@@ -21,6 +21,10 @@ var currentSiteNo = "";
 var currentConst = "Total Phosphorus";
 var currentLayer = "wrtdsSites";
 
+var attFieldSpecial = "";
+var attFieldSpecialLower = "";
+var z = 0;
+
 var orgSel;
 var inorgSel;
 
@@ -342,7 +346,7 @@ require([
 
     var layers_all = ["pestSites","ecoSites","wrtdsSites","wrtdsFluxSites"];
 
-    $("#typeSelect").on('change', function (event) {
+    /*$("#typeSelect").on('change', function (event) {
 
         $("#siteInfoDiv").css("visibility", "hidden");
         map.graphics.clear();
@@ -378,7 +382,7 @@ require([
             $("#load").prop('disabled', false);
             ecoSelect();
         }
-    });
+    });*/
 
     function layerUpdateListener(layer) {
         var layerUpdate = map.getLayer(layer).on('update-end', function(evt) {
@@ -806,6 +810,135 @@ require([
     });
 
     var pestPDFs = "";
+
+    function constTypeSelect(event) {
+
+        var button = event.currentTarget;
+
+        if (button.id == "organicButton") {
+            $("#organicConstituentSelect").show();
+            $("#inorganicConstituentSelect").hide();
+            $("#organicConstituentSelect").prependTo("#inputs");
+            $("#organicConstituentSelect").trigger("change");
+        } else if (button.id == "inorganicButton") {
+            $("#organicConstituentSelect").hide();
+            $("#inorganicConstituentSelect").show();
+            $("#inorganicConstituentSelect").prependTo("#inputs");
+            $("#inorganicConstituentSelect").trigger("change");
+        }
+
+    }
+
+    function constituentUpdate(event) {
+
+        z = z + 1;
+
+        /*dojo.setStyle(constStatus.id, "color", "yellow");
+         constStatus.innerHTML = "...Updating...";*/
+
+        var select = event.target;
+
+        var astText = "";
+
+        if (select[select.selectedIndex].attributes.hasOwnProperty("GenDescLargeChg") == true) {
+            astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p><p>" +
+                (select[select.selectedIndex].attributes.GenDescLargeChg.value).toString() + "</p>" +
+                "<p>" + (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString() + "</p>";
+        } else {
+            astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p><p>" +
+                "<p>" + (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString() + "</p>";
+        }
+
+        var benchmarkText = (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString();
+
+        if (astText.match("No benchmark available") != null && astText.match("No benchmark available").length > 0) {
+            astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p>";
+        }
+
+        if (select.id == "organicConstituentSelect") {
+            $('#constitExp').html(astText);
+        } else if (select.id == "inorganicConstituentSelect") {
+            $('#constitExp').html(astText);
+        }
+
+        var featureLayer = map.getLayer("networkLocations");
+
+        var layerUpdateEnd = dojo.connect(featureLayer, "onUpdateEnd", function (evt) {
+            dojo.disconnect(featureLayer, layerUpdateEnd);
+            /*constStatus.innerHTML = "Updated";
+             dojo.setStyle(constStatus.id, "color", "green");*/
+        });
+
+        var defaultSymbol = null;
+
+        var attField ="";
+        var mapFields = map.getLayer("networkLocations").fields;
+        $.each(mapFields, function(index, value) {
+            if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1) {
+                attField = mapFields[index].name;
+            }
+        });
+
+        renderer.attributeField = attField;
+        renderer2.attributeField = attField;
+
+        if (benchmarkText.match("No benchmark available") != null && benchmarkText.match("No benchmark available").length > 0) {
+            featureLayer.setRenderer(renderer2);
+        } else {
+            featureLayer.setRenderer(renderer);
+        }
+
+        featureLayer.refresh();
+        legend.refresh();
+
+        var info = map.infoWindow._contentPane.innerHTML;
+        var info = info.replace(previousConst, event.target.value);
+
+        map.infoWindow._contentPane.innerHTML = info;
+
+        previousConst = event.target.value;
+        console.log("after: " + previousConst);
+
+        /*var e = new jQuery.Event("click");
+         e.pageX = latestHover.pageX;
+         e.pageY = latestHover.pageY;
+         jQuery("body").trigger(e);*/
+
+        var query = new esri.tasks.Query();
+        var featureLayer = map.getLayer("networkLocations");
+        query.returnGeometry = false;
+        query.where = "network_centroids.OBJECTID = " + OID;
+        featureLayer.queryFeatures(query, function(event) {
+
+            for (var i = 0; i < constObj.features.length; i++) {
+                //console.log(i);
+                if (constObj.features[i].attributes["DisplayName"] == previousConst) {
+                    attFieldSpecial = "ChemData." + constObj.features[i].attributes["Constituent"];
+                    var constSplit = constObj.features[i].attributes["Constituent"].split("_");
+                    attFieldSpecialLower = "ChemData." + constSplit[0] + "_" + constSplit[1].toLowerCase();
+                }
+            }
+
+            var val = getValue(event.features[0].attributes[attFieldSpecial]);
+            if (val == "") {
+                val = getValue(event.features[0].attributes[attFieldSpecialLower])
+                //val = "no data";
+            }
+            console.log("val: " + val + ", oldValue: " + oldValue);
+            var info2 = map.infoWindow._contentPane.innerHTML;
+            info2 = info2.replace(oldValue, val);
+            info2 = info2.replace(camelize(oldValue), camelize(val));
+
+            map.infoWindow._contentPane.innerHTML = info2;
+
+            oldValue = val;
+
+        });
+
+    }
+
+    on(dom.byId('inorganicButton'), 'change', constTypeSelect);
+    on(dom.byId('organicButton'), 'change', constTypeSelect);
 
     map.on('layer-add', function (evt) {
         var layer = evt.layer.id;
@@ -1600,132 +1733,6 @@ require([
         });
 
     });
-
-    function constTypeSelect(event) {
-
-        var button = event.currentTarget;
-
-        if (button.id == "organicButton") {
-            $("#organicConstituentSelect").show();
-            $("#inorganicConstituentSelect").hide();
-            $("#organicConstituentSelect").prependTo("#inputs");
-            $("#organicConstituentSelect").trigger("change");
-        } else if (button.id == "inorganicButton") {
-            $("#organicConstituentSelect").hide();
-            $("#inorganicConstituentSelect").show();
-            $("#inorganicConstituentSelect").prependTo("#inputs");
-            $("#inorganicConstituentSelect").trigger("change");
-        }
-
-    }
-
-    function constituentUpdate(event) {
-
-        z = z + 1;
-
-        /*dojo.setStyle(constStatus.id, "color", "yellow");
-         constStatus.innerHTML = "...Updating...";*/
-
-        var select = event.target;
-
-        var astText = "";
-
-        if (select[select.selectedIndex].attributes.hasOwnProperty("GenDescLargeChg") == true) {
-            astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p><p>" +
-                (select[select.selectedIndex].attributes.GenDescLargeChg.value).toString() + "</p>" +
-                "<p>" + (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString() + "</p>";
-        } else {
-            astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p><p>" +
-                "<p>" + (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString() + "</p>";
-        }
-
-        var benchmarkText = (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString();
-
-        if (astText.match("No benchmark available") != null && astText.match("No benchmark available").length > 0) {
-            astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p>";
-        }
-
-        if (select.id == "organicConstituentSelect") {
-            $('#constitExp').html(astText);
-        } else if (select.id == "inorganicConstituentSelect") {
-            $('#constitExp').html(astText);
-        }
-
-        var featureLayer = map.getLayer("networkLocations");
-
-        var layerUpdateEnd = dojo.connect(featureLayer, "onUpdateEnd", function (evt) {
-            dojo.disconnect(featureLayer, layerUpdateEnd);
-            /*constStatus.innerHTML = "Updated";
-             dojo.setStyle(constStatus.id, "color", "green");*/
-        });
-
-        var defaultSymbol = null;
-
-        var attField ="";
-        var mapFields = map.getLayer("networkLocations").fields;
-        $.each(mapFields, function(index, value) {
-            if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1) {
-                attField = mapFields[index].name;
-            }
-        });
-
-        renderer.attributeField = attField;
-        renderer2.attributeField = attField;
-
-        if (benchmarkText.match("No benchmark available") != null && benchmarkText.match("No benchmark available").length > 0) {
-            featureLayer.setRenderer(renderer2);
-        } else {
-            featureLayer.setRenderer(renderer);
-        }
-
-        featureLayer.refresh();
-        legend.refresh();
-
-        var info = map.infoWindow._contentPane.innerHTML;
-        var info = info.replace(previousConst, event.target.value);
-
-        map.infoWindow._contentPane.innerHTML = info;
-
-        previousConst = event.target.value;
-        console.log("after: " + previousConst);
-
-        /*var e = new jQuery.Event("click");
-         e.pageX = latestHover.pageX;
-         e.pageY = latestHover.pageY;
-         jQuery("body").trigger(e);*/
-
-        var query = new esri.tasks.Query();
-        var featureLayer = map.getLayer("networkLocations");
-        query.returnGeometry = false;
-        query.where = "network_centroids.OBJECTID = " + OID;
-        featureLayer.queryFeatures(query, function(event) {
-
-            for (var i = 0; i < constObj.features.length; i++) {
-                //console.log(i);
-                if (constObj.features[i].attributes["DisplayName"] == previousConst) {
-                    attFieldSpecial = "ChemData." + constObj.features[i].attributes["Constituent"];
-                    var constSplit = constObj.features[i].attributes["Constituent"].split("_");
-                    attFieldSpecialLower = "ChemData." + constSplit[0] + "_" + constSplit[1].toLowerCase();
-                }
-            }
-
-            var val = getValue(event.features[0].attributes[attFieldSpecial]);
-            if (val == "") {
-                val = getValue(event.features[0].attributes[attFieldSpecialLower])
-                //val = "no data";
-            }
-            console.log("val: " + val + ", oldValue: " + oldValue);
-            var info2 = map.infoWindow._contentPane.innerHTML;
-            info2 = info2.replace(oldValue, val);
-            info2 = info2.replace(camelize(oldValue), camelize(val));
-
-            map.infoWindow._contentPane.innerHTML = info2;
-
-            oldValue = val;
-
-        });
-
-    }
 
     function getValue(val) {
         var textValue = "";
