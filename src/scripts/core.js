@@ -21,6 +21,9 @@ var currentSiteNo = "";
 var currentConst = "Total Phosphorus";
 var currentLayer = "wrtdsSites";
 
+var orgSel;
+var inorgSel;
+
 
 require([
     'esri/arcgis/utils',
@@ -177,71 +180,44 @@ require([
     $.ajax({
         dataType: 'json',
         type: 'GET',
-        url: 'https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/swTrendSites/MapServer/4/query?where=include_in_mapper_+%3D+%27include%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=false&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=Model%2CParameter_name&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=json',
+        url: 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest/MapServer/4/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json',
         headers: {'Accept': '*/*'},
         success: function (data) {
             constObj = data;
             $.each(data.features, function(key, value) {
-                if (value.attributes.Model != null) {
-                    if (value.attributes.Model == 'SEAWAVE-Q') {
-                        $('#pesticideSelect')
+                if (value.attributes.Constituent != null) {
+                    if (value.attributes.ConstituentType == 'inorganic' && value.attributes.Tableorder == "Mappable") {
+                        $('#inorganicConstituentSelect')
                             .append($("<option></option>")
                                 .attr(value.attributes)
-                                .text(value.attributes.Parameter_name));
-                    } else if (value.attributes.Tentative____Parameter_group == 'Algae') { //Eco group
-                        $('#algaeSelect')
-                            .append($("<option title='" + value.attributes.eco_desc + "'></option>")
-                                .attr(value.attributes)
-                                .text(value.attributes.Parameter_name));
-                    } else if (value.attributes.Tentative____Parameter_group == 'Fish') { //Eco group
-                        $('#fishSelect')
-                            .append($("<option title='" + value.attributes.eco_desc + "'></option>")
-                                .attr(value.attributes)
-                                .text(value.attributes.Parameter_name));
-                    } else if (value.attributes.Tentative____Parameter_group == 'Macroinvertebrates') { //Eco group
-                        $('#macroinvertSelect')
-                            .append($("<option title='" + value.attributes.eco_desc + "'></option>")
-                                .attr(value.attributes)
-                                .text(value.attributes.Parameter_name));
-                    } else if (value.attributes.Tentative____Parameter_group == 'Carbon') {
-                        $('#carbonSelect')
+                                .text(value.attributes.DisplayName));
+                        //.attr({"value": value.attributes.Constituent, "description": value.attributes.Description})
+                        //$('#constitExp').html("Inorganic text<br/>*For " + value.attributes.DisplayName + ", " + value.attributes.Description);
+                        if (value.attributes.DisplayName == "Chloride") {
+                            $('#constitExp').html("<p>" + value.attributes.GenDescSmallChg + "</p>" +
+                                "<p>" + value.attributes.GenDescLargeChg + "</p>" +
+                                "<p>" + value.attributes.GenDescBenchmark + "</p>");
+                        }
+                    } else if (value.attributes.ConstituentType == 'organic' && value.attributes.Tableorder == "Mappable") {
+                        $('#organicConstituentSelect')
                             .append($("<option></option>")
                                 .attr(value.attributes)
-                                .text(value.attributes.Parameter_name));
-                    } else if (value.attributes.Tentative____Parameter_group == 'Major ions') {
-                        $('#majorIonsSelect')
-                            .append($("<option></option>")
-                                .attr(value.attributes)
-                                .text(value.attributes.Parameter_name));
-                    } else if (value.attributes.Tentative____Parameter_group == 'Nutrients') {
-                        $('#nutrientsSelect')
-                            .append($("<option></option>")
-                                .attr(value.attributes)
-                                .text(value.attributes.Parameter_name));
-                    } else if (value.attributes.Tentative____Parameter_group == 'Salinity') {
-                        $('#salinitySelect')
-                            .append($("<option></option>")
-                                .attr(value.attributes)
-                                .text(value.attributes.Parameter_name));
-                    } else if (value.attributes.Tentative____Parameter_group == 'Sediment') {
-                        $('#sedimentSelect')
-                            .append($("<option></option>")
-                                .attr(value.attributes)
-                                .text(value.attributes.Parameter_name));
+                                .text(value.attributes.DisplayName));
+                        //.attr({"value": value.attributes.Constituent, "description": value.attributes.Description})
                     }
+                    /*$('#constituentSelect')
+                     .append($("<option></option>")
+                     .attr(value.attributes)
+                     .text(value.attributes.DisplayName));
+                     //.attr({"value": value.attributes.Constituent, "description": value.attributes.Description})
+                     $('#constitExp').html("*"+value.attributes.Description);*/
                 }
             });
-            $('#typeSelect').val("Nutrients");
-            $('#nutrientsSelect').val("Total Phosphorus");
-            $('#ecologySelect').val("DiaHighMot");
-            $('#pesticideSelect').val("Acetochlor")
+            orgSel = $("#organicConstituentSelect");
+            inorgSel = $("#inorganicConstituentSelect");
+            inorgSel.val("Chloride");
+            orgSel.hide();
 
-            $('#algaeSelect')[0].title = $('#algaeSelect')[0][0].title;
-            $('#fishSelect')[0].title = $('#fishSelect')[0][0].title;
-            $('#macroinvertSelect')[0].title = $('#macroinvertSelect')[0][0].title;
-
-            //document.getElementById("typeSelect").selectedIndex = "1";
-            //document.getElementById("nutrientsSelect").selectedIndex = "17";
         },
         error: function (error) {
             console.log("Error processing the JSON. The error is:" + error);
@@ -1624,6 +1600,160 @@ require([
         });
 
     });
+
+    function constTypeSelect(event) {
+
+        var button = event.currentTarget;
+
+        if (button.id == "organicButton") {
+            $("#organicConstituentSelect").show();
+            $("#inorganicConstituentSelect").hide();
+            $("#organicConstituentSelect").prependTo("#inputs");
+            $("#organicConstituentSelect").trigger("change");
+        } else if (button.id == "inorganicButton") {
+            $("#organicConstituentSelect").hide();
+            $("#inorganicConstituentSelect").show();
+            $("#inorganicConstituentSelect").prependTo("#inputs");
+            $("#inorganicConstituentSelect").trigger("change");
+        }
+
+    }
+
+    function constituentUpdate(event) {
+
+        z = z + 1;
+
+        /*dojo.setStyle(constStatus.id, "color", "yellow");
+         constStatus.innerHTML = "...Updating...";*/
+
+        var select = event.target;
+
+        var astText = "";
+
+        if (select[select.selectedIndex].attributes.hasOwnProperty("GenDescLargeChg") == true) {
+            astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p><p>" +
+                (select[select.selectedIndex].attributes.GenDescLargeChg.value).toString() + "</p>" +
+                "<p>" + (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString() + "</p>";
+        } else {
+            astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p><p>" +
+                "<p>" + (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString() + "</p>";
+        }
+
+        var benchmarkText = (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString();
+
+        if (astText.match("No benchmark available") != null && astText.match("No benchmark available").length > 0) {
+            astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p>";
+        }
+
+        if (select.id == "organicConstituentSelect") {
+            $('#constitExp').html(astText);
+        } else if (select.id == "inorganicConstituentSelect") {
+            $('#constitExp').html(astText);
+        }
+
+        var featureLayer = map.getLayer("networkLocations");
+
+        var layerUpdateEnd = dojo.connect(featureLayer, "onUpdateEnd", function (evt) {
+            dojo.disconnect(featureLayer, layerUpdateEnd);
+            /*constStatus.innerHTML = "Updated";
+             dojo.setStyle(constStatus.id, "color", "green");*/
+        });
+
+        var defaultSymbol = null;
+
+        var attField ="";
+        var mapFields = map.getLayer("networkLocations").fields;
+        $.each(mapFields, function(index, value) {
+            if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1) {
+                attField = mapFields[index].name;
+            }
+        });
+
+        renderer.attributeField = attField;
+        renderer2.attributeField = attField;
+
+        if (benchmarkText.match("No benchmark available") != null && benchmarkText.match("No benchmark available").length > 0) {
+            featureLayer.setRenderer(renderer2);
+        } else {
+            featureLayer.setRenderer(renderer);
+        }
+
+        featureLayer.refresh();
+        legend.refresh();
+
+        var info = map.infoWindow._contentPane.innerHTML;
+        var info = info.replace(previousConst, event.target.value);
+
+        map.infoWindow._contentPane.innerHTML = info;
+
+        previousConst = event.target.value;
+        console.log("after: " + previousConst);
+
+        /*var e = new jQuery.Event("click");
+         e.pageX = latestHover.pageX;
+         e.pageY = latestHover.pageY;
+         jQuery("body").trigger(e);*/
+
+        var query = new esri.tasks.Query();
+        var featureLayer = map.getLayer("networkLocations");
+        query.returnGeometry = false;
+        query.where = "network_centroids.OBJECTID = " + OID;
+        featureLayer.queryFeatures(query, function(event) {
+
+            for (var i = 0; i < constObj.features.length; i++) {
+                //console.log(i);
+                if (constObj.features[i].attributes["DisplayName"] == previousConst) {
+                    attFieldSpecial = "ChemData." + constObj.features[i].attributes["Constituent"];
+                    var constSplit = constObj.features[i].attributes["Constituent"].split("_");
+                    attFieldSpecialLower = "ChemData." + constSplit[0] + "_" + constSplit[1].toLowerCase();
+                }
+            }
+
+            var val = getValue(event.features[0].attributes[attFieldSpecial]);
+            if (val == "") {
+                val = getValue(event.features[0].attributes[attFieldSpecialLower])
+                //val = "no data";
+            }
+            console.log("val: " + val + ", oldValue: " + oldValue);
+            var info2 = map.infoWindow._contentPane.innerHTML;
+            info2 = info2.replace(oldValue, val);
+            info2 = info2.replace(camelize(oldValue), camelize(val));
+
+            map.infoWindow._contentPane.innerHTML = info2;
+
+            oldValue = val;
+
+        });
+
+    }
+
+    function getValue(val) {
+        var textValue = "";
+        if (val !== undefined) {
+            val = val.toString();
+            switch (val) {
+                case "-2":
+                    textValue = "large decrease";
+                    break;
+                case "-1":
+                    textValue = "small decrease";
+                    break;
+                case "0":
+                    textValue = "no change";
+                    break;
+                case "1":
+                    textValue = "small increase";
+                    break;
+                case "2":
+                    textValue = "large increase";
+                    break;
+                default:
+                    textValue = "trend data not available";
+                    break;
+            }
+        }
+        return textValue;
+    }
 
     function printMap() {
 

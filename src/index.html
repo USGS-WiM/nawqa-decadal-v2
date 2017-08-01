@@ -396,7 +396,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="disclaimerTabPane">
                         <p>Any use of trade, firm, or product names is for descriptive purposes only and does not imply endorsement by the U.S. Government.</p>
-                        <p>Version 1.0.9</p>
+                        <p>Version x.x.x</p>
                     </div>
                 </div>
             </div>
@@ -915,62 +915,25 @@
                         </span>
                     </div> -->
                     <div id="trendTypes" style="align-content: center; width: 100%; padding-top: 20px; text-align: left;">
-                        <label>Trend type</label>
+                        <label>Showing results for:</label>
                         <span class="sidebar-radio-wrapper">
-                            <input id="cocentration" name="trendType" class="trendType" type="radio" value="concentration" checked> Organic
+                            <input type="radio" name="constButtons" id="inorganicButton" value="inorganic" checked> Organic
                         </span>
                         <span class="sidebar-radio-wrapper">
-                            <input id="load" name="trendType" class="trendType" type="radio" value="load"> Inorganic
+                            <input type="radio" name="constButtons" id="organicButton" value="organic"> Inorganic
                         </span>
                     </div>
                     <div>
                         <label>Constituent:</label>
                         <span>
-                            <select id="nutrientsSelect" class="constSelect wrtdsSelect">
+                            <select id="organicConstituentSelect" class="constSelect wrtdsSelect">
+
+                            </select>
+                            <select id="inorganicConstituentSelect" class="constSelect wrtdsSelect">
 
                             </select>
                             <small style="font-size: 7pt;">For more information, see <a class="showUserGuide3" onclick="ga('send','event','navbar','click','User Guide');">User Guide</a></small>
                         </span><!-- -->
-                        <span>
-                            <select id="carbonSelect" class="constSelect wrtdsSelect">
-
-                            </select>
-                        </span>
-                        <span>
-                            <select id="majorIonsSelect" class="constSelect wrtdsSelect">
-
-                            </select>
-                        </span>
-                        <span>
-                            <select id="salinitySelect" class="constSelect wrtdsSelect">
-
-                            </select>
-                        </span>
-                        <span>
-                            <select id="sedimentSelect" class="constSelect wrtdsSelect">
-
-                            </select>
-                        </span>
-                        <span>
-                            <select id="pesticideSelect" class="constSelect pestSelect">
-
-                            </select>
-                        </span>
-                        <span>
-                            <select id="algaeSelect" class="constSelect ecoSelect">
-
-                            </select>
-                        </span>
-                        <span>
-                            <select id="fishSelect" class="constSelect ecoSelect">
-
-                            </select>
-                        </span>
-                        <span>
-                            <select id="macroinvertSelect" class="constSelect ecoSelect">
-
-                            </select>
-                        </span>
                     </div>
 
                     <!-- <div style="width: 100%; padding-top: 20px; text-align: left;">
