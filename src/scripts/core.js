@@ -21,9 +21,15 @@ var currentSiteNo = "";
 var currentConst = "Total Phosphorus";
 var currentLayer = "wrtdsSites";
 
+
+var previousConst = "Chloride";
+var OID = "";
+var oldValue = "";
 var attFieldSpecial = "";
 var attFieldSpecialLower = "";
 var z = 0;
+
+var legend;
 
 var orgSel;
 var inorgSel;
@@ -516,14 +522,14 @@ require([
         layerUpdateListener("ecoSites");
     });
 
-    $(".wrtdsSelect").on("change", function(event) {
+    /*$(".wrtdsSelect").on("change", function(event) {
         $("#siteInfoDiv").css("visibility", "hidden");
         map.graphics.clear();
         var val = event.currentTarget.value;
 
         currentConst = val;
-        var layer;
-        var layerID;
+        var layer = map.getLayer("pestSites");
+        var layerID = "pestSites";
         if (val == "Specific conductance") {
             $("#load").prop('disabled', true);
             $('input:radio[name=trendType]')[0].checked = true;
@@ -561,7 +567,7 @@ require([
         var expression = "wrtds_trends_wm_new.id_unique LIKE '%" + val + "%" + trendPeriod + "%' OR wrtds_trends_wm_new.id_unique LIKE '%" + val + "%" + trendPeriod2 + "%'";
         layer.setDefinitionExpression(expression);
         layerUpdateListener(layerID);
-    });
+    });*/
 
     $(".trendPeriod").on("change", function(event) {
         $("#siteInfoDiv").css("visibility", "hidden");
@@ -904,7 +910,9 @@ require([
          e.pageY = latestHover.pageY;
          jQuery("body").trigger(e);*/
 
-        var query = new esri.tasks.Query();
+
+        //code to regenerate query for new constituent when chosen from dropdown
+        /*var query = new esri.tasks.Query();
         var featureLayer = map.getLayer("networkLocations");
         query.returnGeometry = false;
         query.where = "network_centroids.OBJECTID = " + OID;
@@ -933,12 +941,16 @@ require([
 
             oldValue = val;
 
-        });
+        });*/
 
     }
 
     on(dom.byId('inorganicButton'), 'change', constTypeSelect);
     on(dom.byId('organicButton'), 'change', constTypeSelect);
+
+    //on(dom.byId('organicConstituentSelect', 'change', constituentUpdate));
+    //on(dom.byId('inorganicConstituentSelect', 'change', constituentUpdate));
+    $(".constSelect").on("change", constituentUpdate);
 
     map.on('layer-add', function (evt) {
         var layer = evt.layer.id;
@@ -2360,7 +2372,7 @@ require([
         }
         /* parse layers.js */
 
-        var legend = new Legend({
+        legend = new Legend({
             map: map,
             layerInfos: legendLayers
         }, "legendDiv");
