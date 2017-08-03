@@ -115,7 +115,7 @@ require([
                 "Magnitude of change": {
                     "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest/MapServer/0",
                     "options": {
-                        "id": "pestSites",
+                        "id": "networkLocations",
                         /* "visibleLayers": [0], */
                         "mode": esri.layers.FeatureLayer.MODE_ONDEMAND,
                         /* "outFields": ["*"],
