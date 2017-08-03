@@ -118,8 +118,8 @@ require([
                         "id": "networkLocations",
                         /* "visibleLayers": [0], */
                         "mode": esri.layers.FeatureLayer.MODE_ONDEMAND,
-                        /* "outFields": ["*"],
-                        "orderByFields": [ "network_centroids.P00940_Chloride DESC" ], */
+                        "outFields": ["*"],
+                        /* "orderByFields": [ "network_centroids.P00940_Chloride DESC" ], */
                         "visible": true
                     },
                     "wimOptions": {
