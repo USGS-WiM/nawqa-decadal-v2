@@ -1015,7 +1015,7 @@ require([
 
                 var attr = evt.graphic.attributes;
 
-                $("#siteInfoTabPane").empty();
+                $("#siteInfoPanel").empty();
 
                 currentLayer = layer;
 
@@ -1075,7 +1075,7 @@ require([
                         "<b>Matched streamgage number: </b>" +  + "<br/>" +
                         "<b>Matched streamgage agency: </b>");*/
 
-                    $("#siteInfoTabPane").append("<table class='infoTable'><tr><td><b>" + displayConst + "</b></td><td><span class='" + camelize(getValue(attr[attField])) + "'>" + getValue(attr[attField]) + "</span></td></tr>" +
+                    $("#siteInfoPanel").append("<table class='infoTable'><tr><td><b>" + displayConst + "</b></td><td><span class='" + camelize(getValue(attr[attField])) + "'>" + getValue(attr[attField]) + "</span></td></tr>" +
 
                         "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
