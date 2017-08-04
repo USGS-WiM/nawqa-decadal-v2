@@ -331,8 +331,9 @@ a.lgi-zoom:hover {
 
 table.infoTable {
     font-size: 12px;
-    border-collapse: collapse;
-    border: 1px solid black;
+    width: 100%;
+    /*border-collapse: collapse;
+    border: 1px solid black;*/
 }
 
 table.infoTable th td  {
@@ -366,6 +367,34 @@ table.infoTable tr:nth-child(even) {
 
 table.infoTable td:nth-child(odd) {
     width: 160px;
+}
+
+.largeIncrease {
+    color: #f37a49;
+    font-weight: bold;
+}
+
+.smallIncrease {
+    color: #f37a49;
+    font-weight: bold;
+}
+
+.noChange {
+    color: black;
+}
+
+.smallDecrease {
+    color: green;
+    font-weight: bold;
+}
+
+.largeDecrease {
+    color: green;
+    font-weight: bold;
+}
+
+.zoomTo {
+    visibility: hidden;
 }
 
 .handsontable table thead th {
