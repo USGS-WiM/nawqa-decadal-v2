@@ -329,7 +329,44 @@ a.lgi-zoom:hover {
     width: 90%;
 }
 
+table.infoTable {
+    font-size: 12px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
 
+table.infoTable th td  {
+    border: 1px solid black;
+    height: 15px;
+}
+
+table.infoTable td {
+    padding: 15px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+table.infoTable tr {
+    min-height: 15px;
+}
+
+table.infoTable th {
+    /*background-color: #f37a49;*/
+    background-color: black;
+    /*color: white;*/
+    color: #f37a49;
+    font-weight: bold;
+    padding: 15px;
+}
+
+table.infoTable tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+table.infoTable td:nth-child(odd) {
+    width: 160px;
+}
 
 .handsontable table thead th {
     white-space: pre-line;
