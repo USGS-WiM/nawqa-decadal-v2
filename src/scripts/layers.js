@@ -194,7 +194,7 @@ require([
                         "hasOpacitySlider": true,
                         "includeLegend": false
                     }
-                },
+                }/*,
                 "Principal Aquifers": {
                     "url": "https://nwis-mapper.s3.amazonaws.com/pr_aq/${level}/${row}/${col}.png",
                     "options": {
@@ -209,8 +209,8 @@ require([
                         "hasOpacitySlider": true,
                         "includeLegend": true
                     }
-                },
-                /* "Inorganic": {
+                }
+                 "Inorganic": {
                     "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu1982_100515_test/ImageServer",
                     "options": {
                         "id": "lu1982",

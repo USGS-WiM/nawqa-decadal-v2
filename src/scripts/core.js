@@ -296,7 +296,7 @@ require([
     });
 
     $('#printNavButton').click(function(){
-        var trendPeriodVal = $("input:radio[name='trendPeriod']:checked").val();
+        /*var trendPeriodVal = $("input:radio[name='trendPeriod']:checked").val();
 
         var trendPeriod = "";
         if (trendPeriodVal == "P10") {
@@ -312,7 +312,7 @@ require([
         var trendTypeVal = $('input[name=trendType]:checked').val();
         trendTypeVal = trendTypeVal.toLowerCase().replace(/\b[a-z]/g, function(letter) {
             return letter.toUpperCase();
-        });
+        });*/
 
         var printTitle = getPrintTitle();
         $("#printTitle").text(printTitle);
@@ -320,9 +320,9 @@ require([
     });
 
     function getPrintTitle() {
-        var printTitle = ""
+        var printTitle = "test";
 
-        var trendPeriodVal = $("input:radio[name='trendPeriod']:checked").val();
+        /*var trendPeriodVal = $("input:radio[name='trendPeriod']:checked").val();
 
         var trendPeriod = "";
         if (trendPeriodVal == "P10") {
@@ -338,14 +338,14 @@ require([
         var trendTypeVal = $('input[name=trendType]:checked').val();
         trendTypeVal = trendTypeVal.toLowerCase().replace(/\b[a-z]/g, function(letter) {
             return letter.toUpperCase();
-        });
+        });*/
 
-        var selectVal = $("#typeSelect")[0].value;
+        /*var selectVal = $("#typeSelect")[0].value;
         if (selectVal == "Pesticides" || selectVal == "Nutrients" || selectVal == "Carbon" || selectVal == "Major ions" || selectVal == "Salinity" || selectVal == "Sediment") {
             printTitle = trendTypeVal + " trend results (flow normalized) for " + currentConst + " in surface water for " + trendPeriod + "-2012";
         } else if (selectVal == "Algae" || selectVal == "Fish" || selectVal == "Macroinvertebrates") {
             printTitle = "Trend results (flow normalized) for " + currentConst + " in surface water for " + trendPeriod + "-2012";
-        }
+        }*/
 
         return printTitle;
     }
@@ -1435,10 +1435,10 @@ require([
             dpi: 300
         };
         template.format = "PDF";
-        template.layout = "Letter ANSI A Landscape sw-trends";
+        template.layout = "Letter ANSI A Landscape 2";
         template.preserveScale = false;
-        var trendsLegendLayer = new LegendLayer();
-        trendsLegendLayer.layerId = "1";
+        /*var trendsLegendLayer = new LegendLayer();
+        trendsLegendLayer.layerId = "1";*/
         //legendLayer.subLayerIds = [*];
 
         var legendLayers = [];
@@ -1449,8 +1449,7 @@ require([
         template.layoutOptions = {
             "titleText": printTitle,
             "authorText" : "NAWQA",
-            "copyrightText": "This page was produced by the nawqa surface water trends mapper",
-            "legendLayers": legendLayers
+            "copyrightText": "This page was produced by the nawqa decadal trends mapper"
         }
 
         var docTitle = template.layoutOptions.titleText;
