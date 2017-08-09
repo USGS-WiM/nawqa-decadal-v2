@@ -921,7 +921,7 @@ require([
                     var constSplit = constObj.features[i].attributes["Constituent"].split("_");
                     attFieldSpecialLower = "ChemData." + constSplit[0] + "_" + constSplit[1].toLowerCase();
                 }
-            }
+            }``
 
             var val = getValue(event.features[0].attributes[attFieldSpecial]);
             if (val == "") {
