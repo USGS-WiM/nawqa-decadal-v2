@@ -895,22 +895,20 @@ require([
         featureLayer.refresh();
         legend.refresh();
 
-        var info = map.infoWindow._contentPane.innerHTML;
+        var info = $("#siteInfoPanel").html();
         var info = info.replace(previousConst, event.target.value);
-
-        map.infoWindow._contentPane.innerHTML = info;
+        $("#siteInfoPanel").html(info);
 
         previousConst = event.target.value;
         console.log("after: " + previousConst);
 
         /*var e = new jQuery.Event("click");
-         e.pageX = latestHover.pageX;
-         e.pageY = latestHover.pageY;
-         jQuery("body").trigger(e);*/
-
+        e.pageX = latestHover.pageX;
+        e.pageY = latestHover.pageY;
+        jQuery("body").trigger(e);*/
 
         //code to regenerate query for new constituent when chosen from dropdown
-        /*var query = new esri.tasks.Query();
+        var query = new esri.tasks.Query();
         var featureLayer = map.getLayer("networkLocations");
         query.returnGeometry = false;
         query.where = "network_centroids.OBJECTID = " + OID;
@@ -931,23 +929,24 @@ require([
                 //val = "no data";
             }
             console.log("val: " + val + ", oldValue: " + oldValue);
-            var info2 = map.infoWindow._contentPane.innerHTML;
+            var info2 = $("#siteInfoPanel").html();
             info2 = info2.replace(oldValue, val);
             info2 = info2.replace(camelize(oldValue), camelize(val));
 
-            map.infoWindow._contentPane.innerHTML = info2;
+            $("#siteInfoPanel").html(info2);
 
             oldValue = val;
 
-        });*/
+        });
 
     }
 
     on(dom.byId('inorganicButton'), 'change', constTypeSelect);
     on(dom.byId('organicButton'), 'change', constTypeSelect);
 
-    //on(dom.byId('organicConstituentSelect', 'change', constituentUpdate));
-    //on(dom.byId('inorganicConstituentSelect', 'change', constituentUpdate));
+    //on(dom.byId('organicConstituentSelect'), 'change', constituentUpdate);
+    //on(dom.byId('inorganicConstituentSelect'), 'change', constituentUpdate);
+
     $(".constSelect").on("change", constituentUpdate);
 
     map.on('layer-add', function (evt) {
@@ -1098,6 +1097,9 @@ require([
                         "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
                         "<tr><td colspan='2' align='center'><a href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
                 }
+
+                OID = feature.attributes["network_centroids.OBJECTID"];
+                oldValue = getValue(attr[attField]);
 
                 $("#infoWindowLink").on('click', linkClick);
 
