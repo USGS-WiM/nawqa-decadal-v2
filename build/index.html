@@ -63,11 +63,11 @@
             </a>
         </div>
 
-        <button id="geosearchNav" type="button" class="btn btn-primary navbar-btn pull-right" onclick="ga('send','event','navbar','click','Find Location Modal Opened');">
+        <button id="geosearchNav" type="button" class="btn btn-primary navbar-btn pull-right">
             <span class="glyphicon glyphicon-search"></span>
             <span id="geosearchButtonText"> Find Location</span>
         </button>
-        <button id="printNavButton" type="button" class="btn btn-primary navbar-btn pull-right" onclick="ga('send','event','navbar','click','Print Modal Opened');">
+        <button id="printNavButton" type="button" class="btn btn-primary navbar-btn pull-right">
             <span class="glyphicon glyphicon-print"></span>
             <span id="printButtonText"> Print</span>
         </button>
@@ -211,7 +211,7 @@
                     <!--</form>
 
                     <form id="print-form" class="form-inline">-->
-                    <button id="printExecuteButton" type="submit" class="btn btn-success btn-fixed" data-loading-text="Printing..." onclick="ga('send','event','navbar','click','Print Job Performed');"> Print </button>
+                    <button id="printExecuteButton" type="submit" class="btn btn-success btn-fixed" data-loading-text="Printing..."> Print </button>
                     <button id="printDismissButton" type="button" class="btn btn-default btn-fixed" data-dismiss="modal"> Dismiss</button>
                 </form>
 
@@ -949,21 +949,19 @@
                 <div id="siteInfoDiv" class="panel panel-defaults siteInfoClass">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <h4 id="siteInfoPanelHeader">Site Information</h4>
+                            <h4 id="siteInfoPanelHeader"><i class="fa fa-info-circle"></i>  Site Information</h4>
                         </div>
                     </div>
                     <div class="panel-body">
                         <div id="siteInfoPanel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="siteInfoPanelHeader">
-                            <ul class="nav nav-tabs" id="siteInfoTabs">
-                                <li role="presentation" class="active"><a id="siteInfoTab" href="#siteInfoTabPane" data-toggle="tab"><i class="fa fa-info-circle"></i>&nbsp;Site Information</a></li>
-                                <button id="charts" type="button" class="btn btn-primary"><i class="fa fa-line-chart"></i>Graphs</button>
-                                <button id="table" type="button" class="btn btn-primary"><i class="fa fa-table"></i>&nbsp;Trend Results</button>
+                            <!--<ul class="nav nav-tabs" id="siteInfoTabs">
+                                <li role="presentation" class="active"><a id="siteInfoTab" href="#siteInfoTabPane" data-toggle="tab">&nbsp;Site Information</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="siteInfoTabPane"></br>
 
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
