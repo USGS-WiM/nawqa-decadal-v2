@@ -34,6 +34,7 @@ var legend;
 var orgSel;
 var inorgSel;
 
+var sucode4FeatureLinkZoom;
 
 require([
     'esri/arcgis/utils',
@@ -1052,7 +1053,7 @@ require([
                 var depth25 = attr["tbl_Networks.Depth25thpercentile"];
                 var depth75 = attr["tbl_Networks.Depth75thpercentile"];
 
-
+                sucode4FeatureLinkZoom = attr["network_centroids.SUCode"];
 
                 if (layer == "networkLocations") {
                     currentSiteNo = attr.EcoTrendResults_EcoSiteID;
@@ -1097,6 +1098,8 @@ require([
                         "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
                         "<tr><td colspan='2' align='center'><a href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
                 }
+
+                $("#infoWindowLink").on('click', linkClick);
 
             });
 
@@ -2026,8 +2029,27 @@ require([
 
     });//end of require statement containing legend building code
 
+    function linkClick() {
+
+        map.setCursor("wait");
+        console.log(sucode4FeatureLinkZoom);
+        var query = new esri.tasks.Query();
+        query.where = "SUCODE = '" + sucode4FeatureLinkZoom + "'";
+        query.returnGeometry = true;
+        var queryTask = new esri.tasks.QueryTask(map.getLayer("networkBoundaries").url+"/0");
+        queryTask.execute(query, function (results) {
+            console.log('returned with result?');
+            var feature = results.features[0];
+            var featureExtent = feature.geometry.getExtent();
+            map.setExtent(featureExtent, true);
+            //setCursorByID("mainDiv", "default");
+            map.setCursor("default");
+        });
+
+    }
 
 });
+
 
 $(document).ready(function () {
     //7 lines below are handler for the legend buttons. to be removed if we stick with the in-map legend toggle
