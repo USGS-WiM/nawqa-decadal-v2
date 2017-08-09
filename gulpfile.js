@@ -72,6 +72,14 @@ gulp.task('images', function () {
         .pipe($.size());
 });
 
+// Files
+gulp.task('files', function () {
+    return gulp.src([
+        'src/files/**/*'])
+        .pipe(gulp.dest('build/files'))
+        .pipe($.size());
+});
+
 // Clean
 gulp.task('clean', function (cb) {
     del([
@@ -82,7 +90,7 @@ gulp.task('clean', function (cb) {
 });
 
 // Build
-gulp.task('build', ['html', 'images', 'less']);
+gulp.task('build', ['html', 'images', 'files', 'less']);
 
 // Default task
 //make sure download-esri-api (if needed) is run just after clean, but before build
