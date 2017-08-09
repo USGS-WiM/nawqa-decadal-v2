@@ -333,19 +333,16 @@ require([
             trendPeriod = "1982";
         } else if (trendPeriodVal == "P40") {
             trendPeriod = "1972";
-        }
+        }*/
 
-        var trendTypeVal = $('input[name=trendType]:checked').val();
-        trendTypeVal = trendTypeVal.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+        var trendTypeVal = $('input[name=constButtons]:checked').val();
+        /*trendTypeVal = trendTypeVal.toLowerCase().replace(/\b[a-z]/g, function(letter) {
             return letter.toUpperCase();
         });*/
 
-        /*var selectVal = $("#typeSelect")[0].value;
-        if (selectVal == "Pesticides" || selectVal == "Nutrients" || selectVal == "Carbon" || selectVal == "Major ions" || selectVal == "Salinity" || selectVal == "Sediment") {
-            printTitle = trendTypeVal + " trend results (flow normalized) for " + currentConst + " in surface water for " + trendPeriod + "-2012";
-        } else if (selectVal == "Algae" || selectVal == "Fish" || selectVal == "Macroinvertebrates") {
-            printTitle = "Trend results (flow normalized) for " + currentConst + " in surface water for " + trendPeriod + "-2012";
-        }*/
+        var constituent = $("#" + trendTypeVal + "ConstituentSelect")[0].value;
+
+        printTitle = "Decadal Change for " + constituent + " in Groundwater from 1988-2001 to 2002-2012";
 
         return printTitle;
     }
@@ -1575,7 +1572,7 @@ require([
                 }
 
                 else if (layerDetails.wimOptions.layerType === 'webTiledLayer') {
-                    var layer = new WebTiledLayer(layerDetails.url, {resourceInfo: layerDetails.options.resourceInfo, visibleLayers: layerDetails.options.visibleLayers }, layerDetails.options);
+                    var layer = new WebTiledLayer(layerDetails.url, layerDetails.options);
                     //check if include in legend is true
                     if (layerDetails.wimOptions && layerDetails.wimOptions.includeLegend == true){
                         legendLayers.push({layer:layer, title: legendLayerName});

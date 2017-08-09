@@ -130,29 +130,11 @@ require([
                         "includeLegend": true,
                         "renderer": renderer
                     }
-                },
-                "Pricipal Aquifers" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/DecadalMap/MapServer/1",
-                    "options": {
-                        "id": "ecoSites",
-                        "opacity": 1.00,
-                        "mode": FeatureLayer.MODE_SNAPSHOT,
-                        "outFields": ["*"],
-                        "visible": false
-                    },
-                    "wimOptions": {
-                        "type": "layer",
-                        "layerType": "agisFeature",
-                        "includeInLayerList": false,
-                        "hasOpacitySlider": true,
-                        "includeLegend" : true
-                    }
-                },
-                "Land use 2001" : {
+                }, "Land use 2001" : {
                     "url": "https://raster.nationalmap.gov/arcgis/rest/services/LandCover/conus_01/MapServer",
                     "visibleLayers": [0],
                     "options": {
-                        "id": "wrtdsSites",
+                        "id": "nlcd",
                         "opacity": 0.75,
                         "visible": false
                     },
@@ -163,8 +145,7 @@ require([
                         "hasOpacitySlider": true,
                         "includeLegend" : true
                     }
-                },
-                "Network Boundaries" : {
+                }, "Network Boundaries" : {
                     "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NetworkBoundaries/MapServer",
                     "visibleLayers": [0],
                     "options": {
@@ -179,26 +160,10 @@ require([
                         "hasOpacitySlider": true,
                         "includeLegend" : false
                     }
-                },
-                "Trend sites": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites/MapServer",
+                }, "Principal Aquifers": {
+                    "url": "https://nwismapper.s3.amazonaws.com/pr_aq/${level}/${row}/${col}.png",
                     "options": {
-                        "id": "lu2012",
-                        "opacity": 0.5,
-                        "visible": false
-                    },
-                    "wimOptions": {
-                        "type": "layer",
-                        /*"layerType": "agisImage",*/
-                        "includeInLayerList": true,
-                        "hasOpacitySlider": true,
-                        "includeLegend": false
-                    }
-                }/*,
-                "Principal Aquifers": {
-                    "url": "https://nwis-mapper.s3.amazonaws.com/pr_aq/${level}/${row}/${col}.png",
-                    "options": {
-                        "id": "lu2002",
+                        "id": "principalAquifers",
                         "opacity": 0.5,
                         "visible": false
                     },
@@ -207,39 +172,24 @@ require([
                         "layerType": "webTiledLayer",
                         "includeInLayerList": true,
                         "hasOpacitySlider": true,
-                        "includeLegend": true
+                        "includeLegend": true,
+                        "otherLayersToggled": ["glacialAquifer"]
+                    }
+                }, "Glacial Aquifer" : {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest/MapServer",
+                    "visibleLayers": [2],
+                    "options": {
+                        "id": "glacialAquifer",
+                        "opacity": 0.4,
+                        "visible": false
+                    },
+                    "wimOptions": {
+                        "type": "layer",
+                        "layerType": "agisDynamic",
+                        "includeInLayerList": false,
+                        "includeLegend": false
                     }
                 }
-                 "Inorganic": {
-                    "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu1982_100515_test/ImageServer",
-                    "options": {
-                        "id": "lu1982",
-                        "opacity": 0.5,
-                        "visible": false
-                    },
-                    "wimOptions": {
-                        "type": "layer",
-                        "layerType": "agisImage",
-                        "includeInLayerList": true,
-                        "hasOpacitySlider": true,
-                        "includeLegend": true
-                    }
-                },
-                "Organic": {
-                    "url": "https://supermario.wim.usgs.gov/arcgis/rest/services/SWTrends/lu1974_100515_test/ImageServer",
-                    "options": {
-                        "id": "lu1974",
-                        "opacity": 0.5,
-                        "visible": false
-                    },
-                    "wimOptions": {
-                        "type": "layer",
-                        "layerType": "agisImage",
-                        "includeInLayerList": true,
-                        "hasOpacitySlider": true,
-                        "includeLegend": true
-                    }
-                } */
             }
         }
     ]
