@@ -811,6 +811,7 @@ require([
     $("#siteInfoClose").click(function(){
         $("#siteInfoDiv").css("visibility", "hidden");
         map.graphics.clear();
+        map.getLayer("trendSites").setVisibility(false);
     });
 
     var pestPDFs = "";
@@ -921,7 +922,7 @@ require([
                     var constSplit = constObj.features[i].attributes["Constituent"].split("_");
                     attFieldSpecialLower = "ChemData." + constSplit[0] + "_" + constSplit[1].toLowerCase();
                 }
-            }``
+            }
 
             var val = getValue(event.features[0].attributes[attFieldSpecial]);
             if (val == "") {
@@ -1026,13 +1027,13 @@ require([
                     select = dojo.byId("inorganicConstituentSelect");
                 }
 
-                /*var trendSitesLayer = map.getLayer("trendSites");
+                var trendSitesLayer = map.getLayer("trendSites");
 
                 trendSitesLayer.setVisibility(true);
                 var tsLayerDefs = [];
                 tsLayerDefs[0] = "SuCode = '" + attr["network_centroids.SUCode"] + "'";
                 trendSitesLayer.setLayerDefinitions(tsLayerDefs);
-                trendSitesLayer.refresh();*/
+                trendSitesLayer.refresh();
 
                 //var currentConst = organicConstituentSelect.selectedOptions[0].attributes.constituent.value;
                 var currentConst = select[select.selectedIndex].attributes.constituent.value;

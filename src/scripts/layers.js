@@ -160,6 +160,19 @@ require([
                         "hasOpacitySlider": true,
                         "includeLegend" : false
                     }
+                }, "Trend sites" : {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites/MapServer",
+                    "options": {
+                        "id": "trendSites",
+                        "opacity": 1.0,
+                        "visible": false
+                    },
+                    "wimOptions": {
+                        "type": "layer",
+                        "layerType": "agisDynamic",
+                        "includeInLayerList": false,
+                        "includeLegend": false
+                    }
                 }, "Principal Aquifers": {
                     "url": "https://nwismapper.s3.amazonaws.com/pr_aq/${level}/${row}/${col}.png",
                     "options": {
