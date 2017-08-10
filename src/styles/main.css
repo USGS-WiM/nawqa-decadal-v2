@@ -404,8 +404,8 @@ table.infoTable td:nth-child(odd) {
 
 .siteInfoClass {
     position:absolute;
-    width:450px;
-    height:325px;
+    width:400px;
+    height:450px;
     z-index:2;
     color: black;
     background-color: rgb(255,255,255);
