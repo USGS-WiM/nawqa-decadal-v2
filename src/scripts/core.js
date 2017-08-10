@@ -797,6 +797,7 @@ require([
         close: false,
         expand: false,
         editTitle: false,
+        width: 400,
         maxWidth: 800,
         maxHeight: 500
     });
