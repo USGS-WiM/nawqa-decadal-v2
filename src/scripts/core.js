@@ -682,6 +682,10 @@ require([
 
     //displays map scale on map load
     on(map, "load", function() {
+        /*map.addLayer(shadedReliefBasemap);
+        map.addLayer(referenceMapBasemap);
+        map.removeLayer(nationalMapBasemap);*/
+        $("#btnShadedRelief").click();//
         var scale =  map.getScale().toFixed(0);
         $('#scale')[0].innerHTML = addCommas(scale);
         var initMapCenter = webMercatorUtils.webMercatorToGeographic(map.extent.getCenter());
@@ -731,42 +735,60 @@ require([
     });
 
     var nationalMapBasemap = new ArcGISTiledMapServiceLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer');
+    var shadedReliefBasemap = new ArcGISTiledMapServiceLayer('http://server.arcgisonline.com/arcgis/rest/services/World_Shaded_Relief/MapServer');
+    var referenceMapBasemap = new ArcGISTiledMapServiceLayer('http://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer');
     //on clicks to swap basemap. map.removeLayer is required for nat'l map b/c it is not technically a basemap, but a tiled layer.
+    function removeManualLayers() {
+        map.removeLayer(nationalMapBasemap);
+        map.removeLayer(referenceMapBasemap);
+        map.removeLayer(shadedReliefBasemap);
+    }
     on(dom.byId('btnStreets'), 'click', function () {
         map.setBasemap('streets');
-        map.removeLayer(nationalMapBasemap);
+        removeManualLayers();
     });
     on(dom.byId('btnSatellite'), 'click', function () {
         map.setBasemap('satellite');
-        map.removeLayer(nationalMapBasemap);
+        removeManualLayers();
     });
     on(dom.byId('btnHybrid'), 'click', function () {
         map.setBasemap('hybrid');
+        removeManualLayers();
+    });
+    on(dom.byId('btnShadedRelief'), 'click', function () {
+        map.addLayer(shadedReliefBasemap);
+        map.addLayer(referenceMapBasemap);
         map.removeLayer(nationalMapBasemap);
     });
     on(dom.byId('btnTerrain'), 'click', function () {
         map.setBasemap('terrain');
-        map.removeLayer(nationalMapBasemap);
+        removeManualLayers();
+    });
+    on(dom.byId('btnDarkGray'), 'click', function () {
+        map.setBasemap('dark-gray');
+        removeManualLayers();
     });
     on(dom.byId('btnGray'), 'click', function () {
         map.setBasemap('gray');
-        map.removeLayer(nationalMapBasemap);
+        removeManualLayers();
     });
     on(dom.byId('btnNatGeo'), 'click', function () {
         map.setBasemap('national-geographic');
-        map.removeLayer(nationalMapBasemap);
+        removeManualLayers();
     });
     on(dom.byId('btnOSM'), 'click', function () {
         map.setBasemap('osm');
-        map.removeLayer(nationalMapBasemap);
+        removeManualLayers();
     });
     on(dom.byId('btnTopo'), 'click', function () {
         map.setBasemap('topo');
-        map.removeLayer(nationalMapBasemap);
+        removeManualLayers();
     });
 
     on(dom.byId('btnNatlMap'), 'click', function () {
         map.addLayer(nationalMapBasemap);
+        map.removeLayer(referenceMapBasemap);
+        map.removeLayer(shadedReliefBasemap);
     });
 
     //end code for adding draggability to infoWindow
