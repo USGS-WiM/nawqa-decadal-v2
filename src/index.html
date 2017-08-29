@@ -52,7 +52,7 @@
 
     <!-- build:js scripts/combined.js -->
     <script src="scripts/utilities.js"></script>
-    <script src="scripts/layers.js"></script>
+    <script src="scripts/layers_dev.js"></script>
     <script src="scripts/core.js"></script>
     <!-- endbuild -->
 
@@ -935,6 +935,21 @@
                             </select>
                             <small style="font-size: 7pt;">For more information, see <a class="showUserGuide3" onclick="ga('send','event','navbar','click','User Guide');">User Guide</a></small>
                         </span><!-- -->
+                    </div>
+                    <div style="width: 100%; padding-top: 20px; text-align: left;">
+                        <label>Trend period</label>
+                        <span id="cycle12" class="sidebar-radio-wrapper">
+                            <input id="cycle12input" name="trendPeriod" class="trendPeriod" type="radio" value="C12_" checked> Cycle 1-2
+                        </span>
+                        <span id="cycle13" class="sidebar-radio-wrapper">
+                            <input id="cycle13input" name="trendPeriod" class="trendPeriod" type="radio" value="C1_3_"> Cycle 1-3
+                        </span>
+                        <span id="cycle23" class="sidebar-radio-wrapper">
+                            <input id="cycle23input" name="trendPeriod" class="trendPeriod" type="radio" value="C23_"> Cycle 2-3
+                        </span>
+                        <span id="cycle123" class="sidebar-radio-wrapper">
+                            <input id="cycle123input" name="trendPeriod" class="trendPeriod" type="radio" value="C123_"> Cycle 1-2-3
+                        </span>
                     </div>
 
                     <!-- <div style="width: 100%; padding-top: 20px; text-align: left;">

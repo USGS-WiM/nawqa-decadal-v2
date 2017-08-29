@@ -4,7 +4,7 @@
 var allLayers;
 var renderer;
 
-var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest/MapServer/4/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
+var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest_test/MapServer/4/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
 
 require([
     "esri/geometry/Extent",
@@ -28,7 +28,7 @@ require([
     var defaultSymbol = null;
 
 	var count = 2;
-    renderer = new esri.renderer.UniqueValueRenderer(defaultSymbol, "network_centroids.P00940_Chloride");
+    renderer = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C12_P00940_Chloride");
 	renderer2 = new esri.renderer.UniqueValueRenderer(defaultSymbol);
 
 	orangeBigSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/orange_large.png", 45, 45);
@@ -115,7 +115,7 @@ require([
             "includeInLayerList": false,
             "layers": {
                 "Magnitude of change": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest/MapServer/0",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest_test/MapServer/0",
                     "options": {
                         "id": "networkLocations",
                         /* "visibleLayers": [0], */
@@ -148,7 +148,7 @@ require([
                         "includeLegend" : true
                     }
                 }, "Network Boundaries" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NetworkBoundaries/MapServer",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NetworkBoundaries_test/MapServer",
                     "visibleLayers": [0],
                     "options": {
                         "id": "networkBoundaries",
@@ -163,7 +163,7 @@ require([
                         "includeLegend" : false
                     }
                 }, "Trend sites" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites/MapServer",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites_test/MapServer",
                     "options": {
                         "id": "trendSites",
                         "opacity": 1.0,
@@ -191,7 +191,7 @@ require([
                         "otherLayersToggled": ["glacialAquifer"]
                     }
                 }, "Glacial Aquifer" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest/MapServer",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest_test/MapServer",
                     "visibleLayers": [2],
                     "options": {
                         "id": "glacialAquifer",

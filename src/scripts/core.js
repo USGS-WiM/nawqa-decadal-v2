@@ -191,7 +191,7 @@ require([
     $.ajax({
         dataType: 'json',
         type: 'GET',
-        url: 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest/MapServer/4/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json',
+        url: constituentDropURl,
         headers: {'Accept': '*/*'},
         success: function (data) {
             constObj = data;
@@ -220,7 +220,7 @@ require([
                      .append($("<option></option>")
                      .attr(value.attributes)
                      .text(value.attributes.DisplayName));
-                     //.attr({"value": value.attributes.Constituent, "description": value.attributes.Description})
+                     ////.attr({"value": value.attributes.Constituent, "description": value.attributes.Description})
                      $('#constitExp').html("*"+value.attributes.Description);*/
                 }
             });
@@ -520,53 +520,6 @@ require([
         layerUpdateListener("ecoSites");
     });
 
-    /*$(".wrtdsSelect").on("change", function(event) {
-        $("#siteInfoDiv").css("visibility", "hidden");
-        map.graphics.clear();
-        var val = event.currentTarget.value;
-
-        currentConst = val;
-        var layer = map.getLayer("pestSites");
-        var layerID = "pestSites";
-        if (val == "Specific conductance") {
-            $("#load").prop('disabled', true);
-            $('input:radio[name=trendType]')[0].checked = true;
-        } else {
-            $("#load").prop('disabled', false);
-        }
-
-        var trendTypeVal = $('input[name=trendType]:checked').val();
-        if (trendTypeVal == "concentration") {
-            layer = map.getLayer("wrtdsSites");
-            layerID = "wrtdsSites";
-            layer.setVisibility(true);
-        } else if (trendTypeVal == "load") {
-            layer = map.getLayer("wrtdsFluxSites");
-            layerID = "wrtdsFluxSites";
-            layer.setVisibility(true);
-        }
-
-        var trendPeriodVal = $('input[name=trendPeriod]:checked').val();
-        var trendPeriod = "";
-        var trendPeriod2 = "";
-        if (trendPeriodVal == "P10") {
-            trendPeriod = "2002";
-            trendPeriod2 = "2003"
-        } else if (trendPeriodVal == "P20") {
-            trendPeriod = "1992";
-            trendPeriod2 = "1993"
-        } else if (trendPeriodVal == "P30") {
-            trendPeriod = "1982";
-            trendPeriod2 = "1983"
-        } else if (trendPeriodVal == "P40") {
-            trendPeriod = "1972";
-            trendPeriod2 = "1973"
-        }
-        var expression = "wrtds_trends_wm_new.id_unique LIKE '%" + val + "%" + trendPeriod + "%' OR wrtds_trends_wm_new.id_unique LIKE '%" + val + "%" + trendPeriod2 + "%'";
-        layer.setDefinitionExpression(expression);
-        layerUpdateListener(layerID);
-    });*/
-
     $(".trendPeriod").on("change", function(event) {
         $("#siteInfoDiv").css("visibility", "hidden");
         map.graphics.clear();
@@ -801,7 +754,7 @@ require([
         var template = new esri.InfoTemplate("test popup",
             "attributes and stuff go here");
 
-        //ties the above defined InfoTemplate to the feature result returned from a click event
+        ///ties the above defined InfoTemplate to the feature result returned from a click event
 
         feature.setInfoTemplate(template);
 
@@ -901,8 +854,10 @@ require([
 
         var attField ="";
         var mapFields = map.getLayer("networkLocations").fields;
+        var trendPeriodVal = $('input[name=trendPeriod]:checked').val();
         $.each(mapFields, function(index, value) {
-            if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1) {
+            if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1 &&
+                mapFields[index].name.toLowerCase().indexOf(trendPeriodVal.toLowerCase()) != -1) {
                 attField = mapFields[index].name;
             }
         });
@@ -1067,8 +1022,10 @@ require([
 
                 var attField;
                 var mapFields = map.getLayer("networkLocations").fields;
+                var trendPeriodVal = $('input[name=trendPeriod]:checked').val();
                 $.each(mapFields, function(index, value) {
-                    if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1) {
+                    if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1 &&
+                        mapFields[index].name.toLowerCase().indexOf(trendPeriodVal.toLowerCase()) != -1) {
                         attField = mapFields[index].name;
                     }
                 });
