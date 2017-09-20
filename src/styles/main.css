@@ -310,6 +310,10 @@ a.lgi-zoom:hover {
     overflow-x: hidden !important;
 }
 
+#explanationModal {
+    z-index: 1000000;
+}
+
 #chartModal {
     width: 100%;
     min-height: 100%;
