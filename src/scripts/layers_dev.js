@@ -119,7 +119,7 @@ require([
                     "options": {
                         "id": "networkLocations",
                         /* "visibleLayers": [0], */
-                        "mode": esri.layers.FeatureLayer.MODE_ONDEMAND,
+                        "mode": FeatureLayer.MODE_SNAPSHOT,
                         "outFields": ["*"],
                         /* "orderByFields": [ "network_centroids.P00940_Chloride DESC" ], */
                         "visible": true

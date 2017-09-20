@@ -886,10 +886,10 @@
                     <div id="trendTypes" style="align-content: center; width: 100%; padding-top: 20px; text-align: left;">
                         <label>Showing results for:</label>
                         <span class="sidebar-radio-wrapper">
-                            <input type="radio" name="constButtons" class="constButtons" id="inorganicButton" value="inorganic" checked> Organic
+                            <input type="radio" name="constButtons" class="constButtons" id="inorganicButton" value="inorganic" checked> Inorganic
                         </span>
                         <span class="sidebar-radio-wrapper">
-                            <input type="radio" name="constButtons" class="constButtons" id="organicButton" value="organic"> Inorganic
+                            <input type="radio" name="constButtons" class="constButtons" id="organicButton" value="organic"> Organic
                         </span>
                     </div>
                     <div>
@@ -901,8 +901,29 @@
                             <select id="inorganicConstituentSelect" class="constSelect wrtdsSelect">
 
                             </select>
+                            <select id="organicConstituentCycle3Select" class="constSelect wrtdsSelect">
+
+                            </select>
+                            <select id="inorganicConstituentCycle3Select" class="constSelect wrtdsSelect">
+
+                            </select>
                             <small style="font-size: 7pt;">For more information, see <a class="showUserGuide3" onclick="ga('send','event','navbar','click','User Guide');">User Guide</a></small>
                         </span><!-- -->
+                    </div>
+                    <div style="width: 100%; padding-top: 20px; text-align: left;">
+                        <label>Trend period</label>
+                        <span id="cycle12" class="trendPeriodWrap sidebar-radio-wrapper">
+                            <input id="cycle12input" name="trendPeriod" class="trendPeriod" type="radio" value="C12_" checked> Cycle 1-2
+                        </span>
+                        <span id="cycle13" class="trendPeriodWrap sidebar-radio-wrapper">
+                            <input id="cycle13input" name="trendPeriod" class="trendPeriod" type="radio" value="C1_3_"> Cycle 1-3
+                        </span>
+                        <span id="cycle23" class="trendPeriodWrap sidebar-radio-wrapper">
+                            <input id="cycle23input" name="trendPeriod" class="trendPeriod" type="radio" value="C23_"> Cycle 2-3
+                        </span>
+                        <span id="cycle123" class="trendPeriodWrap sidebar-radio-wrapper">
+                            <input id="cycle123input" name="trendPeriod" class="trendPeriod" type="radio" value="C123_"> Cycle 1-2-3
+                        </span>
                     </div>
 
                     <!-- <div style="width: 100%; padding-top: 20px; text-align: left;">
