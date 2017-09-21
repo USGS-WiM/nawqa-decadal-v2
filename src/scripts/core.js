@@ -575,9 +575,9 @@ require([
     });
 
     var nationalMapBasemap = new ArcGISTiledMapServiceLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer');
-    var shadedReliefBasemap = new ArcGISTiledMapServiceLayer('http://server.arcgisonline.com/arcgis/rest/services/World_Shaded_Relief/MapServer');
-    var referenceMapBasemap = new ArcGISTiledMapServiceLayer('http://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer');
-    //on clicks to swap basemap. map.removeLayer is required for nat'l map b/c it is not technically a basemap, but a tiled layer.
+    var shadedReliefBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/arcgis/rest/services/World_Shaded_Relief/MapServer');
+    var referenceMapBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer');
+    ///on clicks to swap basemap. map.removeLayer is required for nat'l map b/c it is not technically a basemap, but a tiled layer.
     function removeManualLayers() {
         map.removeLayer(nationalMapBasemap);
         map.removeLayer(referenceMapBasemap);
