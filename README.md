@@ -1,1 +1,1 @@
-# nawqa-sw-trends
+# nawqa-decadal-v2
