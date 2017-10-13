@@ -885,6 +885,7 @@ input[type="checkbox"], input[type="radio"] {
 
 .aboutImg {
     width: 40%;
+    height: 400px;
     float: left;
     padding: 15px;
 }
