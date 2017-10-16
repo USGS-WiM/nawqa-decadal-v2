@@ -809,11 +809,11 @@ input[type="checkbox"], input[type="radio"] {
     color: rgba(255,255,255,0.8);
 }
 #geosearchNav{
-    background-color: rgba(69,116,204, 0.5) !important;
+    background-color: rgba(69,116,204, 0.5);
     border: none !important;
 }
 #geosearchNav:hover{
-    background-color: rgba(69,116,204, 1) !important;
+    background-color: rgba(69,116,204, 0.5) !important;
 }
 
 /* .btn,
