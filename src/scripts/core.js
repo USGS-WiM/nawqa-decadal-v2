@@ -1226,7 +1226,6 @@ require([
             $('#iconTab').trigger('click');
             console.log("Opening tab 2 user guide");
         });
-
         
         // Show User Guide tab3
         $('.showUserGuide3').click(function(){
@@ -1552,6 +1551,21 @@ require([
             }
         });
 
+        $("#cycle12input").click(function () {
+            document.getElementById('selectedTrendImage').src="images/timeline/cycle-1-2.png";
+        });
+
+        $("#cycle13input").click(function () {
+            document.getElementById('selectedTrendImage').src="images/timeline/cycle-1-3.png";
+        });
+
+        $("#cycle23input").click(function () {
+            document.getElementById('selectedTrendImage').src="images/timeline/cycle-2-3.png";
+        });
+
+        $("#cycle123input").click(function () {
+            document.getElementById('selectedTrendImage').src="images/timeline/cycle-full.png";
+        });
     });
 
     function getValue(val) {
