@@ -160,7 +160,7 @@ require([
                         "layerType": "agisDynamic",
                         "includeInLayerList": true,
                         "hasOpacitySlider": true,
-                        "includeLegend" : false
+                        "includeLegend" : false,
                     }
                 }, "Trend sites" : {
                     "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites/MapServer",
