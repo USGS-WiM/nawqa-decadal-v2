@@ -1915,6 +1915,11 @@ require([
                 }
 
 
+                // changing tooltip for Network Boundaries and Magnitude of change
+                $('#infonetworkBoundaries').prop('title', 'A network is a set of 20 to 30 wells selected to represent water-quality conditions in a given geographical area, aquifer, and in some cases, a specific land use. A network resampled at approximately 10-year intervals is a decadal trend network');
+                $('#infomagnitudeOfChange').prop('title', 'Click on network arrow or dot for more information');
+                
+
                 //click listener for regular
                 button.click(function(e) {
 
@@ -2080,7 +2085,9 @@ require([
                         e.preventDefault();
                         e.stopPropagation();
                     });
+                    
                 }
+                
             }
         }
 
@@ -2189,6 +2196,7 @@ require([
                         }); //each visible layer
                     }); //each legend item
                 }); //get legend json
+                
             }
         }
         /* parse layers.js */

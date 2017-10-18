@@ -180,7 +180,8 @@ require([
                     "options": {
                         "id": "principalAquifers",
                         "opacity": 0.5,
-                        "visible": false
+                        "visible": false,
+                        "more info": "hi"
                     },
                     "wimOptions": {
                         "type": "layer",
