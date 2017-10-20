@@ -354,6 +354,21 @@ require([
             trendPeriod = "1972";
         }*/
 
+        if ($("#cycle12input").is(':checked')){
+            var printYears = "1988-2001 to 2002-2012";
+        }
+        if ($("#cycle13input").is(':checked')){
+            var printYears = "1988-2001 to 2013-2014";
+        }
+        if ($("#cycle23input").is(':checked')){
+            var printYears = "2002-2012 to 2013-2014";
+        }
+        if ($("#cycle123input").is(':checked')){
+            var printYears = "1988-2001 to 2002-2012 to 2013-2014";
+        }
+
+        console.log(printYears);
+
         var trendTypeVal = $('input[name=constButtons]:checked').val();
         /*trendTypeVal = trendTypeVal.toLowerCase().replace(/\b[a-z]/g, function(letter) {
             return letter.toUpperCase();
@@ -361,7 +376,7 @@ require([
 
         var constituent = $("#" + trendTypeVal + "ConstituentSelect")[0].value;
 
-        printTitle = "Decadal Change for " + constituent + " in Groundwater from 1988-2001 to 2002-2012";
+        printTitle = "Decadal Change for " + constituent + " in Groundwater from " + printYears;
 
         return printTitle;
     }
