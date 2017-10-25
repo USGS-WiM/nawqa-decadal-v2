@@ -135,6 +135,11 @@ a:hover{
     z-index: 50;
 }
 
+#supportedSearchText {
+    text-align: left;
+    display: inline-block;
+}
+
 .hover-content {
     display:none;
 }
@@ -804,11 +809,11 @@ input[type="checkbox"], input[type="radio"] {
     color: rgba(255,255,255,0.8);
 }
 #geosearchNav{
-    background-color: rgba(69,116,204, 0.5) !important;
+    background-color: rgba(69,116,204, 0.5);
     border: none !important;
 }
 #geosearchNav:hover{
-    background-color: rgba(69,116,204, 1) !important;
+    background-color: rgba(69,116,204, 0.5) !important;
 }
 
 /* .btn,
@@ -880,6 +885,7 @@ input[type="checkbox"], input[type="radio"] {
 
 .aboutImg {
     width: 40%;
+    height: 400px;
     float: left;
     padding: 15px;
 }
@@ -1081,4 +1087,161 @@ input[type="checkbox"], input[type="radio"] {
   font-size: 10pt;
   font-weight: 500;
   padding-top: 5px;
+}
+
+/* rotating arrows css */
+
+#angle1 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle2 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle3 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle4 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle5 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle6 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle7 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle8 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle9 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle10 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle11 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle12 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle13 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle14 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle15 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle16 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle17 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle18 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle19 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle20 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle21 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle22 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle23 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle24 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle25 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle26 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle27 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle28 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+    padding: 0 0 0 10px;
+    font-weight: 100;
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
