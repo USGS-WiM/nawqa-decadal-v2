@@ -1,0 +1,30 @@
+{
+  "name": "nawqa-decadal-v2",
+  "organization": "U.S. Geological Survey",
+  "description": "Decadal Change in Groundwater Quality",
+  "status": "Development",
+  "homepage": "https://test.wim.usgs.gov/decadal/",
+  "downloadURL": "https://github.com/usgs-wim/nawqa-decadal-v2/archive/master.zip",
+  "openSourceProject": 1,
+  "license": "https://github.com/usgs-wim/nawqa-decadal-v2/blob/master/LICENSE.md",
+  "vcs": "git",
+  "repository": "https://github.com/usgs-wim/nawqa-decadal-v2.git",
+
+  "tags": [
+    "nawqa",
+    "wim",
+    "usgs"
+  ],
+  "languages": [
+    "javascript",
+    "html"
+  ],
+
+  "contact": {
+    "name": "Nicholas Estes",
+    "email": "njestes@usgs.gov"
+  },
+  "updated": {
+    "metadataLastUpdated": "10/25/2017"
+  }
+}
