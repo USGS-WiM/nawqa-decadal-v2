@@ -1258,6 +1258,16 @@ require([
         $('#dataNav').click(function(){
             $('#dataModal').modal('show');
         });
+
+        // Show data modal 
+        $('.showStatisticAnalysis').click(function(){
+            $('#geosearchModal').modal('hide');
+            $('#aboutModal').modal('hide');
+            $('#faqModal').modal('hide');
+            $('#dataModal').modal('show');
+            $('#techTab').trigger('click');
+        });
+
         $('#trendResultHelp').click(function(){
             $('#trendResultsHelpBox').slideToggle(200);
         });
@@ -1272,6 +1282,8 @@ require([
             $('#dataModal').modal('hide');
             $('#faqModal').modal('show');
             $('#faq14header').trigger('click');
+
+            statsSection
             
             // scrolling to FAQ 14
             $(document).ready(function(){

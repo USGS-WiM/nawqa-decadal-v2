@@ -1,0 +1,31 @@
+{
+  "name": "nawqa-decadal-v2",
+  "organization": "U.S. Geological Survey",
+  "description": "This mapper shows how concentrations of pesticides, nutrients, metals, and organic contaminants in groundwater are changing during decadal periods across the Nation.",
+  "status": "REPOSITORY_STATUS",
+  "homepage": "REPOSITORY_HOMEPAGE",
+  "downloadURL": "https://github.com/usgs/REPOSITORY_NAME/archive/master.zip",
+
+  "openSourceProject": 1,
+  "license": "https://github.com/usgs/REPOSITORY_NAME/blob/master/LICENSE.md",
+  "vcs": "git",
+  "repository": "https://github.com/USGS-WiM/nawqa-decadal-v2.git",
+
+  "tags": [
+    "nawqa",
+    "decadal"
+  ],
+  "languages": [
+    "javascript",
+    "HTML",
+    "CSS"
+  ],
+
+  "contact": {
+    "name": "Nick Estes",
+    "email": "nestes@gmail.com"
+  },
+  "updated": {
+    "metadataLastUpdated": "10/25/2017"
+  }
+}
