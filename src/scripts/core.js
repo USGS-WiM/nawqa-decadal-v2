@@ -1259,13 +1259,23 @@ require([
             $('#dataModal').modal('show');
         });
 
-        // Show data modal 
+        // Show data modal > tech tab
         $('.showStatisticAnalysis').click(function(){
             $('#geosearchModal').modal('hide');
             $('#aboutModal').modal('hide');
             $('#faqModal').modal('hide');
             $('#dataModal').modal('show');
             $('#techTab').trigger('click');
+        });
+
+        // Show About > learn more tab
+        $('.showLearnMore').click(function(){
+            $('#geosearchModal').modal('hide');
+            $('#faqModal').modal('hide');
+            $('#userGuideModal').modal('hide');
+            $('#dataModal').modal('hide');
+            $('#aboutModal').modal('show');
+            $('#learnMoreTab').trigger('click');
         });
 
         $('#trendResultHelp').click(function(){

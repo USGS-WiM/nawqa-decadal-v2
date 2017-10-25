@@ -1,42 +1,30 @@
-# nawqa-decadal-v2
-
-## Developer Instructions
-
 ![WiM](wimlogo.png)
 
 
-# nawqa-decadal-v2
+# [National Water-Quality Assessment (NAWQA) Project](https://water.usgs.gov/nawqa/) Decadal Trends in Groundwater
 
 This mapper shows how concentrations of pesticides, nutrients, metals, and organic contaminants in groundwater are changing during decadal periods across the Nation.
+
+Tracking changes in groundwater quality and investigating the reasons for these changes is crucial for informing management decisions to protect and sustain our valuable groundwater resources.
+
+### Prerequisites
+
+[Node Package Manager](https://en.wikipedia.org/wiki/Npm_(software)) (npm)
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+run `npm install` AND `bower install` to get dependencies after first cloning
 
-NPM, Gulp, bower
+`gulp watch` to run in browser with watch for debugging
 
-### Installing
-
-1. Clone the repo
-2. `cd` into the folder, if you already have installed gulp then run `npm install` AND `bower install`
-	i. If you do not have gulp installed: run `npm install -g gulp` to install Gulp globally, then run `npm install gulp`
-3. run `gulp watch` to run in browser with watch for debugging.
-4. run `gulp build` before commit to build project.
-
-NOTE: You MUST run the gulp build before committing and pushing to repo
-
-## Deployment
-
-Deploy to S3 using Cloudberry or similar program. Only copy the contents of the "Build" folder.
+`gulp` to build project
 
 ## Built With
 
-* [Angular](https://angular.io/) - The main web framework used
-* [Clarity UI](https://vmware.github.io/clarity/) - Top-level UI framework if you have one 
 * [NPM](https://www.npmjs.com/) - Dependency Management
-* [Others](https://www.npmjs.com/) - Any other high-level dependencies
+* [gulp](https://en.wikipedia.org/wiki/Gulp.js) - Build system and task runner
 
 ## Contributing
 
@@ -54,8 +42,8 @@ To push tags to remote origin: `git push origin --tags`
 
 ## Authors
 
-* **Nick Estes**  - *Lead Developer* - [USGS Web Informatics & Mapping](https://wim.usgs.gov/)
-* **Jessie Smith** - *Developer* -  [USGS Web Informatics & Mapping](https://wim.usgs.gov/)
+* **[Nicholas Estes](https://www.usgs.gov/staff-profiles/nicholas-j-estes)**  - *Lead Developer* - [USGS Web Informatics & Mapping](https://wim.usgs.gov/)
+* **[Lauren Privette](https://www.usgs.gov/staff-profiles/lauren-privette)**  - *Developer* - [USGS Web Informatics & Mapping](https://wim.usgs.gov/)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -63,12 +51,10 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 This project is licensed under the Creative Commons CC0 1.0 Universal License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Citation
+## Suggested Citation
 In the spirit of open source, please cite any re-use of the source code stored in this repository. Below is the suggested citation:
 
-`This project contains code produced by the Web Informatics and Mapping (WIM) team at the United States Geological Survey (USGS). As a work of the United States Government, this project is in the public domain within the United States. https://wim.usgs.gov`
-
-
+`This project contains code produced by the Web Informatics and Mapping (WiM) team at the United States Geological Survey (USGS). As a work of the United States Government, this project is in the public domain within the United States. https://wim.usgs.gov`
 
 ## About WIM
 * This project authored by the [USGS WIM team](https://wim.usgs.gov)
