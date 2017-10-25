@@ -354,6 +354,21 @@ require([
             trendPeriod = "1972";
         }*/
 
+        if ($("#cycle12input").is(':checked')){
+            var printYears = "1988-2001 to 2002-2012";
+        }
+        if ($("#cycle13input").is(':checked')){
+            var printYears = "1988-2001 to 2013-2014";
+        }
+        if ($("#cycle23input").is(':checked')){
+            var printYears = "2002-2012 to 2013-2014";
+        }
+        if ($("#cycle123input").is(':checked')){
+            var printYears = "1988-2001 to 2002-2012 to 2013-2014";
+        }
+
+        console.log(printYears);
+
         var trendTypeVal = $('input[name=constButtons]:checked').val();
         /*trendTypeVal = trendTypeVal.toLowerCase().replace(/\b[a-z]/g, function(letter) {
             return letter.toUpperCase();
@@ -361,7 +376,7 @@ require([
 
         var constituent = $("#" + trendTypeVal + "ConstituentSelect")[0].value;
 
-        printTitle = "Decadal Change for " + constituent + " in Groundwater from 1988-2001 to 2002-2012";
+        printTitle = "Decadal Change for " + constituent + " in Groundwater from " + printYears;
 
         return printTitle;
     }
@@ -1243,6 +1258,26 @@ require([
         $('#dataNav').click(function(){
             $('#dataModal').modal('show');
         });
+
+        // Show data modal > tech tab
+        $('.showStatisticAnalysis').click(function(){
+            $('#geosearchModal').modal('hide');
+            $('#aboutModal').modal('hide');
+            $('#faqModal').modal('hide');
+            $('#dataModal').modal('show');
+            $('#techTab').trigger('click');
+        });
+
+        // Show About > learn more tab
+        $('.showLearnMore').click(function(){
+            $('#geosearchModal').modal('hide');
+            $('#faqModal').modal('hide');
+            $('#userGuideModal').modal('hide');
+            $('#dataModal').modal('hide');
+            $('#aboutModal').modal('show');
+            $('#learnMoreTab').trigger('click');
+        });
+
         $('#trendResultHelp').click(function(){
             $('#trendResultsHelpBox').slideToggle(200);
         });
@@ -1257,6 +1292,8 @@ require([
             $('#dataModal').modal('hide');
             $('#faqModal').modal('show');
             $('#faq14header').trigger('click');
+
+            statsSection
             
             // scrolling to FAQ 14
             $(document).ready(function(){
@@ -1915,6 +1952,11 @@ require([
                 }
 
 
+                // changing tooltip for Network Boundaries and Magnitude of change
+                $('#infonetworkBoundaries').prop('title', 'A network is a set of 20 to 30 wells selected to represent water-quality conditions in a given geographical area, aquifer, and in some cases, a specific land use. A network resampled at approximately 10-year intervals is a decadal trend network');
+                $('#infomagnitudeOfChange').prop('title', 'Click on network arrow or dot for more information');
+                
+
                 //click listener for regular
                 button.click(function(e) {
 
@@ -2080,7 +2122,9 @@ require([
                         e.preventDefault();
                         e.stopPropagation();
                     });
+                    
                 }
+                
             }
         }
 
@@ -2189,6 +2233,7 @@ require([
                         }); //each visible layer
                     }); //each legend item
                 }); //get legend json
+                
             }
         }
         /* parse layers.js */
