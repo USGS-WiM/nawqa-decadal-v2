@@ -324,6 +324,7 @@
                                     <li>Molybdenum</li>
                                     <li>Nitrate</li>
                                     <li>Orthophosphate</li>
+                                    <li>Sodium</li>
                                     <li>Strontium</li>
                                     <li>Sulfate</li>
                                     <li>Total Dissolved Solids</li>
@@ -636,7 +637,7 @@
                             Because of changes in sampling design and laboratory methods, results for pesticides, VOCs, and phosphorus are not included in version 2.0 of the web map; however, the results from version 1.0 for these compounds are still displayed. Thus comparisons of changes from 1988-2001 to 2002-2012 display results for 25 constituents, but any comparisons that use data from 2012-2014 only display results for 13 constituents.
                             <br>
                             <br>
-                            Benchmarks used to prioritize the constituents were: EPA maximum contaminant levels (MCLs) (U.S. Environmental Protection Agency, 2012), USGS Health-Based Screening Levels (HBSLs) (Toccalino and others, 2014b), and nonregulatory SMCLs (U.S. Environmental Protection Agency, 2012). Of these benchmarks, only MCLs are legally enforceable (regulatory) drinking-water standards; all but SMCLs are human-health benchmarks. For more information about these benchmarks, <a id="showFAQ14">click here</a>. For a listing of the 25 constituents selected for analysis and the reason they were selected, <a class="showLearnMore">click here</a>.
+                            Benchmarks used to prioritize the constituents were: EPA maximum contaminant levels (MCLs) (U.S. Environmental Protection Agency, 2012), USGS Health-Based Screening Levels (HBSLs) (Toccalino and others, 2014b), and nonregulatory SMCLs (U.S. Environmental Protection Agency, 2012). Of these benchmarks, only MCLs are legally enforceable (regulatory) drinking-water standards; all but SMCLs are human-health benchmarks. For more information about these benchmarks, <a id="showFAQ14">click here</a>. For a listing of the 25 constituents selected for analysis and the reason they were selected, <a id="mcl">click here</a>.
                             <br>
                             <br>
                             <ol>
@@ -955,7 +956,272 @@
     </div> <!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
+<div id="mclModal" aria-hidden="true" class="modal fade overflow-y-hidden">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Maximum Containment Levels (MCLs) & Benchmarks</h4>
+            </div>
+            <div class="modal-body">
+                <P>Table 1 lists the chemical constituents that met the criteria for a statistical analysis of decadal&#45;scale changes
+                    in concentrations in groundwater between Cycle 1 (1988&#45;2001) and Cycle 2 (2002&#45;2012) of the National Water&#45;Quality
+                    Assessment (NAWQA) Project. Mapped constituents met one of the four following criteria:</P>
+                <ol>
+                    <li> Constituents that exceeded a Maximum Contaminant Level or other human&#45;health benchmark in more than 1 percent
+                        of public&#45; or domestic&#45;supply wells&#185; &#178; &#179;, or</li>
+                    <li> Constituents that exceeded a Secondary Maximum Contaminant Level or taste threshold in more than 1 percent of public&#45;
+                        or domestic&#45;supply wells&#185; &#178; &#179;, or</li>
+                    <li> The five most frequently detected pesticides and volatile organic comounds (VOCs) in groundwater&#8308; &#8309;,
+                        or</li>
+                    <li> Constituents of special or regional interest.</li>
+                </ol>
+                <h4 style="text-align:center;">
+                    <strong>Table 1. Constituents meeting analysis criteria, results mapped</strong>
+                </h4>
+                <h5 style="text-align:center;">[&#956;g/L, micrograms per liter; mg/L, milligrams per liter; SMCL, Secondary Maximum Contaminant Level]</h5>
+                <table>
+                    <table class="constituentTable">
+                        <thead>
+                            <tr>
+                                <th>Constituent name</th>
+                                <th>Constituent class</th>
+                                <th>Benchmark</th>
+                                <th>Units</th>
+                                <th>Why study</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Arsenic</td>
+                                <td>inorganic</td>
+                                <td>10</td>
+                                <td>&#956;g/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Boron</td>
+                                <td>inorganic</td>
+                                <td>6,000</td>
+                                <td>&#956;g/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Chloride</td>
+                                <td>inorganic</td>
+                                <td>250</td>
+                                <td>mg/L</td>
+                                <td>Exceeded SMCL in more than 1 percent of domestic&#45;supply or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Fluoride</td>
+                                <td>inorganic</td>
+                                <td>4</td>
+                                <td>mg/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Iron</td>
+                                <td>inorganic</td>
+                                <td>300</td>
+                                <td>&#956;g/L</td>
+                                <td>Exceeded SMCL in more than 1 percent of domestic&#45;supply or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Manganese</td>
+                                <td>inorganic</td>
+                                <td>300</td>
+                                <td>&#956;g/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Molybdenum</td>
+                                <td>inorganic</td>
+                                <td>40</td>
+                                <td>&#956;g/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Nitrate (measured as nitrite plus nitrate)</td>
+                                <td>inorganic</td>
+                                <td>10</td>
+                                <td>mg/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Orthophosphate</td>
+                                <td>inorganic</td>
+                                <td>None</td>
+                                <td>mg/L</td>
+                                <td>Constituent of special or regional interest: Possible source of discharge to surface water bodies</td>
+                            </tr>
+                            <tr>
+                                <td>Sodium</td>
+                                <td>inorganic</td>
+                                <td>30</td>
+                                <td>mg/L</td>
+                                <td>Exceeded taste threshold in more than 1 percent of domestic&#45;supply or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Strontium</td>
+                                <td>inorganic</td>
+                                <td>4000</td>
+                                <td>&#956;g/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Sulfate</td>
+                                <td>inorganic</td>
+                                <td>250</td>
+                                <td>mg/L</td>
+                                <td>Exceeded SMCL in more than 1 percent of domestic&#45;supply or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Total Dissolved Solids</td>
+                                <td>inorganic</td>
+                                <td>500</td>
+                                <td>mg/L</td>
+                                <td>Exceeded SMCL in more than 1 percent of domestic&#45;supply or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Uranium</td>
+                                <td>inorganic</td>
+                                <td>30</td>
+                                <td>&#956;g/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Atrazine</td>
+                                <td>organic</td>
+                                <td>3</td>
+                                <td>&#956;g/L</td>
+                                <td>One of the five most frequently detected pesticide compounds in groundwater in the Nation</td>
+                            </tr>
+                            <tr>
+                                <td>Chloroform</td>
+                                <td>organic</td>
+                                <td>80</td>
+                                <td>&#956;g/L</td>
+                                <td>One of the five most frequently detected pesticide compounds in groundwater in the Nation</td>
+                            </tr>
+                            <tr>
+                                <td>Deethylatrazine</td>
+                                <td>organic</td>
+                                <td>None</td>
+                                <td>&#956;g/L</td>
+                                <td>One of the five most frequently detected volatile organic compounds in groundwater in the Nation</td>
+                            </tr>
+                            <tr>
+                                <td>Dieldrin</td>
+                                <td>organic</td>
+                                <td>0</td>
+                                <td>&#956;g/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Methyl tert&#45;butyl ether</td>
+                                <td>organic</td>
+                                <td>20</td>
+                                <td>&#956;g/L</td>
+                                <td>One of the five most frequently detected volatile organic compounds in groundwater in the Nation</td>
+                            </tr>
+                            <tr>
+                                <td>Metolachlor</td>
+                                <td>organic</td>
+                                <td>700</td>
+                                <td>&#956;g/L</td>
+                                <td>One of the five most frequently detected volatile organic compounds in groundwater in the Nation</td>
+                            </tr>
+                            <tr>
+                                <td>Simazine</td>
+                                <td>organic</td>
+                                <td>4</td>
+                                <td>&#956;g/L</td>
+                                <td>One of the five most frequently detected pesticide compounds in groundwater in the Nation</td>
+                            </tr>
+                            <tr>
+                                <td>Prometon</td>
+                                <td>organic</td>
+                                <td>400</td>
+                                <td>&#956;g/L</td>
+                                <td>One of the five most frequently detected pesticide compounds in groundwater in the Nation</td>
+                            </tr>
+                            <tr>
+                                <td>Tetrachloroethene</td>
+                                <td>organic</td>
+                                <td>5</td>
+                                <td>&#956;g/L</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells, and
+                                    one of the five most frequently detected volatile organic compounds in groundwater in the Nation</td>
+                            </tr>
+                            <tr>
+                                <td>Toluene</td>
+                                <td>organic</td>
+                                <td>1,000</td>
+                                <td>&#956;g/L</td>
+                                <td>One of the five most frequently detected volatile organic compounds in groundwater in the Nation</td>
+                            </tr>
+                            <tr>
+                                <td>Trichloroethene</td>
+                                <td>organic</td>
+                                <td>5</td>
+                                <td>&#956;g/L</td>
+                                <td>One of the five most frequently detected volatile organic compounds in groundwater in the Nation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h4 style="text-align:center;">
+                        <stong>Table 2. Constituents met criteria, not mapped due to insufficient data</strong>
+                    </h4>
+                    <table class="constituentTable">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th>Constituent name</th>
+                                    <th>Constituent class</th>
+                                    <th>Benchmark</th>
+                                    <th>Units</th>
+                                    <th>Why study</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>Gross alpha (&#945;)</td>
+                                <td>inorganic</td>
+                                <td>15</td>
+                                <td>picocuries per liter</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Radium 226 plus Radium 228</td>
+                                <td>inorganic</td>
+                                <td>5</td>
+                                <td>picocuries per liter</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                            <tr>
+                                <td>Radon</td>
+                                <td>inorganic</td>
+                                <td>1300 (Alternate 4,000)</td>
+                                <td>picocuries per liter</td>
+                                <td>Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4>References Cited:</h4>
+                    <ol>
+                        <li style="font-size:13px;">DeSimone, L.A., Hamilton, P.A., and Gilliom, R.J., 2009, Quality of water from domestic wells in principal aquifers of the United States, 1991–2004—Overview of major findings: U.S. Geological Survey Circular 1332, 48 p. [Also available at http://pubs.usgs.gov/circ/circ1332/.]</li>
+                        <li style="font-size:13px;">Toccalino, P.L., and Hopple, J.A., 2010, The quality of our Nation’s waters—Quality of water from public supply wells in the United States, 1993–2007—Overview of major findings: U.S. Geological Survey Circular 1346, 58 p. [Also available at http://pubs.usgs.gov/circ/1346/.]</li>
+                        <li style="font-size:13px;">Ayotte, J.D., Gronberg, J.M., and Apodaca, L.E., 2011, Trace elements and radon in groundwater across the United States: U.S. Geological Survey Scientific Investigations Report 2011–5059, 115 p. [Also available at http://water.usgs.gov/nawqa/trace/pubs/sir2011-5059/.]</li>
+                        <li style="font-size:13px;">Zogorski, J.S., Carter, J.M., Ivahnenko, Tamara, Lapham, W.W., Moran, M.J., Rowe, B.L., Squillace, P.J., and Toccalino, P.L., 2006, The quality of our Nation’s waters—Volatile organic compounds in the Nation’s ground water and drinking&#45;water supply wells: U.S. Geological Survey Circular 1292, 101 p. [Also available at http://pubs.usgs.gov/circ/circ1292/.]</li>
+                        <li style="font-size:13px;">Gilliom, R.J., Barbash, J.E., Crawford, C.G., Hamilton, P.A., Martin, J.D., Nakagaki, Naomi, Nowell, L.H., Scott, J.C., Stackelberg, P.E., Thelin, G.P., and Wolock, D.M., 2006, The quality of our Nation’s waters—Pesticides in the Nation’s streams and ground water, 1992–2001: U.S. Geological Survey Circular 1291, 172 p. [Also available at http://pubs.usgs.gov/circ/2005/1291/.]</li>
+                    </ol>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Begin page content -->
 <div class="container-fluid keepit100">

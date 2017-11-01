@@ -1217,6 +1217,17 @@ require([
             showModal();
         });
 
+        //mclModal
+        $('#mcl').click(function(){
+            $('#searchTab').trigger('click');
+            $('#geosearchModal').modal('hide');
+            $('#aboutModal').modal('hide');
+            $('#faqModal').modal('hide');
+            $('#userGuideModal').modal('hide');
+            $('#dataModal').modal('hide');
+            $('#mclModal').modal('show');
+        });
+
         function showAboutModal () {
             $('#aboutModal').modal('show');
         }
