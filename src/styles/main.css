@@ -19,6 +19,10 @@ body {
     font-weight: 500 !important;
 }
 
+a {
+    color:#003cff;
+}
+
 a:hover{
     cursor: pointer;
 }
