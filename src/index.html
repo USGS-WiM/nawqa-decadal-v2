@@ -111,16 +111,16 @@
             <span id="printButtonText"> Print</span>
         </button>
 
-        <button id="faqNav" class="pull-right" onclick="ga('send','event','navbar','click','FAQ');">
+        <button id="faqNav" class="pull-right">
             <i class="fa fa-question-circle"></i><span class="hidden-xs">&nbsp;&nbsp;FAQ</span>
         </button>
-        <button id="userGuideNav" class="pull-right" onclick="ga('send','event','navbar','click','User Guide');">
+        <button id="userGuideNav" class="pull-right">
             <i class="fa fa-book"></i><span class="hidden-xs">&nbsp;&nbsp;User Guide</span>
         </button>
         <button id="dataNav" class="pull-right">
             <i class="fa fa-table"></i><span class="hidden-xs">&nbsp;&nbsp;Data</span>
         </button>
-        <button id="aboutNav" class="pull-right" onclick="ga('send','event','navbar','click','About');">
+        <button id="aboutNav" class="pull-right">
             <i class="fa fa-info-circle"></i><span class="hidden-xs">&nbsp;&nbsp;About</span>
         </button>
         <!-- comment -->
@@ -412,7 +412,7 @@
                         <p><b>Updates to Decadal Changes in Groundwater Quality</b>
                         <br>
                         <br>
-                        This web mapping application is version 2.0 of a web mapping tool that supersedes Decadal changes in groundwater quality: U.S. Geological Survey Web page, Lindsey and others, 2016. Version 1.0 of the web site displayed decadal changes in groundwater quality for 67 networks that had been sampled by the National Water-Quality Assessment Project. The results were based on analysis of 1,500 wells in the 67 networks that had been sampled during 1988-2001and again between 2002-2012. Version 2.0 includes results from samples collected between 2012 and 2014. During that time period, 251 wells were sampled in 13 networks that could be compared to the same wells and networks sample during 1988-2001, and 344 wells were sampled in 16 networks that could be compared to the same wells and networks sampled during 2002-2012. Version 2.0 also includes analysis of data collected across all three sampling periods. There were 359 wells in 14 networks with sufficient data to evaluate changes across all three events. The major change from version 1.0 of the web mapper to version 2.0 is that the updated version allows the user to select a time period for display. The comparison of 1988-2001 to 2002-2012 displays the same results from version 1.0. The new options allow the user to select comparisons for new time periods: 1988-2001 to 2012-2014, 2002-2012 to 2012-2014, and also results for data collected across all three time periods. The updated map has results for 1,718 wells in 73 networks. One additional change is that sodium is included on the map for all time periods. The criteria for mapping, benchmarks, data preparation, and statistical analysis are described in the Technical Information tab. In order to make the evaluations of the magnitude of change comparable, the magnitude of change is displayed based the change in concentration per decade. For comparisons between the first to third sampling period (approximately two decades), the median change is divided by two. For comparisons across three or more time periods, the statistical test result of change in concentration per year is multiplied by ten.</p>
+                        This web mapping application is version 2.0 of a web mapping tool that supersedes Decadal changes in groundwater quality: U.S. Geological Survey Web page, Lindsey and others, 2016. Version 1.0 of the web site displayed decadal changes in groundwater quality for 67 networks that had been sampled by the National Water-Quality Assessment Project. The results were based on analysis of 1,500 wells in the 67 networks that had been sampled during 1988-2001 and again between 2002-2012. Version 2.0 includes results from samples collected between 2012 and 2014. During that time period, 251 wells were sampled in 13 networks that could be compared to the same wells and networks sample during 1988-2001, and 344 wells were sampled in 16 networks that could be compared to the same wells and networks sampled during 2002-2012. Version 2.0 also includes analysis of data collected across all three sampling periods. There were 359 wells in 14 networks with sufficient data to evaluate changes across all three events. The major change from version 1.0 of the web mapper to version 2.0 is that the updated version allows the user to select a time period for display. The comparison of 1988-2001 to 2002-2012 displays the same results from version 1.0. The new options allow the user to select comparisons for new time periods: 1988-2001 to 2012-2014, 2002-2012 to 2012-2014, and also results for data collected across all three time periods. The updated map has results for 1,718 wells in 73 networks. One additional change is that sodium is included on the map for all time periods. The criteria for mapping, benchmarks, data preparation, and statistical analysis are described in the Technical Information tab. In order to make the evaluations of the magnitude of change comparable, the magnitude of change is displayed based the change in concentration per decade. For comparisons between the first to third sampling period (approximately two decades), the median change is divided by two. For comparisons across three or more time periods, the statistical test result of change in concentration per year is multiplied by ten.</p>
                         <p>
                         <b>Errata from V1</b>:
                         The following corrections have been made in version 2 of the web site, and thus appear as a change from version 1 for comparison of changes between Cycle 1 and Cycle 2:
@@ -623,22 +623,16 @@
                                     <li> they were among the five most frequently detected volatile organic compounds (VOCs) in the Nation (Zogorski and others, 2006), or</li> 
                                     <li> they were among the five most frequently detected pesticides in the Nation (Gilliom and others, 2006).</li>
                                 </ol>
+                            <br>
                             Other constituents were added to this list based on regional importance. Radium, radon, and gross alpha (&alpha;) activity met the criteria for analysis, but do not have sufficient data for analysis; thus, they are not included in the mapping tool.
                             <br>
                             <br>
                             Because of changes in sampling design and laboratory methods, results for pesticides, VOCs, and phosphorus are not included in version 2.0 of the web map; however, the results from version 1.0 for these compounds are still displayed. Thus comparisons of changes from 1988-2001 to 2002-2012 display results for 25 constituents, but any comparisons that use data from 2012-2014 only display results for 13 constituents.
                             <br>
                             <br>
-                            Benchmarks used to prioritize the constituents were: EPA maximum contaminant levels (MCLs) (U.S. Environmental Protection Agency, 2012), USGS Health-Based Screening Levels (HBSLs) (Toccalino and others, 2014b), and nonregulatory SMCLs (U.S. Environmental Protection Agency, 2012). Of these benchmarks, only MCLs are legally enforceable (regulatory) drinking-water standards; all but SMCLs are human-health benchmarks. For more information about these benchmarks, <a id="showFAQ14">click here</a>. For a listing of the 25 constituents selected for analysis and the reason they were selected, <a id="mcl">click here</a>.
+                            Benchmarks used to prioritize the constituents were: EPA maximum contaminant levels (MCLs) (U.S. Environmental Protection Agency, 2012), USGS Health-Based Screening Levels (HBSLs) (Toccalino and others, 2014b), and nonregulatory SMCLs (U.S. Environmental Protection Agency, 2012). Of these benchmarks, only MCLs are legally enforceable (regulatory) drinking-water standards; all but SMCLs are human-health benchmarks. For more information about these benchmarks, <a id="showFAQ14">click here</a>. For a listing of the 25 constituents selected for analysis and the reason they were selected, <a class="mcl2">click here</a>.
                             <br>
                             <br>
-                            <ol>
-                                    <li> Exceeded human-health benchmark in more than 1 percent of domestic- or public supply wells: arsenic, boron, fluoride, manganese, molybdenum, nitrate (measured as nitrite plus nitrate), strontium, tetrachloroethene, uranium, and dieldrin.</li> 
-                                    <li>Exceeded SMCL or taste threshold in more than 1 percent of domestic- or public-supply well: chloride, iron, sodium, sulfate, total dissolved solids.</li> 
-                                    <li> Constituent of special or regional interest: orthophosphate</li> 
-                                    <li> The five most frequently detected pesticide compounds in groundwater in the nation: atrazine, deethylatrazine, simazine, metolachlor and prometon.</li>
-                                    <li> The five most frequently detected volatile organic compounds in groundwater in the nation. chloroform, methyl tert -butyl ether, tetrachloroethene (also exceeded health benchmark), toluene, trichloroethene.</li>
-                                </ol>
                             </p>
                         </div>               
                         <div class="user-guide-item">
@@ -793,12 +787,12 @@
 
                 <div class="faq-header" id="faq7header">7. How did you determine which constituents to display on the map? <div id="angle7" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
                 <div class="faq-body" id="faq7body">
-                    More than 300 constituents were sampled at most of the wells during the two decades. Constituents were prioritized for analysis of decadal change if they met the following criteria: (1) they exceeded a human health benchmark in at least 1 percent of the wells used as a source of drinking water from public-supply wells (Toccalino and Hopple, 2010) or domestic-supply wells (Desimone, 2009), (2) they exceeded a U.S. Environmental Protection Agency (EPA) secondary maximum contaminant level (SMCL) in at least 1 percent of the wells used as a source of drinking water, (3) they were among the five most frequently detected volatile organic compounds (VOCs) in the Nation (Zogorski and others, 2006), or (4) they were among the five most frequently detected pesticides in the Nation (Gilliom and others, 2006). Other constituents were added to this list based on regional importance. Radium, radon, and gross alpha (&alpha;) activity met the criteria for analysis but do not have sufficient data for analysis; thus, they are not included in the mapping tool. In all, 25 constituents were selected for analysis of decadal change and inclusion in the mapping tool. Constituents are only displayed for time periods where sufficient data were available and analytical methods were comparable across the sampling events.
+                    More than 300 constituents were sampled at most of the wells during the two decades. Constituents were prioritized for analysis of decadal change if they met the following criteria: (1) they exceeded a human health benchmark in at least 1 percent of the wells used as a source of drinking water from public-supply wells (Toccalino and Hopple, 2010) or domestic-supply wells (Desimone, 2009), (2) they exceeded a U.S. Environmental Protection Agency (EPA) secondary maximum contaminant level (SMCL) in at least 1 percent of the wells used as a source of drinking water, (3) they were among the five most frequently detected volatile organic compounds (VOCs) in the Nation (Zogorski and others, 2006), or (4) they were among the five most frequently detected pesticides in the Nation (Gilliom and others, 2006). Other constituents were added to this list based on regional importance. Radium, radon, and gross alpha (&alpha;) activity met the criteria for analysis but do not have sufficient data for analysis; thus, they are not included in the mapping tool. In all, 25 constituents were selected for analysis of decadal change and inclusion in the mapping tool. Constituents are only displayed for time periods where sufficient data were available and analytical methods were comparable across the sampling events. For a listing of the 25 constituents selected for analysis and the reason they were selected, <a class="mcl2">click here</a>.
                 </div>
 
                 <div class="faq-header" id="faq8header">8. Where can I find help navigating this web page? <div id="angle8" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
                 <div class="faq-body" id="faq8body">
-                    An explanation of the arrows and icons on the map and what they mean is <a class="showUserGuide2" onclick="ga('send','event','navbar','click','User Guide');">here</a>. A description of how to activate map layers is <a class="showUserGuide3" onclick="ga('send','event','navbar','click','User Guide');">here</a>. A description of the search, zoom, and print capabilities is <a class="showUserGuide" onclick="ga('send','event','navbar','click','User Guide');">here</a>.
+                    An explanation of the arrows and icons on the map and what they mean is <a class="showUserGuide2" >here</a>. A description of how to activate map layers is <a class="showUserGuide3" >here</a>. A description of the search, zoom, and print capabilities is <a class="showUserGuide" >here</a>.
                 </div>
 
 
@@ -1318,7 +1312,7 @@
                             <select id="inorganicConstituentCycle3Select" class="constSelect wrtdsSelect">
 
                             </select>
-                            <small style="font-size: 7pt;">For more information, see <a class="showUserGuide3" onclick="ga('send','event','navbar','click','User Guide');">User Guide</a></small>
+                            <small style="font-size: 7pt;">For more information, see <a class="showUserGuide3" >User Guide</a></small>
                         </span><!-- -->
                     </div>
                     <div style="width: 100%; padding-top: 20px; text-align: left;">
@@ -1413,7 +1407,7 @@
                         </h4>
                     </div>
                     <div id="legendCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                        <small style="display: block; text-align: center; font-size: 8pt; color: rgba(0,0,0,0.65); font-weight: 400; padding: 5px 0;">For more information, see <a class="showUserGuide2" onclick="ga('send','event','navbar','click','User Guide');">User Guide</a>.</small>
+                        <small style="display: block; text-align: center; font-size: 8pt; color: rgba(0,0,0,0.65); font-weight: 400; padding: 5px 0;">For more information, see <a class="showUserGuide2" >User Guide</a>.</small>
                         <div id="legendDiv" class="panel-body"></div>
                         <label id="constitExp"></label>
                     </div>

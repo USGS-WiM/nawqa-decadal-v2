@@ -1219,7 +1219,6 @@ require([
 
         //mclModal
         $('#mcl').click(function(){
-            $('#searchTab').trigger('click');
             $('#geosearchModal').modal('hide');
             $('#aboutModal').modal('hide');
             $('#faqModal').modal('hide');
@@ -1250,6 +1249,14 @@ require([
             $('#faqModal').modal('hide');
             $('#userGuideModal').modal('show');
             $('#iconTab').trigger('click');
+            console.log("Opening tab 2 user guide");
+        });
+        $('.mcl2').click(function(){
+            $('#geosearchModal').modal('hide');
+            $('#aboutModal').modal('hide');
+            $('#faqModal').modal('hide');
+            $('#dataModal').modal('hide');
+            $('#mclModal').modal('show');
             console.log("Opening tab 2 user guide");
         });
         
