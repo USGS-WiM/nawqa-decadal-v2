@@ -1656,9 +1656,9 @@ require([
                 case "2":
                     textValue = "large increase";
                     break;
-                default:
+                /* default:
                     textValue = "trend data not available";
-                    break;
+                    break; */
             }
         }
         return textValue;
