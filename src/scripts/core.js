@@ -971,6 +971,19 @@ require([
                         "<b>Matched streamgage number: </b>" +  + "<br/>" +
                         "<b>Matched streamgage agency: </b>");*/
 
+                        if ($("#cycle12input").is(':checked')){
+                            var sampleDates = "1988-2001 to 2002-2012";
+                        }
+                        if ($("#cycle13input").is(':checked')){
+                            var sampleDates = "1988-2001 to 2013-2014";
+                        }
+                        if ($("#cycle23input").is(':checked')){
+                            var sampleDates = "2002-2012 to 2013-2014";
+                        }
+                        if ($("#cycle123input").is(':checked')){
+                            var sampleDates = "1988-2001 to 2002-2012 to 2013-2014";
+                        }
+
                     $("#siteInfoPanel").append("<table class='infoTable'><tr><td><b>" + displayConst + "</b></td><td><span class='" + camelize(getValue(attr[attField])) + "'>" + getValue(attr[attField]) + "</span></td></tr>" +
 
                         "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
@@ -989,7 +1002,7 @@ require([
 
                         "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
                         "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
-                        "<tr><td><b>Sample dates (1<sup>st</sup>, 2<sup>nd</sup>)</b></td><td>" + attr["tbl_NetworkDates.FirstDecadalSample"] + ", " + attr["tbl_NetworkDates.SecondDecadalSample"] + "</td></tr>" +
+                        "<tr><td><b>Sample dates (1<sup>st</sup>, 2<sup>nd</sup>)</b></td><td>" + sampleDates + "</td></tr>" +
 
                         "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
