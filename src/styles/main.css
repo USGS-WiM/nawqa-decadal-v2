@@ -203,6 +203,7 @@ a:hover{
 }
 
 #legendCollapse {
+  height: 500px !important;
     /*max-height: inherit;*/
 }
 
@@ -239,6 +240,8 @@ a:hover{
     box-shadow: 0 1px 5px rgba(0,0,0,0.65);
     /*min-width: 150px;*/
     border-radius: 4px;
+    overflow: scroll !important;
+    height: 500px !important;
 }
 
 .legendHeading {
@@ -827,6 +830,8 @@ input[type="checkbox"], input[type="radio"] {
 /*Legend Adjustments*/
 #legendDiv{
     min-height: 220px;
+    max-height: none !important;
+    overflow: visible !important;
 }
 
 
