@@ -1227,6 +1227,110 @@
             <!--</div>-->
             <!--</div>-->
             <!--<button id="legendButtonSidebar" type="button" class="btn btn-default" ><span class="glyphicon glyphicon-list"></span> Legend</button>-->
+            <!-- panel for constituent and trend selections -->
+        <div class="panel panel-default wim-sidebar-panel">
+            <div class="panel-heading" id="constPanelHeader">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" href="#constPanel" aria-expanded="true" aria-controls="constDropdowns">
+                        Constituent Select
+                    </a>
+                </h4>
+            </div>
+            <div id="constPanel" class="panel-collapse collapse in constituent-panel" role="tabpanel" aria-labelledby="constPanelHeader">
+                <!-- <div id="constDropdowns" style="padding: 2px 2px;">
+                    <label for="typeSelect">Constituent group:</label>
+                    <span>
+                        <select id="typeSelect">
+                            <option value="Algae" select="#algaeSelect">Algae (Diatoms)</option>
+                            <option value="Carbon" select="#carbonSelect">Carbon</option>
+                            <option value="Fish" select="#fishSelect">Fish</option>
+                            <option value="Macroinvertebrates" select="#macroinvertSelect">Invertebrates</option>
+                            <option value="Major ions" select="#majorIonsSelect">Major ions</option>
+                            <option value="Nutrients" select="#nutrientsSelect">Nutrients</option>
+                            <option value="Pesticides" select="#pesticideSelect">Pesticides</option>
+                            <option value="Salinity" select="#salinitySelect">Salinity</option>
+                            <option value="Sediment" select="#sedimentSelect">Sediment</option>
+                        </select>
+                    </span>
+                </div> -->
+                <div id="trendTypes" style="align-content: center; width: 100%; padding-top: 20px; text-align: left;">
+                    <label>Showing results for:</label>
+                    <span class="sidebar-radio-wrapper">
+                        <input type="radio" name="constButtons" class="constButtons" id="inorganicButton" value="inorganic" checked> Inorganic
+                    </span>
+                    <span class="sidebar-radio-wrapper">
+                        <input type="radio" name="constButtons" class="constButtons" id="organicButton" value="organic"> Organic
+                    </span>
+                </div>
+                <div>
+                    <label>Constituent:</label>
+                    <span>
+                        <select id="organicConstituentSelect" class="constSelect wrtdsSelect">
+
+                        </select>
+                        <select id="inorganicConstituentSelect" class="constSelect wrtdsSelect">
+
+                        </select>
+                        <select id="organicConstituentCycle3Select" class="constSelect wrtdsSelect">
+
+                        </select>
+                        <select id="inorganicConstituentCycle3Select" class="constSelect wrtdsSelect">
+
+                        </select>
+                        <small style="font-size: 7pt;">For more information, see <a class="showUserGuide3" >User Guide</a></small>
+                    </span><!-- -->
+                </div>
+                <!-- <div style="width: 100%; padding-top: 20px; text-align: left;">
+                    <label>Trend period</label>
+                    <span id="trend4" class="sidebar-radio-wrapper">
+                        <input id="trend4input" name="trendPeriod" class="trendPeriod" type="radio" value="P40"> 1972-2012
+                    </span>
+                    <span id="trend3" class="sidebar-radio-wrapper">
+                        <input id="trend3input" name="trendPeriod" class="trendPeriod" type="radio" value="P30"> 1982-2012
+                    </span>
+                    <span id="trend2" class="sidebar-radio-wrapper">
+                        <input id="trend2input" name="trendPeriod" class="trendPeriod" type="radio" value="P20"> 1992-2012
+                    </span>
+                    <span id="trend1" class="sidebar-radio-wrapper">
+                        <input id="trend1input" name="trendPeriod" class="trendPeriod" type="radio" value="P10" checked> 2002-2012
+                    </span>
+                </div> -->
+
+            </div>
+        </div>
+        <div class="panel panel-default wim-sidebar-panel">
+                <div class="panel-heading" id="basemapsHeader">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse"  href="#basemapsPanel" aria-expanded="false" aria-controls="basemapsPanel">
+                            Trend Period
+                        </a>
+                    </h4>
+                </div>
+                <div id="basemapsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="basemapsHeader">
+                    <div class="panel-body collapse in constituent-panel">
+                            <div style="width: 100%; padding-top: 20px; text-align: left;">
+                                    <label>Trend period</label>
+                                    <span id="cycle12" class="trendPeriodWrap sidebar-radio-wrapper">
+                                        <input id="cycle12input" name="trendPeriod" class="trendPeriod" type="radio" value="C12_" checked> Cycle 1-2
+                                    </span>
+                                    <span id="cycle13" class="trendPeriodWrap sidebar-radio-wrapper">
+                                        <input id="cycle13input" name="trendPeriod" class="trendPeriod" type="radio" value="C1_3_"> Cycle 1-3
+                                    </span>
+                                    <span id="cycle23" class="trendPeriodWrap sidebar-radio-wrapper">
+                                        <input id="cycle23input" name="trendPeriod" class="trendPeriod" type="radio" value="C23_"> Cycle 2-3
+                                    </span>
+                                    <span id="cycle123" class="trendPeriodWrap sidebar-radio-wrapper">
+                                        <input id="cycle123input" name="trendPeriod" class="trendPeriod" type="radio" value="C123_"> Cycle 1-2-3
+                                    </span>
+                                </div>
+                                <div>
+                                    <label>Timeline (years)</label>
+                                    <img alt="USGS logo" height="100%" width="100%" src="images/timeline/cycle-1-2.png" id="selectedTrendImage">
+                                </div>
+                    </div>
+
+                </div>
+            </div>
             <div class="panel panel-default wim-sidebar-panel">
                 <div class="panel-heading" id="basemapsHeader">
                     <h4 class="panel-title">
@@ -1264,97 +1368,7 @@
                     <div id="toggle" style="padding: 2px 2px;"></div>
                 </div>
             </div>
-            <!-- panel for constituent and trend selections -->
-            <div class="panel panel-default wim-sidebar-panel">
-                <div class="panel-heading" id="constPanelHeader">
-                    <h4 class="panel-title">
-                        <a class="accordion-toggle" data-toggle="collapse" href="#constPanel" aria-expanded="true" aria-controls="constDropdowns">
-                            Constituent Select
-                        </a>
-                    </h4>
-                </div>
-                <div id="constPanel" class="panel-collapse collapse in constituent-panel" role="tabpanel" aria-labelledby="constPanelHeader">
-                    <!-- <div id="constDropdowns" style="padding: 2px 2px;">
-                        <label for="typeSelect">Constituent group:</label>
-                        <span>
-                            <select id="typeSelect">
-                                <option value="Algae" select="#algaeSelect">Algae (Diatoms)</option>
-                                <option value="Carbon" select="#carbonSelect">Carbon</option>
-                                <option value="Fish" select="#fishSelect">Fish</option>
-                                <option value="Macroinvertebrates" select="#macroinvertSelect">Invertebrates</option>
-                                <option value="Major ions" select="#majorIonsSelect">Major ions</option>
-                                <option value="Nutrients" select="#nutrientsSelect">Nutrients</option>
-                                <option value="Pesticides" select="#pesticideSelect">Pesticides</option>
-                                <option value="Salinity" select="#salinitySelect">Salinity</option>
-                                <option value="Sediment" select="#sedimentSelect">Sediment</option>
-                            </select>
-                        </span>
-                    </div> -->
-                    <div id="trendTypes" style="align-content: center; width: 100%; padding-top: 20px; text-align: left;">
-                        <label>Showing results for:</label>
-                        <span class="sidebar-radio-wrapper">
-                            <input type="radio" name="constButtons" class="constButtons" id="inorganicButton" value="inorganic" checked> Inorganic
-                        </span>
-                        <span class="sidebar-radio-wrapper">
-                            <input type="radio" name="constButtons" class="constButtons" id="organicButton" value="organic"> Organic
-                        </span>
-                    </div>
-                    <div>
-                        <label>Constituent:</label>
-                        <span>
-                            <select id="organicConstituentSelect" class="constSelect wrtdsSelect">
-
-                            </select>
-                            <select id="inorganicConstituentSelect" class="constSelect wrtdsSelect">
-
-                            </select>
-                            <select id="organicConstituentCycle3Select" class="constSelect wrtdsSelect">
-
-                            </select>
-                            <select id="inorganicConstituentCycle3Select" class="constSelect wrtdsSelect">
-
-                            </select>
-                            <small style="font-size: 7pt;">For more information, see <a class="showUserGuide3" >User Guide</a></small>
-                        </span><!-- -->
-                    </div>
-                    <div style="width: 100%; padding-top: 20px; text-align: left;">
-                        <label>Trend period</label>
-                        <span id="cycle12" class="trendPeriodWrap sidebar-radio-wrapper">
-                            <input id="cycle12input" name="trendPeriod" class="trendPeriod" type="radio" value="C12_" checked> Cycle 1-2
-                        </span>
-                        <span id="cycle13" class="trendPeriodWrap sidebar-radio-wrapper">
-                            <input id="cycle13input" name="trendPeriod" class="trendPeriod" type="radio" value="C1_3_"> Cycle 1-3
-                        </span>
-                        <span id="cycle23" class="trendPeriodWrap sidebar-radio-wrapper">
-                            <input id="cycle23input" name="trendPeriod" class="trendPeriod" type="radio" value="C23_"> Cycle 2-3
-                        </span>
-                        <span id="cycle123" class="trendPeriodWrap sidebar-radio-wrapper">
-                            <input id="cycle123input" name="trendPeriod" class="trendPeriod" type="radio" value="C123_"> Cycle 1-2-3
-                        </span>
-                    </div>
-                    <div>
-                        <label>Timeline (years)</label>
-                        <img alt="USGS logo" height="100%" width="100%" src="images/timeline/cycle-1-2.png" id="selectedTrendImage">
-                    </div>
-
-                    <!-- <div style="width: 100%; padding-top: 20px; text-align: left;">
-                        <label>Trend period</label>
-                        <span id="trend4" class="sidebar-radio-wrapper">
-                            <input id="trend4input" name="trendPeriod" class="trendPeriod" type="radio" value="P40"> 1972-2012
-                        </span>
-                        <span id="trend3" class="sidebar-radio-wrapper">
-                            <input id="trend3input" name="trendPeriod" class="trendPeriod" type="radio" value="P30"> 1982-2012
-                        </span>
-                        <span id="trend2" class="sidebar-radio-wrapper">
-                            <input id="trend2input" name="trendPeriod" class="trendPeriod" type="radio" value="P20"> 1992-2012
-                        </span>
-                        <span id="trend1" class="sidebar-radio-wrapper">
-                            <input id="trend1input" name="trendPeriod" class="trendPeriod" type="radio" value="P10" checked> 2002-2012
-                        </span>
-                    </div> -->
-
-                </div>
-            </div>
+            
 
             <!-- # closing div tag for accordion style panels -->
             <!--</div>-->
