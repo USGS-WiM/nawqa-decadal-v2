@@ -14,8 +14,6 @@ var printCount = 0;
 var dragInfoWindows = true;
 var defaultMapCenter = [-94.106, 35.729];
 
-var identifyTask, identifyParams;
-
 var constObj;
 
 var currentConstType = "";
@@ -39,7 +37,9 @@ var orgCycle3Sel;
 var inorgCycle3Sel;
 
 var sucode4FeatureLinkZoom;
-var siteClicked;
+var identifyTask;
+var identifyParams;
+var siteClicked = false;
 
 require([
     'esri/arcgis/utils',
@@ -52,9 +52,6 @@ require([
     'esri/dijit/Geocoder',
     'esri/dijit/PopupTemplate',
     'esri/graphic',
-    'esri/tasks/IdentifyParameters',
-    'esri/tasks/IdentifyTask',
-    'esri/geometry/Extent',
     'esri/geometry/Multipoint',
     'esri/geometry/Point',
     'esri/graphicsUtils',
@@ -62,6 +59,8 @@ require([
     'esri/symbols/SimpleFillSymbol',
     'esri/symbols/SimpleLineSymbol',
     'esri/symbols/SimpleMarkerSymbol',
+    'esri/tasks/IdentifyTask',
+    'esri/tasks/IdentifyParameters',
     'esri/tasks/LegendLayer',
     'esri/tasks/PrintTask',
     'esri/tasks/PrintParameters',
@@ -85,9 +84,6 @@ require([
     Geocoder,
     PopupTemplate,
     Graphic,
-    IdentifyParameters,
-    IdentifyTask,
-    Extent,
     Multipoint,
     Point,
     graphicsUtils,
@@ -95,6 +91,8 @@ require([
     SimpleFillSymbol,
     SimpleLineSymbol,
     SimpleMarkerSymbol,
+    IdentifyTask,
+    IdentifyParameters,
     LegendLayer,
     PrintTask,
     PrintParameters,
@@ -657,6 +655,37 @@ require([
 
         //end code for adding draggability to infoWindow
 
+        on(map, "click", function (evt) {
+            /*var graphic = new Graphic();
+    
+            var feature = graphic;
+    
+            var template = new esri.InfoTemplate("test popup",
+                "attributes and stuff go here");
+    
+            ///ties the above defined InfoTemplate to the feature result returned from a click event
+    
+            feature.setInfoTemplate(template);
+    
+            map.infoWindow.setFeatures([feature]);
+            map.infoWindow.show(evt.mapPoint);
+    
+            map.infoWindow.show();*/
+        });
+
+        // Using Lobipanel: https://github.com/arboshiki/lobipanel
+        $("#siteInfoDiv").lobiPanel({
+            unpin: false,
+            reload: false,
+            minimize: false,
+            close: false,
+            expand: false,
+            editTitle: false,
+            width: 400,
+            maxWidth: 800,
+            maxHeight: 500
+        });
+
         $("#networkInfoDiv").lobiPanel({
             unpin: false,
             reload: false,
@@ -679,314 +708,6 @@ require([
         $("#siteInfoClose").click(function () {
             $("#networkInfoDiv").css("visibility", "hidden");
             map.graphics.clear();
-        });
-
-        on(map, "click", function (evt) {
-
-            var layer = allLayers["0"].layers["Magnitude of change"].options.id;
-            var actualLayer = evt.layer;
-
-            if (siteClicked == false) {
-
-                if (layer == "networkLocations") {
-
-                    /*var layerUpdate = on(map.getLayer(layer), 'update-end', function(evt) {
-                        if (layer != currentLayer) {
-                            currentLayer = layer;
-                            alert(layer);
-                        }
-                    });*/
-
-                    map.getLayer(layer).on('click', function (evt) {
-
-                        var select;
-
-                        map.graphics.clear();
-                        var symbol = new SimpleMarkerSymbol();
-                        symbol.setStyle(SimpleMarkerSymbol.STYLE_SQUARE);
-                        symbol.setColor(new Color([0, 0, 0, 0.0]));
-                        symbol.setSize("20");
-                        var outline = new SimpleLineSymbol(
-                            SimpleLineSymbol.STYLE_SOLID,
-                            new Color([0, 255, 255]),
-                            2
-                        );
-                        symbol.setOutline(outline);
-
-                        var pt = new Point(evt.mapPoint.x, evt.mapPoint.y, map.spatialReference)
-                        var newGraphic = new Graphic(evt.graphic.geometry, symbol);
-
-                        //newGraphic.setSymbol(symbol);
-                        //map.graphics.add(evt.graphic)
-                        map.graphics.add(newGraphic);
-
-
-                        $("#siteInfoDiv").css("visibility", "visible");
-                        var instance = $('#siteInfoDiv').data('lobiPanel');
-                        var docHeight = $(document).height();
-                        var docWidth = $(document).width();
-                        var percentageOfScreen = 0.9;
-                        var siteInfoHeight = docHeight * percentageOfScreen
-                        var siteInfoWidth = docWidth * percentageOfScreen;
-                        if (docHeight < 500) {
-                            $("#siteInfoDiv").height(siteInfoHeight);
-                        }
-                        if (docWidth < 500) {
-                            $("#siteInfoDiv").width(siteInfoWidth);
-                        }
-
-                        //var instanceX = docWidth*0.5-$("#siteInfoDiv").width()*0.5;
-                        //var instanceY = docHeight*0.5-$("#siteInfoDiv").height()*0.5;
-                        var instanceX = evt.x;
-                        var instanceY = evt.y;
-
-                        instance.setPosition(instanceX, instanceY);
-                        if (instance.isPinned() == true) {
-                            instance.unpin();
-                        }
-
-                        var attr = evt.graphic.attributes;
-
-                        $("#siteInfoPanel").empty();
-
-                        currentLayer = layer;
-
-                        var feature = evt.graphic;
-                        var attr = feature.attributes;
-                        //alert('hovered');
-
-                        if (dojo.byId("organicButton").checked) {
-                            select = dojo.byId("organicConstituentSelect");
-                        } else if (dojo.byId("inorganicButton").checked) {
-                            select = dojo.byId("inorganicConstituentSelect");
-                        }
-
-                        var trendSitesLayer = map.getLayer("trendSites");
-
-                        trendSitesLayer.setVisibility(true);
-                        var tsLayerDefs = [];
-                        tsLayerDefs[0] = "SuCode = '" + attr["network_centroids.SUCode"] + "'";
-                        trendSitesLayer.setLayerDefinitions(tsLayerDefs);
-                        trendSitesLayer.refresh();
-
-                        //var currentConst = organicConstituentSelect.selectedOptions[0].attributes.constituent.value;
-                        var currentConst = select[select.selectedIndex].attributes.constituent.value;
-                        //var displayConst = organicConstituentSelect.selectedOptions[0].attributes.displayname.value;
-                        var displayConst = select[select.selectedIndex].attributes.displayname.value;
-
-                        var attField;
-                        var mapFields = map.getLayer("networkLocations").fields;
-                        var trendPeriodVal = $('input[name=trendPeriod]:checked').val();
-
-                        var depth25 = attr["tbl_Networks.Depth25thpercentile"];
-                        var depth75 = attr["tbl_Networks.Depth75thpercentile"];
-
-                        sucode4FeatureLinkZoom = attr["network_centroids.SUCode"];
-
-                        if (layer == "networkLocations") {
-                            currentSiteNo = attr.EcoTrendResults_EcoSiteID;
-                            /*$("#siteInfoTabPane").append("<br/><b>Site name: </b>" + attr.EcoSiteSummary_no_headers_csv_Ecology_site_name + "<br/>" +
-                                "<b>Site number: </b>" + attr.EcoTrendResults_EcoSiteID + "<br/>" +
-                                "<b>State: </b>" +  + "<br/>" +
-                                "<b>Agency: </b>U.S. Geological Survey<br/>" +
-                                "<b>Data source: </b>BioData<br/>" +
-                                "<b>Latitude: </b>" + attr.EcoSiteSummary_no_headers_csv_LatDD + "<br/>" +
-                                "<b>Longitude: </b>" + attr.EcoSiteSummary_no_headers_csv_LngDD + "<br/>" +
-                                "<b>Drainage area: </b>" + attr.DA + " (km<sup>2</sup>)<br/>" +
-                                "<b>HUC2: </b>" +  + "<br/>" +
-                                "<b>HUC4: </b>" +  + "<br/>" +
-                                "<b>HUC6: </b>" +  + "<br/>" +
-                                "<b>HUC8: </b>" +  + "<br/>" +
-                                "<b>Matched streamgage name: </b>" +  + "<br/>" +
-                                "<b>Matched streamgage number: </b>" +  + "<br/>" +
-                                "<b>Matched streamgage agency: </b>");*/
-
-                            if ($("#cycle12input").is(':checked')) {
-                                var sampleDates = "1988-2001 to 2002-2012";
-                            }
-                            if ($("#cycle13input").is(':checked')) {
-                                var sampleDates = "1988-2001 to 2013-2014";
-                            }
-                            if ($("#cycle23input").is(':checked')) {
-                                var sampleDates = "2002-2012 to 2013-2014";
-                            }
-                            if ($("#cycle123input").is(':checked')) {
-                                var sampleDates = "1988-2001 to 2002-2012 to 2013-2014";
-                            }
-
-                            $("#siteInfoPanel").append("<table class='infoTable'><tr><td><b>" + displayConst + "</b></td><td><span class='" + camelize(getValue(attr[attField])) + "'>" + getValue(attr[attField]) + "</span></td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
-                                "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
-                                "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
-                                "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
-                                "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
-                                "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
-                                "<tr><td><b>Sample dates (1<sup>st</sup>, 2<sup>nd</sup>)</b></td><td>" + sampleDates + "</td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
-                                "<tr><td colspan='2' align='center'><a id='explanation' href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
-                            $("#infoWindowLink").on('click', linkClick);
-                            $("#explanation").on('click', showTermExp);
-                        }
-
-                        OID = feature.attributes["network_centroids.OBJECTID"];
-                        oldValue = getValue(attr[attField]);
-
-
-
-
-                    });
-
-                }
-
-
-
-                map.graphics.clear();
-
-                identifyParams = new IdentifyParameters();
-                identifyParams.tolerance = 0;
-                identifyParams.returnGeometry = true;
-                identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_ALL;
-                identifyParams.spatialReference = map.spatialReference;
-                identifyParams.width = map.width;
-                identifyParams.height = map.height;
-                identifyParams.geometry = evt.mapPoint;
-                identifyParams.mapExtent = map.extent;
-
-                identifyTask = new IdentifyTask(allLayers[0].layers["Network Boundaries"].url);
-                var deferredResult = identifyTask.execute(identifyParams);
-
-                deferredResult.addCallback(function (response) {
-                    if (response.length > 0) {
-
-                        console.log("got it");
-
-                        var feature;
-                        var symbol;
-                        feature = response[0].feature;
-
-                        /* feature = response; */
-
-
-                        symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID,
-                            new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,
-                                new dojo.Color([0, 225, 225]), 2), new dojo.Color([0, 225, 225, 0.25])
-                        );
-
-                        feature.geometry.spatialReference = map.spatialReference;
-
-                        var graphic = feature;
-                        var sucode = feature.attributes.SUCODE;
-
-                        graphic.setSymbol(symbol);
-
-                        map.graphics.add(graphic);
-
-                        var featureLayer = map.getLayer("networkLocations");
-
-
-                        var featureQuery = new esri.tasks.Query();
-                        featureQuery.returnGeometry = true;
-
-                        featureQuery.outFields = ["*"];
-                        featureQuery.where = "network_centroids.SUCode = '" + sucode + "'";
-
-                        featureLayer.queryFeatures(featureQuery, function (featureSet) {
-
-                            var attr = featureSet.features[0].attributes;
-                            sucode4FeatureLinkZoom = attr["network_centroids.SUCode"];
-
-                            var depth25 = attr["tbl_Networks.Depth25thpercentile"];
-                            var depth75 = attr["tbl_Networks.Depth75thpercentile"];
-
-                            $("#networkInfoDiv").css("visibility", "visible");
-                            var instance = $('#networkInfoDiv').data('lobiPanel');
-                            var docHeight = $(document).height();
-                            var docWidth = $(document).width();
-                            var percentageOfScreen = 0.9;
-                            var siteInfoHeight = docHeight * percentageOfScreen
-                            var siteInfoWidth = docWidth * percentageOfScreen;
-                            if (docHeight < 500) {
-                                $("#networkInfoDiv").height(siteInfoHeight);
-                            }
-                            if (docWidth < 500) {
-                                $("#networkInfoDiv").width(siteInfoWidth);
-                            }
-
-                            var instanceX = evt.x;
-                            var instanceY = evt.y;
-
-                            instance.setPosition(instanceX, instanceY);
-                            if (instance.isPinned() == true) {
-                                instance.unpin();
-                            }
-
-                            $("#networkInfoPanel").empty();
-                            /* for (i=0;i<response.length;i++) {
-                                
-                                if (response[i].layerName == "network_polygons") {
-        
-                                    unit = response[i].feature.attributes.Unit;
-                                }
-                            } */
-
-                            $("#networkInfoPanel").append("<table class='infoTable'><tr><td><b>" + "</b></td><td><span class='" +
-
-                                "<table class='infoTable'><tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
-                                "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
-                                "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
-                                "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
-                                "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
-                                "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
-                                "<tr><td colspan='2' align='center'><a id='explanation' href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
-
-                            $("#infoWindowLink").on('click', linkClick);
-                            $("#explanation").on('click', showTermExp);
-
-                        });
-                    }
-                });
-            } else {
-                siteClicked == false;
-            }
-        });
-
-        // Using Lobipanel: https://github.com/arboshiki/lobipanel
-        $("#siteInfoDiv").lobiPanel({
-            unpin: false,
-            reload: false,
-            minimize: false,
-            close: false,
-            expand: false,
-            editTitle: false,
-            width: 400,
-            maxWidth: 800,
-            maxHeight: 500
         });
 
         $("#siteInfoDiv .dropdown").prepend("<div id='siteInfoClose' title='close'><b>X</b></div>");
@@ -1102,6 +823,10 @@ require([
             var info = info.replace(previousConst, event.target.value);
             $("#siteInfoPanel").html(info);
 
+            var infoN1 = $("#networkInfoPanel").html();
+            var infoN1 = infoN1.replace(previousConst, event.target.value);
+            $("#networkInfoPanel").html(infoN1);
+
             previousConst = event.target.value;
             console.log("after: " + previousConst);
 
@@ -1137,6 +862,11 @@ require([
                     info2 = info2.replace(oldValue, val);
                     info2 = info2.replace(camelize(oldValue), camelize(val));
 
+                    var infoN2 = $("#networkInfoPanel").html();
+                    infoN2 = infoN2.replace(oldValue, val);
+                    infoN2 = infoN2.replace(camelize(oldValue), camelize(val));
+
+                    $("#networInfoPanel").html(infoN2);
                     $("#siteInfoPanel").html(info2);
 
                     oldValue = val;
@@ -1156,6 +886,460 @@ require([
 
         $(".constSelect").on("change", constituentUpdate);
 
+        siteClicked = false;
+
+        map.on('layer-add', function (evt) {
+            var layer = evt.layer.id;
+            var actualLayer = evt.layer;
+
+            if (layer == "networkLocations") {
+
+
+                /*var layerUpdate = on(map.getLayer(layer), 'update-end', function(evt) {
+                    if (layer != currentLayer) {
+                        currentLayer = layer;
+                        alert(layer);
+                    }
+                });*/
+
+                /* if (siteClicked == false) {
+                    siteClicked = true;
+                    return;
+                } */
+
+
+                map.getLayer(layer).on('click', function (evt) {
+
+                    siteClicked = true;
+
+                    var select;
+
+                    map.graphics.clear();
+                    var symbol = new SimpleMarkerSymbol();
+                    symbol.setStyle(SimpleMarkerSymbol.STYLE_SQUARE);
+                    symbol.setColor(new Color([0, 0, 0, 0.0]));
+                    symbol.setSize("20");
+                    var outline = new SimpleLineSymbol(
+                        SimpleLineSymbol.STYLE_SOLID,
+                        new Color([0, 255, 255]),
+                        2
+                    );
+                    symbol.setOutline(outline);
+
+                    var pt = new Point(evt.mapPoint.x, evt.mapPoint.y, map.spatialReference)
+                    var newGraphic = new Graphic(evt.graphic.geometry, symbol);
+
+                    //newGraphic.setSymbol(symbol);
+                    //map.graphics.add(evt.graphic)
+                    map.graphics.add(newGraphic);
+
+                    $("#siteInfoDiv").css("visibility", "visible");
+                    var instance = $('#siteInfoDiv').data('lobiPanel');
+                    var docHeight = $(document).height();
+                    var docWidth = $(document).width();
+                    var percentageOfScreen = 0.9;
+                    var siteInfoHeight = docHeight * percentageOfScreen
+                    var siteInfoWidth = docWidth * percentageOfScreen;
+                    if (docHeight < 500) {
+                        $("#siteInfoDiv").height(siteInfoHeight);
+                    }
+                    if (docWidth < 500) {
+                        $("#siteInfoDiv").width(siteInfoWidth);
+                    }
+
+                    //var instanceX = docWidth*0.5-$("#siteInfoDiv").width()*0.5;
+                    //var instanceY = docHeight*0.5-$("#siteInfoDiv").height()*0.5;
+                    var instanceX = evt.x;
+                    var instanceY = evt.y;
+
+                    instance.setPosition(instanceX, instanceY);
+                    if (instance.isPinned() == true) {
+                        instance.unpin();
+                    }
+
+                    var attr = evt.graphic.attributes;
+
+                    $("#siteInfoPanel").empty();
+
+                    currentLayer = layer;
+
+                    var feature = evt.graphic;
+                    var attr = feature.attributes;
+                    //alert('hovered');
+
+                    if (dojo.byId("organicButton").checked) {
+                        select = dojo.byId("organicConstituentSelect");
+                    } else if (dojo.byId("inorganicButton").checked) {
+                        select = dojo.byId("inorganicConstituentSelect");
+                    }
+
+                    var trendSitesLayer = map.getLayer("trendSites");
+
+                    trendSitesLayer.setVisibility(true);
+                    var tsLayerDefs = [];
+                    tsLayerDefs[0] = "SuCode = '" + attr["network_centroids.SUCode"] + "'";
+                    trendSitesLayer.setLayerDefinitions(tsLayerDefs);
+                    trendSitesLayer.refresh();
+
+                    //var currentConst = organicConstituentSelect.selectedOptions[0].attributes.constituent.value;
+                    var currentConst = select[select.selectedIndex].attributes.constituent.value;
+                    //var displayConst = organicConstituentSelect.selectedOptions[0].attributes.displayname.value;
+                    var displayConst = select[select.selectedIndex].attributes.displayname.value;
+
+                    //sucode4FeatureLinkZoom = attr["network_centroids.SUCode"];
+
+                    var attField;
+                    var mapFields = map.getLayer("networkLocations").fields;
+                    var trendPeriodVal = $('input[name=trendPeriod]:checked').val();
+                    $.each(mapFields, function (index, value) {
+                        if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1 &&
+                            mapFields[index].name.toLowerCase().indexOf(trendPeriodVal.toLowerCase()) != -1) {
+                            attField = mapFields[index].name;
+                        }
+                    });
+
+                    var depth25 = attr["tbl_Networks.Depth25thpercentile"];
+                    var depth75 = attr["tbl_Networks.Depth75thpercentile"];
+
+                    sucode4FeatureLinkZoom = attr["network_centroids.SUCode"];
+
+                    if (layer == "networkLocations") {
+                        currentSiteNo = attr.EcoTrendResults_EcoSiteID;
+                        /*$("#siteInfoTabPane").append("<br/><b>Site name: </b>" + attr.EcoSiteSummary_no_headers_csv_Ecology_site_name + "<br/>" +
+                            "<b>Site number: </b>" + attr.EcoTrendResults_EcoSiteID + "<br/>" +
+                            "<b>State: </b>" +  + "<br/>" +
+                            "<b>Agency: </b>U.S. Geological Survey<br/>" +
+                            "<b>Data source: </b>BioData<br/>" +
+                            "<b>Latitude: </b>" + attr.EcoSiteSummary_no_headers_csv_LatDD + "<br/>" +
+                            "<b>Longitude: </b>" + attr.EcoSiteSummary_no_headers_csv_LngDD + "<br/>" +
+                            "<b>Drainage area: </b>" + attr.DA + " (km<sup>2</sup>)<br/>" +
+                            "<b>HUC2: </b>" +  + "<br/>" +
+                            "<b>HUC4: </b>" +  + "<br/>" +
+                            "<b>HUC6: </b>" +  + "<br/>" +
+                            "<b>HUC8: </b>" +  + "<br/>" +
+                            "<b>Matched streamgage name: </b>" +  + "<br/>" +
+                            "<b>Matched streamgage number: </b>" +  + "<br/>" +
+                            "<b>Matched streamgage agency: </b>");*/
+
+                        if ($("#cycle12input").is(':checked')) {
+                            var sampleDates = "1988-2001 to 2002-2012";
+                        }
+                        if ($("#cycle13input").is(':checked')) {
+                            var sampleDates = "1988-2001 to 2013-2014";
+                        }
+                        if ($("#cycle23input").is(':checked')) {
+                            var sampleDates = "2002-2012 to 2013-2014";
+                        }
+                        if ($("#cycle123input").is(':checked')) {
+                            var sampleDates = "1988-2001 to 2002-2012 to 2013-2014";
+                        }
+
+                        $("#siteInfoPanel").append("<table class='infoTable'><tr><td><b>" + displayConst + "</b></td><td><span class='" + camelize(getValue(attr[attField])) + "'>" + getValue(attr[attField]) + "</span></td></tr>" +
+
+                            "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                            "<tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
+                            "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
+                            "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
+
+                            "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                            "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
+                            "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
+                            "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
+
+                            "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                            "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
+                            "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
+                            "<tr><td><b>Sample dates (1<sup>st</sup>, 2<sup>nd</sup>)</b></td><td>" + sampleDates + "</td></tr>" +
+
+                            "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                            "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
+                            "<tr><td colspan='2' align='center'><a id='explanation' href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
+                    }
+
+                    OID = feature.attributes["network_centroids.OBJECTID"];
+                    oldValue = getValue(attr[attField]);
+
+                    $("#infoWindowLink").on('click', linkClick);
+                    $("#explanation").on('click', showTermExp);
+
+
+                });
+
+            }
+
+        });
+
+        identifyParams = new esri.tasks.IdentifyParameters();
+        identifyParams.tolerance = 10;
+        identifyParams.returnGeometry = true;
+        identifyParams.maxAllowableOffset = 1000;
+        identifyParams.layerOption = "LAYER_OPTION_ALL";
+        identifyParams.width = map.width;
+        identifyParams.height = map.height;
+        //identifyTask = new esri.tasks.IdentifyTask("http://nawqatrends.wim.usgs.gov/arcgis/rest/services/NAWQA/DecadalMap/MapServer");
+        identifyTask = new esri.tasks.IdentifyTask(allLayers[0].layers["Network Boundaries"].url);
+
+
+        on(map, "click", function (evt) {
+            if (siteClicked == false) {
+                map.graphics.clear();
+
+                identifyParams.geometry = evt.mapPoint;
+                identifyParams.mapExtent = map.extent;
+
+                // the deferred variable is set to the parameters defined above and will be used later to build the contents of the infoWindow.
+
+                var deferredResult = identifyTask.execute(identifyParams);
+
+                /* setCursorByID("mainDiv", "wait");
+                map.setCursor("wait"); */
+
+                //getAquifer(evt.mapPoint);
+
+                deferredResult.addCallback(function (response) {
+
+                    if (response.length > 0 && map.getLayer("networkBoundaries").visible) {
+
+                        var feature = response[0].feature;
+                        var networkFeature = response[0].feature;
+                        var attr = feature.attributes;
+
+                        var featureLayer = map.getLayer("networkLocations");
+                        var sucode = attr.SUCODE;
+
+                        // Code for adding network highlight
+                        var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+                            new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,
+                                new dojo.Color([98, 194, 204]), 2), new dojo.Color([98, 194, 204, 0.5])
+                        );
+                        feature.geometry.spatialReference = map.spatialReference;
+                        var graphic = feature;
+                        graphic.setSymbol(symbol);
+
+                        map.graphics.add(graphic);
+
+                        $("#networkInfoDiv").css("visibility", "visible");
+                        var instance = $('#networkInfoDiv').data('lobiPanel');
+                        var docHeight = $(document).height();
+                        var docWidth = $(document).width();
+                        var percentageOfScreen = 0.9;
+                        var siteInfoHeight = docHeight * percentageOfScreen
+                        var siteInfoWidth = docWidth * percentageOfScreen;
+                        if (docHeight < 500) {
+                            $("#networkInfoDiv").height(siteInfoHeight);
+                        }
+                        if (docWidth < 500) {
+                            $("#networkInfoDiv").width(siteInfoWidth);
+                        }
+
+                        var instanceX = evt.x;
+                        var instanceY = evt.y;
+
+                        instance.setPosition(instanceX, instanceY);
+                        if (instance.isPinned() == true) {
+                            instance.unpin();
+                        }
+
+                        $("#networkInfoPanel").empty();
+
+                        // Begin query on networks centroid to get attributes for network popup
+                        var featureQuery = new esri.tasks.Query();
+                        featureQuery.returnGeometry = true;
+
+                        featureQuery.outFields = ["*"];
+                        featureQuery.where = "network_centroids.SUCode = '" + sucode + "'";
+
+                        featureLayer.queryFeatures(featureQuery, function (featureSet) {
+                            //set the customized template for displaying content in the info window. HTML tags can be used for styling.
+                            // The string before the comma within the parens immediately following the constructor sets the title of the info window.
+                            var attr = featureSet.features[0].attributes;
+
+                            sucode4FeatureLinkZoom = attr["network_centroids.SUCode"];
+
+                            //var currentConst = organicConstituentSelect.selectedOptions[0].attributes.constituent.value;
+                            //var displayConst = organicConstituentSelect.selectedOptions[0].attributes.displayname.value;
+
+                            /*var template = new esri.InfoTemplate("Trends Info: " + attr["tbl_Networks.SUCode"],
+                                "<b>Network type:</b> " + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "<br/>"+
+                                "<p><b>Description:</b> " + attr["tbl_Networks.NetDescMedium"] + "<br/><br/>" +
+                                "<b>Well type:</b></p>" +
+                                "<br/><p><a id='infoWindowLink' href='javascript:void(0)'>Zoom to Network</a></p>");*/
+
+                            var depth25 = attr["tbl_Networks.Depth25thpercentile"];
+                            var depth75 = attr["tbl_Networks.Depth75thpercentile"];
+
+                            
+
+                            $("#networkInfoPanel").append("<table class='infoTable'><tr><td><b>" + "</b></td><td><span class='" + "'>" + "</span></td></tr>" +
+                                "<table class='infoTable'><tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
+                                "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
+                                "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
+
+                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                                "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
+                                "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
+                                "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
+
+                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                                "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
+                                "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
+
+                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                                "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
+                                "<tr><td colspan='2' align='center'><a href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
+
+
+                            //ties the above defined InfoTemplate to the feature result returned from a click event
+
+                            /* feature.setInfoTemplate(template);
+        
+                            map.infoWindow.setFeatures([feature]);
+                            map.infoWindow.resize(400,400);
+                            map.infoWindow.show(evt.mapPoint);
+        
+                            var infoWindowClose = dojo.connect(map.infoWindow, "onHide", function(evt) {
+                                map.graphics.clear();
+                                map.getLayer("trendSites").setVisibility(false);
+                                dojo.disconnect(map.infoWindow, infoWindowClose);
+                            }); */
+
+                            /* setCursorByID("mainDiv", "default");
+                            map.setCursor("default"); */
+
+                            /* $("#infoWindowLink").click(function(feature) {
+                                var convertedGeom = esri.geometry.webMercatorToGeographic(networkFeature.geometry);
+        
+                                var featExtent = convertedGeom.getExtent();
+        
+                                map.setExtent(featExtent, true);
+                            }); */
+
+                            //map.infoWindow.show(evt.mapPoint);
+
+                            $("#infoWindowLink").on('click', linkClick);
+                            $("#explanation").on('click', showTermExp);
+
+                        }, function (error) {
+                            alert('error');
+                        });
+
+                        
+
+                        function checkSigFigs(value) {
+                            var outVal;
+
+                            var splitVal;
+
+                            if (((value != null) || (value != undefined)) && (value.length > 2)) {
+
+                                splitVal = splitVal.toString().split('.');
+                                outVal = value.toFixed(2);
+                            } else {
+                                outVal = value;
+                            }
+
+                            return outVal;
+                        }
+                        //var feature = featureSet.features[0];
+                    } else {
+
+                        var query = new esri.tasks.Query();
+                        query.returnGeometry = false;
+                        query.geometry = evt.mapPoint;
+                        var queryTask = new esri.tasks.QueryTask(map.getLayer("glacialAquifer").url + "/2");
+
+                        queryTask.execute(query, function (results) {
+
+                            var popInfo = "";
+
+                            if (results.features.length > 0) {
+                                popInfo += "<b>Aquifer:</b> Glacial aquifer<br/>";
+                            }
+
+                            var identifyParams2 = new esri.tasks.IdentifyParameters();
+                            identifyParams2.tolerance = 0;
+                            identifyParams2.returnGeometry = false;
+                            identifyParams2.mapExtent = map.extent;
+                            identifyParams2.layerIds = [1];
+                            identifyParams2.width = map.width;
+                            identifyParams2.height = map.height;
+
+                            var identifyTask2 = new esri.tasks.IdentifyTask("https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/DecadalMap/MapServer");
+
+                            if (map.getLayer("principalAquifers").visible) {
+                                var deferredResult2 = identifyTask2.execute(identifyParams);
+
+                                deferredResult2.addCallback(function (response) {
+
+                                    if (response.length > 0) {
+                                        var feature = response[0].feature;
+                                        var attr = feature.attributes;
+                                        console.log(attr["AQ_NAME"]);
+                                        var features;
+
+                                        var aqNameArray = [];
+
+                                        for (var i = 0; i < response.length; i++) {
+                                            //features.push(response[i].feature);
+                                            var feature = response[i].feature;
+                                            var attr = feature.attributes;
+                                            if (aqNameArray.indexOf(attr["AQ_NAME"]) == -1) {
+                                                aqNameArray.push(attr["AQ_NAME"]);
+                                                popInfo += "<b>Aquifer:</b> " + attr["AQ_NAME"] + "<br/>";
+                                            }
+                                        }
+
+                                        var template = new esri.InfoTemplate("Principal Aquifers",
+                                            popInfo);
+
+                                        //ties the above defined InfoTemplate to the feature result returned from a click event	
+
+                                        /* feature.setInfoTemplate(template);
+        
+                                        map.infoWindow.setFeatures([feature]);
+                                        map.infoWindow.show(evt.mapPoint);
+        
+                                        var infoWindowClose = dojo.connect(map.infoWindow, "onHide", function(evt) {
+                                            map.graphics.clear();
+                                            map.getLayer("trendSites").setVisibility(false);
+                                            dojo.disconnect(map.infoWindow, infoWindowClose);
+                                        }); */
+
+                                        /* setCursorByID("mainDiv", "default"); */
+                                        map.setCursor("default");
+                                    }
+
+                                });
+                            } else {
+                                /* setCursorByID("mainDiv", "default"); */
+                                map.setCursor("default");
+                            }
+
+                        });
+
+                        /* setCursorByID("mainDiv", "default"); */
+                        map.setCursor("default");
+
+                    }
+
+
+                });
+
+                //sets the content that informs the info window to the previously established "deferredResult" variable.
+                //map.infoWindow.setFeatures([ deferredResult ]);
+                //tells the info window to render at the point where the user clicked. 
+                //map.infoWindow.show(evt.mapPoint);
+            }
+            siteClicked = false;
+        });
+
         function networkTypeFind(networkType) {
             var networkText;
 
@@ -1171,14 +1355,11 @@ require([
         }
 
         function checkSigFigs(value) {
-
             var outVal;
 
-            var splitVal;
+            var splitVal = value.toString().split('.');
 
-            if (((value != null) || (value != undefined)) && (value.length > 2)) {
-
-                splitVal = splitVal.toString().split('.');
+            if ((splitVal[1] != null || splitVal[1] != undefined) && splitVal[1].length > 2) {
                 outVal = value.toFixed(2);
             } else {
                 outVal = value;
@@ -2411,38 +2592,32 @@ require([
                 }, "legendDiv");
                 legend.startup();
 
+
             });//end of require statement containing legend building code
-
-
-
-        /* function showTermExp() {
-            $('#explanationModal').modal('show');
-        } */
     });
 
-function linkClick() {
-
-    map.setCursor("wait");
-    console.log(sucode4FeatureLinkZoom);
-    var query = new esri.tasks.Query();
-    query.where = "SUCODE = '" + sucode4FeatureLinkZoom + "'";
-    query.returnGeometry = true;
-    var queryTask = new esri.tasks.QueryTask(map.getLayer("networkBoundaries").url + "/0");
-    queryTask.execute(query, function (results) {
-        console.log('returned with result?');
-        var feature = results.features[0];
-        var featureExtent = feature.geometry.getExtent();
-        map.setExtent(featureExtent, true);
-        //setCursorByID("mainDiv", "default");
-        map.setCursor("default");
-    });
-
-}
-
-function showTermExp() {
-    $('#explanationModal').modal('show');
-}
-
+    function linkClick() {
+        
+                    map.setCursor("wait");
+                    console.log(sucode4FeatureLinkZoom);
+                    var query = new esri.tasks.Query();
+                    query.where = "SUCODE = '" + sucode4FeatureLinkZoom + "'";
+                    query.returnGeometry = true;
+                    var queryTask = new esri.tasks.QueryTask(map.getLayer("networkBoundaries").url + "/0");
+                    queryTask.execute(query, function (results) {
+                        console.log('returned with result?');
+                        var feature = results.features[0];
+                        var featureExtent = feature.geometry.getExtent();
+                        map.setExtent(featureExtent, true);
+                        //setCursorByID("mainDiv", "default");
+                        map.setCursor("default");
+                    });
+        
+                }
+        
+                function showTermExp() {
+                    $('#explanationModal').modal('show');
+                }
 
 $(document).ready(function () {
     //7 lines below are handler for the legend buttons. to be removed if we stick with the in-map legend toggle
