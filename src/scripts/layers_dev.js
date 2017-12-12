@@ -30,7 +30,7 @@ require([
 	var count = 2;
     renderer = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C12_P00940_Chloride");
     renderer2 = new esri.renderer.UniqueValueRenderer(defaultSymbol);
-    renderer3 = new esri.renderer.UniqueValueRenderer(defaultSymbol);
+    renderer3 = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C12_P00940_Chloride");
 
 	orangeBigSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/orange_large.png", 45, 45);
 	greenBigSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/green_large.png", 45, 45);
@@ -40,7 +40,7 @@ require([
 	greenSmallSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/green_small.png", 45, 25);
 	blankSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/blank.png", 45, 25);
 	/* noDataSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/no_data.png", 45, 25); */
-    allNetworksSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/no_data.png", 45, 25);
+    allNetworksSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/no_data_gray.png", 45, 25);
 
 	renderer.addValue({
 		value: "2", 
@@ -110,9 +110,34 @@ require([
 		label: "Trend data not available"
     }); */
     renderer3.addValue({
+		value: "2", 
+		symbol: allNetworksSymbol,
+		label: "Network"
+	});
+    renderer3.addValue({
 		value: "0", 
 		symbol: allNetworksSymbol,
-		label: "All Networks"
+		label: "Network"
+	});
+    renderer3.addValue({
+		value: "2", 
+		symbol: allNetworksSymbol,
+		label: "Network"
+	});
+    renderer3.addValue({
+		value: "-2", 
+		symbol: allNetworksSymbol,
+		label: "Network"
+	});
+    renderer3.addValue({
+		value: "1", 
+		symbol: allNetworksSymbol,
+		label: "Network"
+	});
+    renderer3.addValue({
+		value: "-1", 
+		symbol: allNetworksSymbol,
+		label: "Network"
 	});
 
     allLayers = [//
@@ -121,6 +146,25 @@ require([
             "showGroupHeading": false,
             "includeInLayerList": false,
             "layers": {
+                "All Networks": {
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest_test/MapServer/0",
+                    "options": {
+                        "id": "allNetworks",
+                        /* "visibleLayers": [0], */
+                        "mode": FeatureLayer.MODE_SNAPSHOT,
+                        "outFields": ["*"],
+                        /* "orderByFields": [ "network_centroids.P00940_Chloride DESC" ], */
+                        "visible": false
+                    },
+                    "wimOptions": {
+                        "type": "layer",
+                        "layerType": "agisFeature",
+                        "includeInLayerList": true,
+                        "hasOpacitySlider": true,
+                        "includeLegend": true,
+                        "renderer": renderer3
+                    }
+                },
                 "Magnitude of change": {
                     "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest_test/MapServer/0",
                     "options": {
@@ -140,25 +184,7 @@ require([
                         "renderer": renderer
                     }
                 },
-                "All networks": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest_test/MapServer/0",
-                    "options": {
-                        "id": "allNetworks",
-                        /* "visibleLayers": [0], */
-                        "mode": FeatureLayer.MODE_SNAPSHOT,
-                        "outFields": ["*"],
-                        /* "orderByFields": [ "network_centroids.P00940_Chloride DESC" ], */
-                        "visible": true
-                    },
-                    "wimOptions": {
-                        "type": "layer",
-                        "layerType": "agisFeature",
-                        "includeInLayerList": true,
-                        "hasOpacitySlider": true,
-                        "includeLegend": false,
-                        "renderer": renderer3
-                    }
-                }, "Land use 2001" : {
+                 "Land use 2001" : {
                     "url": "https://raster.nationalmap.gov/arcgis/rest/services/LandCover/conus_01/MapServer",
                     "visibleLayers": [0],
                     "options": {

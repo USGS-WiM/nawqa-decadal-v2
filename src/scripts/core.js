@@ -695,7 +695,7 @@ require([
             editTitle: false,
             width: 400,
             maxWidth: 800,
-            maxHeight: 500
+            maxHeight: 390
         });
 
         $("#networkInfoDiv .dropdown").prepend("<div id='siteInfoClose' title='close'><b>X</b></div>");
@@ -784,6 +784,7 @@ require([
             }
 
             var featureLayer = map.getLayer("networkLocations");
+            /* var featureLayerAll = map.getLayer("allNetworks"); */
 
             var layerUpdateEnd = dojo.connect(featureLayer, "onUpdateEnd", function (evt) {
                 dojo.disconnect(featureLayer, layerUpdateEnd);
@@ -1034,6 +1035,9 @@ require([
                             var sampleDates = "1988-2001 to 2002-2012 to 2013-2014";
                         }
 
+                        $('#siteInfoDiv').show();
+                        $('#networkInfoDiv').hide();
+
                         $("#siteInfoPanel").append("<table class='infoTable'><tr><td><b>" + displayConst + "</b></td><td><span class='" + camelize(getValue(attr[attField])) + "'>" + getValue(attr[attField]) + "</span></td></tr>" +
 
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
@@ -1086,7 +1090,10 @@ require([
 
         on(map, "click", function (evt) {
             if (siteClicked == false) {
-                map.graphics.clear();
+                map.graphics.clear(); 
+                
+                $('#siteInfoDiv').hide();
+                $('#networkInfoDiv').show();
 
                 identifyParams.geometry = evt.mapPoint;
                 identifyParams.mapExtent = map.extent;
@@ -1194,8 +1201,6 @@ require([
 
                                 "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
                                 "<tr><td colspan='2' align='center'><a href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
-
-
                             //ties the above defined InfoTemplate to the feature result returned from a click event
 
                             /* feature.setInfoTemplate(template);
