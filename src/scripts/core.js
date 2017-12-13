@@ -1643,6 +1643,9 @@ require([
             $('#faqNav').click(function () {
                 $('#faqModal').modal('show');
             });
+            $('#tester').click(function () {
+                $('#faqModal').modal('show');
+            });
 
             $("#showFAQ14").click(function () {
                 $('#geosearchModal').modal('hide');
