@@ -1072,7 +1072,6 @@ require([
 
 
                 });
-
             }
 
         });
@@ -1089,11 +1088,14 @@ require([
 
 
         on(map, "click", function (evt) {
+
             if (siteClicked == false) {
                 map.graphics.clear(); 
                 
                 $('#siteInfoDiv').hide();
                 $('#networkInfoDiv').show();
+
+                map.getLayer("trendSites").setVisibility(false);
 
                 identifyParams.geometry = evt.mapPoint;
                 identifyParams.mapExtent = map.extent;
@@ -1344,6 +1346,10 @@ require([
             }
             siteClicked = false;
         });
+
+        function clearGrahpics(pt) {
+            map.graphics.clear();
+        }
 
         function networkTypeFind(networkType) {
             var networkText;
