@@ -1056,7 +1056,7 @@ require([
 
                             "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
                             "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
-                            "<tr><td><b>Sample dates (1<sup>st</sup>, 2<sup>nd</sup>)</b></td><td>" + sampleDates + "</td></tr>" +
+                            "<tr><td><b>Sample dates</b></td><td>" + sampleDates + "</td></tr>" +
 
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
@@ -1078,7 +1078,7 @@ require([
         });
 
         identifyParams = new esri.tasks.IdentifyParameters();
-        identifyParams.tolerance = 10;
+        identifyParams.tolerance = 0;
         identifyParams.returnGeometry = true;
         identifyParams.maxAllowableOffset = 1000;
         identifyParams.layerOption = "LAYER_OPTION_ALL";
