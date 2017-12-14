@@ -1643,27 +1643,52 @@ require([
             $('#faqNav').click(function () {
                 $('#faqModal').modal('show');
             });
-            $('#tester').click(function () {
-                $('#faqModal').modal('show');
-            });
 
-            $("#showFAQ14").click(function () {
+            $("#showFAQ15").click(function () {
                 $('#geosearchModal').modal('hide');
                 $('#aboutModal').modal('hide');
                 $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('hide');
                 $('#faqModal').modal('show');
-                $('#faq14header').trigger('click');
+                $('#faq15header').trigger('click');
 
                 statsSection
 
-                // scrolling to FAQ 14
+                // scrolling to FAQ 15
                 $(document).ready(function () {
                     setTimeout(function () {
                         $('#faqModal').animate({
-                            scrollTop: $("#faq14header").offset().top - 80
+                            scrollTop: $("#faq15header").offset().top - 80
                         }, 500);
                     }, 800);
+                });
+            });
+
+            $("#showFAQ7").click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('hide');
+                $('#faqModal').modal('show');
+                $('#faq7header').trigger('click');
+
+                // scrolling to FAQ 15
+                $(document).ready(function () {
+                        if ($("#angle7").css("transform") == 'none') {
+                            $("#angle7").css("transform", "rotate(90deg)");
+                            setTimeout(function () {
+                                $('#faqModal').animate({
+                                    scrollTop: $("#faq7header").offset().top - 80
+                                }, 500);
+                            }, 800);
+                        } else {
+                            setTimeout(function () {
+                                $('#faqModal').animate({
+                                    scrollTop: $("#faq7header").offset().top - 80
+                                }, 500);
+                            }, 800);
+                        }
+                        
                 });
             });
 
@@ -1719,6 +1744,7 @@ require([
             $('#faq26header').click(function () { $('#faq26body').slideToggle(250); });
             $('#faq27header').click(function () { $('#faq27body').slideToggle(250); });
             $('#faq28header').click(function () { $('#faq28body').slideToggle(250); });
+            $('#faq29header').click(function () { $('#faq29body').slideToggle(250); });
 
             $('.fullsize').click(function () {
                 var data = "<img src='" + $(this).attr('src') + "'/>";
@@ -1947,6 +1973,14 @@ require([
                     $("#angle28").css("transform", "rotate(90deg)");
                 } else {
                     $("#angle28").css("transform", "");
+                }
+            });
+            $("#faq29header").click(function () {
+                //alert($( this ).css( "transform" ));
+                if ($("#angle29").css("transform") == 'none') {
+                    $("#angle29").css("transform", "rotate(90deg)");
+                } else {
+                    $("#angle29").css("transform", "");
                 }
             });
 

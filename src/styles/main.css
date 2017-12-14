@@ -1235,6 +1235,11 @@ input[type="checkbox"], input[type="radio"] {
     transition-property: -webkit-transform;
     transition-property: transform;
 }
+#angle29 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
 
 .panel-heading .accordion-toggle:after {
     /* symbol for "opening" panels */
