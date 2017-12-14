@@ -38,7 +38,7 @@ require([
 	orangeSmallSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/orange_small.png", 45, 25);
 	greenSmallSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/green_small.png", 45, 25);
 	blankSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/blank.png", 45, 25);
-	noDataSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/no_data.png", 45, 25);
+	/* noDataSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/no_data.png", 45, 25); */
 
 	renderer.addValue({
 		value: "2", 
@@ -73,11 +73,11 @@ require([
 		symbol: greenBigSymbol,
 		label: "Large decrease"
 	});
-	renderer.addValue({
+	/* renderer.addValue({
 		value: "-999", 
 		symbol: noDataSymbol,
 		label: "Trend data not available"
-	});
+	}); */
 	
 	renderer2.addValue({
 		value: "1", 
@@ -102,11 +102,11 @@ require([
 		symbol: greenSmallSymbol,
 		label: "Decrease"
 	});
-	renderer2.addValue({
+	/* renderer2.addValue({
 		value: "-999", 
 		symbol: noDataSymbol,
 		label: "Trend data not available"
-	});
+	}); */
 
     allLayers = [//
         {

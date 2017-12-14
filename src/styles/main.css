@@ -19,6 +19,10 @@ body {
     font-weight: 500 !important;
 }
 
+a {
+    color:#003cff;
+}
+
 a:hover{
     cursor: pointer;
 }
@@ -889,8 +893,8 @@ input[type="checkbox"], input[type="radio"] {
 
 
 .aboutImg {
-    width: 40%;
-    height: 400px;
+    width: 50%;
+    height: 350px;
     float: left;
     padding: 15px;
 }
@@ -1232,6 +1236,11 @@ input[type="checkbox"], input[type="radio"] {
     transition-property: transform;
 }
 #angle28 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle29 {
     transition-duration: 0.5s;
     transition-property: -webkit-transform;
     transition-property: transform;
