@@ -1022,7 +1022,29 @@ require([
                             "<b>Matched streamgage number: </b>" +  + "<br/>" +
                             "<b>Matched streamgage agency: </b>");*/
 
-                        if ($("#cycle12input").is(':checked')) {
+                        var cycle1
+                        var cycle2
+                        var cycle3
+
+                        if (attr["tbl_Networks.Cycle1_ActiveFlag"] == "Yes") {
+                            cycle1 = attr["tbl_Networks.Cycle1_SampleFY"];
+                        } else {
+                            cycle1 = "NA"
+                        }
+                        
+                        if (attr["tbl_Networks.Cycle2_ActiveFlag"] == "Yes") {
+                            cycle2 = attr["tbl_Networks.Cycle2_SampleFY"];
+                        } else {
+                            cycle2 = "NA"
+                        }
+                        
+                        if ((attr["tbl_Networks.Cycle3_ActiveFlag"] == "Yes") && (attr["tbl_Networks.Cycle3_ActiveFlag"] < 2015)) {
+                            cycle3 = attr["tbl_Networks.Cycle3_SampleFY"];
+                        } else {
+                            cycle3 = "NA"
+                        }
+
+                        /* if ($("#cycle12input").is(':checked')) {
                             var sampleDates = "1988-2001 to 2002-2012";
                         }
                         if ($("#cycle13input").is(':checked')) {
@@ -1033,7 +1055,7 @@ require([
                         }
                         if ($("#cycle123input").is(':checked')) {
                             var sampleDates = "1988-2001 to 2002-2012 to 2013-2014";
-                        }
+                        } */
 
                         $('#siteInfoDiv').show();
                         $('#networkInfoDiv').hide();
@@ -1056,7 +1078,7 @@ require([
 
                             "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
                             "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
-                            "<tr><td><b>Sample dates</b></td><td>" + sampleDates + "</td></tr>" +
+                            "<tr><td><b>Sample dates</b></td><td>" + cycle1 + ", " + cycle2 + ", " + cycle3 + "</td></tr>" +
 
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
@@ -1090,8 +1112,8 @@ require([
         on(map, "click", function (evt) {
 
             if (siteClicked == false) {
-                map.graphics.clear(); 
-                
+                map.graphics.clear();
+
                 $('#siteInfoDiv').hide();
                 $('#networkInfoDiv').show();
 
@@ -1131,27 +1153,7 @@ require([
 
                         map.graphics.add(graphic);
 
-                        $("#networkInfoDiv").css("visibility", "visible");
-                        var instance = $('#networkInfoDiv').data('lobiPanel');
-                        var docHeight = $(document).height();
-                        var docWidth = $(document).width();
-                        var percentageOfScreen = 0.9;
-                        var siteInfoHeight = docHeight * percentageOfScreen
-                        var siteInfoWidth = docWidth * percentageOfScreen;
-                        if (docHeight < 500) {
-                            $("#networkInfoDiv").height(siteInfoHeight);
-                        }
-                        if (docWidth < 500) {
-                            $("#networkInfoDiv").width(siteInfoWidth);
-                        }
-
-                        var instanceX = evt.x;
-                        var instanceY = evt.y;
-
-                        instance.setPosition(instanceX, instanceY);
-                        if (instance.isPinned() == true) {
-                            instance.unpin();
-                        }
+                        
 
                         $("#networkInfoPanel").empty();
 
@@ -1165,7 +1167,10 @@ require([
                         featureLayer.queryFeatures(featureQuery, function (featureSet) {
                             //set the customized template for displaying content in the info window. HTML tags can be used for styling.
                             // The string before the comma within the parens immediately following the constructor sets the title of the info window.
+                            try {
+                                
                             var attr = featureSet.features[0].attributes;
+                            var featureCheck = featureSet.features.length;
 
                             sucode4FeatureLinkZoom = attr["network_centroids.SUCode"];
 
@@ -1181,63 +1186,91 @@ require([
                             var depth25 = attr["tbl_Networks.Depth25thpercentile"];
                             var depth75 = attr["tbl_Networks.Depth75thpercentile"];
 
+                            $("#networkInfoDiv").css("visibility", "visible");
+                            var instance = $('#networkInfoDiv').data('lobiPanel');
+                            var docHeight = $(document).height();
+                            var docWidth = $(document).width();
+                            var percentageOfScreen = 0.9;
+                            var siteInfoHeight = docHeight * percentageOfScreen
+                            var siteInfoWidth = docWidth * percentageOfScreen;
+                            if (docHeight < 500) {
+                                $("#networkInfoDiv").height(siteInfoHeight);
+                            }
+                            if (docWidth < 500) {
+                                $("#networkInfoDiv").width(siteInfoWidth);
+                            }
+    
+                            var instanceX = evt.x;
+                            var instanceY = evt.y;
+    
+                            instance.setPosition(instanceX, instanceY);
+                            if (instance.isPinned() == true) {
+                                instance.unpin();
+                            }
+
+                                $("#networkInfoPanel").append("<table class='infoTable'><tr><td><b>" + "</b></td><td><span class='" + "'>" + "</span></td></tr>" +
+                                    "<table class='infoTable'><tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
+                                    "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
+                                    "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
+
+                                    "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                                    "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
+                                    "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
+                                    "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
+
+                                    "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                                    "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
+                                    "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
+
+                                    "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                                    "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
+                                    "<tr><td colspan='2' align='center'><a href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
+                                //ties the above defined InfoTemplate to the feature result returned from a click event
+
+                                /* feature.setInfoTemplate(template);
+            
+                                map.infoWindow.setFeatures([feature]);
+                                map.infoWindow.resize(400,400);
+                                map.infoWindow.show(evt.mapPoint);
+            
+                                var infoWindowClose = dojo.connect(map.infoWindow, "onHide", function(evt) {
+                                    map.graphics.clear();
+                                    map.getLayer("trendSites").setVisibility(false);
+                                    dojo.disconnect(map.infoWindow, infoWindowClose);
+                                }); */
+
+                                /* setCursorByID("mainDiv", "default");
+                                map.setCursor("default"); */
+
+                                /* $("#infoWindowLink").click(function(feature) {
+                                    var convertedGeom = esri.geometry.webMercatorToGeographic(networkFeature.geometry);
+            
+                                    var featExtent = convertedGeom.getExtent();
+            
+                                    map.setExtent(featExtent, true);
+                                }); */
+
+                                //map.infoWindow.show(evt.mapPoint);
+
+                                $("#infoWindowLink").on('click', linkClick);
+                                $("#explanation").on('click', showTermExp);
+
+                                
+                            } 
+
+                            catch(err) {
+                                    $('#noSiteIntersectModal').modal('show');
+                            }
                             
-
-                            $("#networkInfoPanel").append("<table class='infoTable'><tr><td><b>" + "</b></td><td><span class='" + "'>" + "</span></td></tr>" +
-                                "<table class='infoTable'><tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
-                                "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
-                                "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
-                                "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
-                                "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
-                                "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
-
-                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
-
-                                "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
-                                "<tr><td colspan='2' align='center'><a href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
-                            //ties the above defined InfoTemplate to the feature result returned from a click event
-
-                            /* feature.setInfoTemplate(template);
-        
-                            map.infoWindow.setFeatures([feature]);
-                            map.infoWindow.resize(400,400);
-                            map.infoWindow.show(evt.mapPoint);
-        
-                            var infoWindowClose = dojo.connect(map.infoWindow, "onHide", function(evt) {
-                                map.graphics.clear();
-                                map.getLayer("trendSites").setVisibility(false);
-                                dojo.disconnect(map.infoWindow, infoWindowClose);
-                            }); */
-
-                            /* setCursorByID("mainDiv", "default");
-                            map.setCursor("default"); */
-
-                            /* $("#infoWindowLink").click(function(feature) {
-                                var convertedGeom = esri.geometry.webMercatorToGeographic(networkFeature.geometry);
-        
-                                var featExtent = convertedGeom.getExtent();
-        
-                                map.setExtent(featExtent, true);
-                            }); */
-
-                            //map.infoWindow.show(evt.mapPoint);
-
-                            $("#infoWindowLink").on('click', linkClick);
-                            $("#explanation").on('click', showTermExp);
 
                         }, function (error) {
                             alert('error');
                         });
 
-                        
+
 
                         function checkSigFigs(value) {
                             var outVal;
@@ -1347,9 +1380,6 @@ require([
             siteClicked = false;
         });
 
-        function clearGrahpics(pt) {
-            map.graphics.clear();
-        }
 
         function networkTypeFind(networkType) {
             var networkText;
@@ -1363,6 +1393,10 @@ require([
             }
 
             return networkText;
+        }
+
+        function constituanteUpdates() {
+
         }
 
         function checkSigFigs(value) {
@@ -1674,21 +1708,21 @@ require([
 
                 // scrolling to FAQ 15
                 $(document).ready(function () {
-                        if ($("#angle7").css("transform") == 'none') {
-                            $("#angle7").css("transform", "rotate(90deg)");
-                            setTimeout(function () {
-                                $('#faqModal').animate({
-                                    scrollTop: $("#faq7header").offset().top - 80
-                                }, 500);
-                            }, 800);
-                        } else {
-                            setTimeout(function () {
-                                $('#faqModal').animate({
-                                    scrollTop: $("#faq7header").offset().top - 80
-                                }, 500);
-                            }, 800);
-                        }
-                        
+                    if ($("#angle7").css("transform") == 'none') {
+                        $("#angle7").css("transform", "rotate(90deg)");
+                        setTimeout(function () {
+                            $('#faqModal').animate({
+                                scrollTop: $("#faq7header").offset().top - 80
+                            }, 500);
+                        }, 800);
+                    } else {
+                        setTimeout(function () {
+                            $('#faqModal').animate({
+                                scrollTop: $("#faq7header").offset().top - 80
+                            }, 500);
+                        }, 800);
+                    }
+
                 });
             });
 
@@ -2644,28 +2678,28 @@ require([
             });//end of require statement containing legend building code
     });
 
-    function linkClick() {
-        
-                    map.setCursor("wait");
-                    console.log(sucode4FeatureLinkZoom);
-                    var query = new esri.tasks.Query();
-                    query.where = "SUCODE = '" + sucode4FeatureLinkZoom + "'";
-                    query.returnGeometry = true;
-                    var queryTask = new esri.tasks.QueryTask(map.getLayer("networkBoundaries").url + "/0");
-                    queryTask.execute(query, function (results) {
-                        console.log('returned with result?');
-                        var feature = results.features[0];
-                        var featureExtent = feature.geometry.getExtent();
-                        map.setExtent(featureExtent, true);
-                        //setCursorByID("mainDiv", "default");
-                        map.setCursor("default");
-                    });
-        
-                }
-        
-                function showTermExp() {
-                    $('#explanationModal').modal('show');
-                }
+function linkClick() {
+
+    map.setCursor("wait");
+    console.log(sucode4FeatureLinkZoom);
+    var query = new esri.tasks.Query();
+    query.where = "SUCODE = '" + sucode4FeatureLinkZoom + "'";
+    query.returnGeometry = true;
+    var queryTask = new esri.tasks.QueryTask(map.getLayer("networkBoundaries").url + "/0");
+    queryTask.execute(query, function (results) {
+        console.log('returned with result?');
+        var feature = results.features[0];
+        var featureExtent = feature.geometry.getExtent();
+        map.setExtent(featureExtent, true);
+        //setCursorByID("mainDiv", "default");
+        map.setCursor("default");
+    });
+
+}
+
+function showTermExp() {
+    $('#explanationModal').modal('show');
+}
 
 $(document).ready(function () {
     //7 lines below are handler for the legend buttons. to be removed if we stick with the in-map legend toggle
