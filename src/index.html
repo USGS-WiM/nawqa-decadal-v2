@@ -220,23 +220,20 @@
             <div class="modal-body">
                 <div class="form-group">
                     <div id="geosearch" align="center"></div>
-                    <br>
-                    <div align="center">
-                        <p>Supported Search Strings:</p>
-                            <div id="supportedSearchText">
-                                <ul style="list-style:none;">
-                                    <li>GNIS Locations</li>
-                                    <li>Lat/Long (ie. '43.9, -72.1')</li>
-                                    <li>States</li>
-                                    <li>Street Address</li>
-                                    <li>USGS Sites</li> 
-                                    <li>Zip Codes</li>
-                                </ul>
-                            </div>
-                        <hr>
-                        <p>Search provided by <a href="https://txpub.usgs.gov/dss/search_api/2.0/" target="_blank">USGS Search Javascript API</a></p>
+                        <div class="search-help">
+                            <b>Supported Search Strings:</b>
+                            <code>GNIS locations</code>
+                            <code>USGS Sites</code>
+                            <code>Zip Codes</code>
+                            <code>Area Codes</code>
+                            <code>States</code>
+                            <code>Lat/Long (ie. '43.9,-72.1')</code>
+                            <code>Street Address</code>
+                            <br/>
+                            <br/> Search provided by
+                            <a href="https://txpub.usgs.gov/dss/search_api/2.0/" target="_blank">USGS Search JavaScript API</a>
+                        </div>
                     </div>
-                </div>
                 <form id="geosearch-form" class="form-inline">
                     <!--<button id="btnGeosearch" type="button" class="search-api-button; btn btn-success btn-fixed" data-dismiss="modal"> Go </button>-->
                     <button id="btnDismiss" type="submit" class="btn btn-default btn-fixed" data-dismiss="modal">Dismiss</button>
