@@ -747,8 +747,6 @@ require([
             map.graphics.clear();
         });
 
-        
-
         var pestPDFs = "";
 
         function constTypeSelect(event) {
@@ -1647,6 +1645,9 @@ require([
 
         // Show modal dialog; handle legend sizing (both on doc ready)
         $(document).ready(function () {
+
+            
+
             function showModal() {
                 $('#geosearchModal').modal('show');
             }
@@ -2464,9 +2465,17 @@ require([
                             //layer toggle
                             if (layer.visible) {
                                 layer.setVisibility(false);
+
+                                if (layer.id == "networkLocations") {
+                                    $("#constitExp").css("visibility", "hidden");
+                                } 
                             } else {
                                 layer.setVisibility(true);
+                                $("#constitExp").css("visibility", "visible");
                             }
+
+                            
+                            
 
                             if (wimOptions.otherLayersToggled) {
                                 $.each(wimOptions.otherLayersToggled, function (key, value) {
