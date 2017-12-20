@@ -590,6 +590,14 @@ input[type="checkbox"], input[type="radio"] {
     box-sizing: border-box;
     padding: 3px 10px;
 }
+#networkInfoClose{
+    box-sizing: border-box;
+    padding: 3px 10px;
+}
+#glacialInfoClose{
+    box-sizing: border-box;
+    padding: 3px 10px;
+}
 
 .charts-modal{
     display: -webkit-flex;
@@ -1117,6 +1125,37 @@ input[type="checkbox"], input[type="radio"] {
   padding-top: 5px;
 }
 
+/*Alert box for networks */
+.network-alert-box{
+  display: block;
+  position: fixed;
+  top: 65px;
+  left: 50%;
+  margin-left: -150px;
+  width: 300px;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: white;
+  z-index: 5000000;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  color: black;
+  border-left: 8px solid #379AFF;
+  display: none;
+}
+.network-alert-box h1{
+  display: block;
+  font-size: 12pt;
+  font-weight: bolder;
+  margin: 0;
+  padding: 0;
+}
+.network-alert-box b{
+  display: block;
+  font-size: 10pt;
+  font-weight: 500;
+  padding-top: 5px;
+}
+
 /* rotating arrows css */
 
 #angle1 {
@@ -1277,4 +1316,8 @@ input[type="checkbox"], input[type="radio"] {
 .panel-heading .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.esriLegendLayerLabel {
+    display: none;
 }

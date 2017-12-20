@@ -51,6 +51,9 @@
 <div class="alert-box">
   <b>No sites are available for this constituent and trend period. Please select another option.</b>
 </div>
+<div class="network-alert-box">
+  <b>No network informatimon: There is no trend data associated with this network. Please select another cycle.</b>
+</div>
 
 <div id="navbar" class="navbar navbar-static navbar-default navbar-fixed-top navbar-dark">
     <div class="container-fluid">
@@ -205,30 +208,6 @@
                 <form id="geosearch-form" class="form-inline">
                     <!--<button id="btnGeosearch" type="button" class="search-api-button; btn btn-success btn-fixed" data-dismiss="modal"> Go </button>-->
                     <button id="btnDismiss" type="submit" class="btn btn-default btn-fixed" data-dismiss="modal">Dismiss</button>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
-
-<script>
-    function clearGraphics() {
-        map.graphics.clear();
-    }
-</script>
-
-<div class="modal fade overflow-y-hidden" id="noSiteIntersectModal" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="clearGraphics();">x</button>
-                <h4 class="modal-title">No data</h4>
-            </div>
-            <div class="modal-body">
-                <p>There are no sites that intersect this network during this Trend Period.</p>
-                <form id="geosearch-form" class="form-inline">
-                    <!--<button id="btnGeosearch" type="button" class="search-api-button; btn btn-success btn-fixed" data-dismiss="modal"> Go </button>-->
-                    <button id="btnDismiss" type="submit" class="btn btn-default btn-fixed" data-dismiss="modal" onclick="clearGraphics();">Dismiss</button>
                 </form>
             </div>
         </div><!-- /.modal-content -->
@@ -1420,6 +1399,27 @@
                     </div>
                     <div class="panel-body">
                         <div id="networkInfoPanel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="siteInfoPanelHeader">
+                            <!--<ul class="nav nav-tabs" id="siteInfoTabs">
+                                <li role="presentation" class="active"><a id="siteInfoTab" href="#siteInfoTabPane" data-toggle="tab">&nbsp;Site Information</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="siteInfoTabPane"></br>
+
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- glacier popup -->
+                <div id="glacialInfoDiv" class="panel panel-defaults siteInfoClass">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <h4 id="siteInfoPanelHeader"><i class="fa fa-info-circle"></i>  Aquifer Information</h4>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="glacialInfoPanel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="siteInfoPanelHeader">
                             <!--<ul class="nav nav-tabs" id="siteInfoTabs">
                                 <li role="presentation" class="active"><a id="siteInfoTab" href="#siteInfoTabPane" data-toggle="tab">&nbsp;Site Information</a></li>
                             </ul>

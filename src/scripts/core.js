@@ -686,30 +686,6 @@ require([
             maxHeight: 500
         });
 
-        $("#networkInfoDiv").lobiPanel({
-            unpin: false,
-            reload: false,
-            minimize: false,
-            close: false,
-            expand: false,
-            editTitle: false,
-            width: 400,
-            maxWidth: 800,
-            maxHeight: 390
-        });
-
-        $("#networkInfoDiv .dropdown").prepend("<div id='siteInfoClose' title='close'><b>X</b></div>");
-        $("#networkInfoDiv .dropdown").prepend("<div id='siteInfoMin' title='collapse'><b>_</b></div>");
-
-        $("#siteInfoMin").click(function () {
-            $("#networkInfoDiv").css("visibility", "hidden");
-        });
-
-        $("#siteInfoClose").click(function () {
-            $("#networkInfoDiv").css("visibility", "hidden");
-            map.graphics.clear();
-        });
-
         $("#siteInfoDiv .dropdown").prepend("<div id='siteInfoClose' title='close'><b>X</b></div>");
         $("#siteInfoDiv .dropdown").prepend("<div id='siteInfoMin' title='collapse'><b>_</b></div>");
 
@@ -722,6 +698,56 @@ require([
             map.graphics.clear();
             map.getLayer("trendSites").setVisibility(false);
         });
+
+        $("#networkInfoDiv").lobiPanel({
+            unpin: false,
+            reload: false,
+            minimize: false,
+            close: false,
+            expand: false,
+            editTitle: false,
+            width: 400,
+            maxWidth: 800,
+            maxHeight: 390
+        });
+
+        $("#networkInfoDiv .dropdown").prepend("<div id='networkInfoClose' title='close'><b>X</b></div>");
+        $("#networkInfoDiv .dropdown").prepend("<div id='siteInfoMin' title='collapse'><b>_</b></div>");
+
+        $("#siteInfoMin").click(function () {
+            $("#networkInfoDiv").css("visibility", "hidden");
+        });
+
+        $("#networkInfoClose").click(function () {
+            $("#networkInfoDiv").css("visibility", "hidden");
+            map.graphics.clear();
+        });
+
+        $("#glacialInfoDiv").lobiPanel({
+            unpin: false,
+            reload: false,
+            minimize: false,
+            close: false,
+            expand: false,
+            editTitle: false,
+            width: 400,
+            maxWidth: 800,
+            maxHeight: 200
+        });
+
+        $("#glacialInfoDiv .dropdown").prepend("<div id='glacialInfoClose' title='close'><b>X</b></div>");
+        $("#glacialInfoDiv .dropdown").prepend("<div id='siteInfoMin' title='collapse'><b>_</b></div>");
+
+        $("#siteInfoMin").click(function () {
+            $("#glacialInfoDiv").css("visibility", "hidden");
+        });
+
+        $("#glacialInfoClose").click(function () {
+            $("#glacialInfoDiv").css("visibility", "hidden");
+            map.graphics.clear();
+        });
+
+        
 
         var pestPDFs = "";
 
@@ -1059,6 +1085,7 @@ require([
 
                         $('#siteInfoDiv').show();
                         $('#networkInfoDiv').hide();
+                        $('#glacialInfoDiv').hide();
 
                         $("#siteInfoPanel").append("<table class='infoTable'><tr><td><b>" + displayConst + "</b></td><td><span class='" + camelize(getValue(attr[attField])) + "'>" + getValue(attr[attField]) + "</span></td></tr>" +
 
@@ -1110,12 +1137,14 @@ require([
 
 
         on(map, "click", function (evt) {
+            $(".network-alert-box").hide();
 
             if (siteClicked == false) {
                 map.graphics.clear();
 
                 $('#siteInfoDiv').hide();
                 $('#networkInfoDiv').show();
+                $('#glacialInfoDiv').hide();
 
                 map.getLayer("trendSites").setVisibility(false);
 
@@ -1262,7 +1291,14 @@ require([
                             } 
 
                             catch(err) {
-                                    $('#noSiteIntersectModal').modal('show');
+                                $(".network-alert-box").show();
+
+                                setTimeout(alert, 4000);
+
+                                function alert() {
+                                    $(".network-alert-box").hide();
+                                    map.graphics.clear();
+                                }   
                             }
                             
 
@@ -1295,17 +1331,44 @@ require([
                         query.geometry = evt.mapPoint;
                         var queryTask = new esri.tasks.QueryTask(map.getLayer("glacialAquifer").url + "/2");
 
+                        $("#glacialInfoPanel").empty();
+
                         queryTask.execute(query, function (results) {
 
-                            var popInfo = "";
+                            /* var popInfo = "";
 
                             if (results.features.length > 0) {
                                 popInfo += "<b>Aquifer:</b> Glacial aquifer<br/>";
+                            } */
+                            /* $("#glacialInfoDiv").css("visibility", "visible");
+                            var instance = $('#glacialInfoDiv').data('lobiPanel');
+                            var docHeight = $(document).height();
+                            var docWidth = $(document).width();
+                            var percentageOfScreen = 0.9;
+                            var siteInfoHeight = docHeight * percentageOfScreen
+                            var siteInfoWidth = docWidth * percentageOfScreen;
+                            if (docHeight < 500) {
+                                $("#glacialInfoDiv").height(siteInfoHeight);
                             }
+                            if (docWidth < 500) {
+                                $("#glacialInfoDiv").width(siteInfoWidth);
+                            }
+    
+                            var instanceX = evt.x;
+                            var instanceY = evt.y;
+    
+                            instance.setPosition(instanceX, instanceY);
+                            if (instance.isPinned() == true) {
+                                instance.unpin();
+                            } */
+
+                            $('#glacialInfoDiv').show();
+
+                            $("#glacialInfoPanel").append("<p><b>Aquifer:</b> Glacial Aquifer</p>");
 
                             var identifyParams2 = new esri.tasks.IdentifyParameters();
                             identifyParams2.tolerance = 0;
-                            identifyParams2.returnGeometry = false;
+                            identifyParams2.returnGeometry = true;
                             identifyParams2.mapExtent = map.extent;
                             identifyParams2.layerIds = [1];
                             identifyParams2.width = map.width;
@@ -2712,3 +2775,5 @@ $(document).ready(function () {
     //});
 
 });
+
+

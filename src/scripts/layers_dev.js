@@ -254,7 +254,7 @@ require([
                         "type": "layer",
                         "layerType": "agisDynamic",
                         "includeInLayerList": false,
-                        "includeLegend": false
+                        "includeLegend": true
                     }
                 }
             }
