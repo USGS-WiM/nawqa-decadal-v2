@@ -618,8 +618,9 @@ require([
             removeManualLayers();
         });
         on(dom.byId('btnShadedRelief'), 'click', function () {
-            map.addLayer(shadedReliefBasemap);
-            map.addLayer(referenceMapBasemap);
+            map.setBasemap('topo');
+            map.addLayer(referenceMapBasemap, 1);
+            map.addLayer(shadedReliefBasemap, 1);
             map.removeLayer(nationalMapBasemap);
         });
         on(dom.byId('btnTerrain'), 'click', function () {
@@ -648,7 +649,7 @@ require([
         });
 
         on(dom.byId('btnNatlMap'), 'click', function () {
-            map.addLayer(nationalMapBasemap);
+            map.addLayer(nationalMapBasemap, 1);
             map.removeLayer(referenceMapBasemap);
             map.removeLayer(shadedReliefBasemap);
         });
@@ -1371,6 +1372,7 @@ require([
                             identifyParams2.layerIds = [1];
                             identifyParams2.width = map.width;
                             identifyParams2.height = map.height;
+                            identifyParams2.geometry = evt.mapPoint;
 
                             var identifyTask2 = new esri.tasks.IdentifyTask("https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/DecadalMap/MapServer");
 
