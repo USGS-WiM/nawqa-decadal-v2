@@ -731,8 +731,8 @@ require([
             close: false,
             expand: false,
             editTitle: false,
-            width: 400,
-            maxWidth: 800,
+            width: 200,
+            maxWidth: 400,
             maxHeight: 200
         });
 
@@ -1325,6 +1325,7 @@ require([
                         //var feature = featureSet.features[0];
                     } else {
 
+                        if (map.getLayer("principalAquifers").visible) {
                         var query = new esri.tasks.Query();
                         query.returnGeometry = false;
                         query.geometry = evt.mapPoint;
@@ -1334,12 +1335,13 @@ require([
 
                         queryTask.execute(query, function (results) {
 
-                            /* var popInfo = "";
+                            var popInfo = "";
 
                             if (results.features.length > 0) {
-                                popInfo += "<b>Aquifer:</b> Glacial aquifer<br/>";
-                            } */
-                            /* $("#glacialInfoDiv").css("visibility", "visible");
+                                $("#glacialInfoPanel").append("<p><b>Aquifer: </b>Glacial Aquifer</p>");
+                            }
+                            
+                            $("#glacialInfoDiv").css("visibility", "visible");
                             var instance = $('#glacialInfoDiv').data('lobiPanel');
                             var docHeight = $(document).height();
                             var docWidth = $(document).width();
@@ -1359,11 +1361,9 @@ require([
                             instance.setPosition(instanceX, instanceY);
                             if (instance.isPinned() == true) {
                                 instance.unpin();
-                            } */
+                            }
 
-                            $('#glacialInfoDiv').show();
-
-                            $("#glacialInfoPanel").append("<p><b>Aquifer:</b> Glacial Aquifer</p>");
+                            
 
                             var identifyParams2 = new esri.tasks.IdentifyParameters();
                             identifyParams2.tolerance = 0;
@@ -1395,7 +1395,7 @@ require([
                                             var attr = feature.attributes;
                                             if (aqNameArray.indexOf(attr["AQ_NAME"]) == -1) {
                                                 aqNameArray.push(attr["AQ_NAME"]);
-                                                popInfo += "<b>Aquifer:</b> " + attr["AQ_NAME"] + "<br/>";
+                                                $("#glacialInfoPanel").append("<p><b>Aquifer: </b>" + attr["AQ_NAME"] + "</p>");
                                             }
                                         }
 
@@ -1431,7 +1431,11 @@ require([
                         map.setCursor("default");
 
                     }
-
+                    $('#glacialInfoDiv').show();
+                    $('#glacialInfoPanel').css("overflow", "hidden");
+                    $('#siteInfoDiv').hide();
+                    $('#networkInfoDiv').hide();
+                }
 
                 });
 

@@ -432,6 +432,23 @@ table.infoTable td:nth-child(odd) {
     visibility: hidden;
 }
 
+.aquiferInfoClass {
+    position:absolute;
+    width:300px;
+    height:130px;
+    z-index:2;
+    color: black;
+    background-color: rgb(255,255,255);
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+    /*min-width: 150px;*/
+    border-radius: 4px;
+    visibility: hidden;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 .charts-sbdown {
     display: none;
 }
