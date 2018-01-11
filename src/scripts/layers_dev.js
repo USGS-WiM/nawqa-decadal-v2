@@ -240,7 +240,8 @@ require([
                         "includeInLayerList": true,
                         "hasOpacitySlider": true,
                         "includeLegend": true,
-                        "otherLayersToggled": ["glacialAquifer"]
+                        "otherLayersToggled": ["glacialAquifer"],
+                        "moreinfo": "https://water.usgs.gov/ogw/aquifer/principal/aquifrp025.xml",
                     }
                 }, "Glacial Aquifer" : {
                     "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/tablesTest_test/MapServer",

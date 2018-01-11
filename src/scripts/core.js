@@ -554,6 +554,8 @@ require([
             $('#latitude').html(initMapCenter.y.toFixed(3));
             $('#longitude').html(initMapCenter.x.toFixed(3));
 
+            /* map.reorderLayer(map.layerIds[0],8); */
+
             //code for adding draggability to infoWindow. http://www.gavinr.com/2015/04/13/arcgis-javascript-draggable-infowindow/
             if (dragInfoWindows == true) {
                 var handle = query(".title", map.infoWindow.domNode)[0];
@@ -810,6 +812,8 @@ require([
 
             var featureLayer = map.getLayer("networkLocations");
             /* var featureLayerAll = map.getLayer("allNetworks"); */
+
+            
 
             var layerUpdateEnd = dojo.connect(featureLayer, "onUpdateEnd", function (evt) {
                 dojo.disconnect(featureLayer, layerUpdateEnd);
@@ -1286,6 +1290,12 @@ require([
                                 $("#infoWindowLink").on('click', linkClick);
                                 $("#explanation").on('click', showTermExp);
 
+                                /* var reorder = map.getLayer("networkLocations");
+                                
+                                map.reorderLayer(reorder, 5); */
+
+                                
+
                                 
                             } 
 
@@ -1426,13 +1436,11 @@ require([
                             }
 
                         });
-
                         /* setCursorByID("mainDiv", "default"); */
                         map.setCursor("default");
 
                     }
                     $('#glacialInfoDiv').show();
-                    $('#glacialInfoPanel').css("overflow", "hidden");
                     $('#siteInfoDiv').hide();
                     $('#networkInfoDiv').hide();
                 }

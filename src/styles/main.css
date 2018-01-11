@@ -1338,3 +1338,11 @@ input[type="checkbox"], input[type="radio"] {
 .esriLegendLayerLabel {
     display: none;
 }
+
+/* Styles for link to SW in nav bar */
+
+#swLink {
+    font-size: 11px;
+    width: 110px;
+    margin: 2px;
+}
