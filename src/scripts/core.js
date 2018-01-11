@@ -1685,6 +1685,7 @@ require([
             }
             $('#aboutNav').click(function () {
                 showAboutModal();
+                $('#aboutTab').trigger('click');
             });
 
             // Show User Guide
@@ -1747,6 +1748,19 @@ require([
                 $('#dataModal').modal('hide');
                 $('#aboutModal').modal('show');
                 $('#learnMoreTab').trigger('click');
+            });
+            
+            $('#swLink').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('hide');
+                $('#aboutModal').modal('show');
+                $('#waterResourcesTab').trigger('click')
+
+                /* function Timeout () {
+                    setTimeout($('#waterResourcesTab').trigger('click'), 2000);
+                } */
             });
 
             $('#trendResultHelp').click(function () {
