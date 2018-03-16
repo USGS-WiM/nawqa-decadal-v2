@@ -308,6 +308,8 @@ a.lgi-zoom:hover {
     background-color: black;
     z-index: 1000;
     border-radius: 5px;
+    margin: 2.5px;
+    padding-left: 2px;
 }
 
 .modal-dialog {
