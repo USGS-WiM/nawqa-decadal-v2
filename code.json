@@ -1,4 +1,5 @@
-{
+[
+  {
   "name": "nawqa-decadal-v2",
   "organization": "U.S. Geological Survey",
   "description": "Decadal Change in Groundwater Quality",
@@ -28,3 +29,4 @@
     "metadataLastUpdated": "10/25/2017"
   }
 }
+]
