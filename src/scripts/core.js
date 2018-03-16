@@ -1540,19 +1540,10 @@ require([
                 });
 
             },
-            "include_usgs_sw": true,
-            "include_usgs_gw": true,
-            "include_usgs_sp": true,
-            "include_usgs_at": true,
-            "include_usgs_ot": true,
-            "include_huc2": true,
-            "include_huc4": true,
-            "include_huc6": true,
-            "include_huc8": true,
-            "include_huc10": true,
-            "include_huc12": true,
+            include_state: true,
+            include_zip_code: true
 
-            /*on_failure: function(o){
+            /*on_failure: function(o){  
             $("#test").html("Sorry, a location could not be found in search for '"+o.val()+"'");
                $("#invalidSearchLocationModal").modal('show');
             }*/
