@@ -185,8 +185,8 @@ require([
                     }
                 },
                  "Land use 2001" : {
-                    "url": "https://raster.nationalmap.gov/arcgis/rest/services/LandCover/conus_01/MapServer",
-                    "visibleLayers": [0],
+                    "url": "https://www.mrlc.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
+                    "visibleLayers": [24],
                     "options": {
                         "id": "nlcd",
                         "opacity": 0.75,
