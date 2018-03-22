@@ -1113,7 +1113,8 @@ require([
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
                             "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
-                            "<tr><td colspan='2' align='center'><a id='explanation' href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
+                            "<tr><td colspan='2' align='center'><a id='explanation' href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr>" +
+                            "<tr><td colspan='2' align='center'><div id='circle'></div><b> = Well</b></td></tr></table>");
                     }
 
                     OID = feature.attributes["network_centroids.OBJECTID"];

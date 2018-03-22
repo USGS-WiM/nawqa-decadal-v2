@@ -1349,3 +1349,13 @@ input[type="checkbox"], input[type="radio"] {
     margin: 9px;
     cursor: pointer;
 }
+
+/* Circle for site Information well */
+#circle { 
+    width: 9px;
+    height: 9px;
+    background: #00ee3c; 
+    border-radius: 70px;
+    border: solid 1.5px #333333;
+    display: inline-block;
+ }
