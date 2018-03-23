@@ -1359,3 +1359,9 @@ input[type="checkbox"], input[type="radio"] {
     border: solid 1.5px #333333;
     display: inline-block;
  }
+
+ .highlighted{
+    background-color: #00ee9e2e;
+    transition: background 0.5s linear;
+    border-radius: 4px;
+}

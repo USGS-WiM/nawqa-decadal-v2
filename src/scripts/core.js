@@ -1672,6 +1672,11 @@ require([
                 $('#mclModal').modal('show');
             });
 
+            //mclModal showing on top of About modal
+            $('#mclOnTop').click(function () {
+                $('#mclModal').modal('show');
+            });
+
             function showAboutModal() {
                 $('#aboutModal').modal('show');
             }
@@ -1715,10 +1720,12 @@ require([
                 console.log("Opening tab 3 user guide");
                 $('#layersTab').trigger('click');
             });
+
             $('#userGuideNav').click(function () {
                 $('#userGuideModal').modal('show');
                 $('#searchTab').trigger('click');
             });
+
             $('#dataNav').click(function () {
                 $('#dataModal').modal('show');
             });
@@ -1730,6 +1737,306 @@ require([
                 $('#faqModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#techTab').trigger('click');
+            });
+
+            // Helsel
+            $('.showReferencesCitedHelsel').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#helsel").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#helsel").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#helsel").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Maupin
+            $('.showReferencesCitedMaupin').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#maupin").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#maupin").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#maupin").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Lapham
+            $('.showReferencesCitedLapham').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#lapham").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#lapham").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#lapham").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Toccalino 2010
+            $('.showReferencedCitesToccalino2010').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#toccalino2010").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#toccalino2010").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#toccalino2010").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Toccalino 2014a
+            $('.showReferencedCitesToccalino2014a').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#toccalino2014a").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#toccalino2014a").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#toccalino2014a").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Toccalino 2014b
+            $('.showReferencedCitesToccalino2014b').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#toccalino2014b").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#toccalino2014b").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#toccalino2014b").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Zogorski
+            $('.showReferencedCitesZogorski').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#zogorski").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#zogorski").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#zogorski").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Gilliom
+            $('.showReferencedCitesGilliom').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#gilliom").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#gilliom").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#gilliom").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Desimone
+            $('.showReferencedCitesDesimone2009').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#desimone2009").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#desimone2009").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#desimone2009").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // rosen
+            $('.showReferencesCitedRosen').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#rosen").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#rosen").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#rosen").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Pratt
+            $('.showReferencesCitedPratt').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#pratt").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#pratt").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#pratt").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
+            // Lindsey
+            $('.showReferencesCitedLindsey').click(function () {
+                $('#geosearchModal').modal('hide');
+                $('#aboutModal').modal('hide');
+                $('#faqModal').modal('hide');
+                $('#userGuideModal').modal('hide');
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#lindsey").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#lindsey").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#lindsey").offset().top - 80
+                    }, 500);
+                }, 800);
             });
 
             // Show About > learn more tab
