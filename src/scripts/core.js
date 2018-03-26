@@ -1676,6 +1676,15 @@ require([
             $('#mclOnTop').click(function () {
                 $('#mclModal').modal('show');
             });
+            $('#mclOnTopTechPane').click(function () {
+                $('#mclModal').modal('show');
+            });
+            $('#mclOnTopFAQ8').click(function () {
+                $('#mclModal').modal('show');
+            });
+
+            //Userguide show ontop from FAQs
+            // Show User Guide tab2
 
             function showAboutModal() {
                 $('#aboutModal').modal('show');
@@ -1721,6 +1730,19 @@ require([
                 $('#layersTab').trigger('click');
             });
 
+            $('.showUserGuideExplanation').click(function () {
+                $('#userGuideModal').modal('show');
+                $('#iconTab').trigger('click');
+            });
+            $('.showUserGuideSearch').click(function () {
+                $('#userGuideModal').modal('show');
+                $('#searchTab').trigger('click');
+            });
+            $('.showUserGuideMapSelection').click(function () {
+                $('#userGuideModal').modal('show');
+                $('#layersTab').trigger('click');
+            });
+
             $('#userGuideNav').click(function () {
                 $('#userGuideModal').modal('show');
                 $('#searchTab').trigger('click');
@@ -1739,12 +1761,13 @@ require([
                 $('#techTab').trigger('click');
             });
 
+            $('.showTechInfo').click(function () {
+                $('#dataModal').modal('show');
+                $('#techTab').trigger('click');
+            });
+
             // Helsel
             $('.showReferencesCitedHelsel').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1766,10 +1789,6 @@ require([
 
             // Maupin
             $('.showReferencesCitedMaupin').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1791,10 +1810,6 @@ require([
 
             // Lapham
             $('.showReferencesCitedLapham').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1816,10 +1831,6 @@ require([
 
             // Toccalino 2010
             $('.showReferencedCitesToccalino2010').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1841,10 +1852,6 @@ require([
 
             // Toccalino 2014a
             $('.showReferencedCitesToccalino2014a').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1866,10 +1873,6 @@ require([
 
             // Toccalino 2014b
             $('.showReferencedCitesToccalino2014b').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1891,10 +1894,6 @@ require([
 
             // Zogorski
             $('.showReferencedCitesZogorski').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1916,10 +1915,6 @@ require([
 
             // Gilliom
             $('.showReferencedCitesGilliom').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1941,10 +1936,6 @@ require([
 
             // Desimone
             $('.showReferencedCitesDesimone2009').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1966,10 +1957,6 @@ require([
 
             // rosen
             $('.showReferencesCitedRosen').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -1991,10 +1978,6 @@ require([
 
             // Pratt
             $('.showReferencesCitedPratt').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -2016,10 +1999,6 @@ require([
 
             // Lindsey
             $('.showReferencesCitedLindsey').click(function () {
-                $('#geosearchModal').modal('hide');
-                $('#aboutModal').modal('hide');
-                $('#faqModal').modal('hide');
-                $('#userGuideModal').modal('hide');
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
@@ -2466,7 +2445,7 @@ require([
                 dpi: 300
             };
             template.format = "PDF";
-            template.layout = "Letter ANSI A Landscape 2";
+            template.layout = "Letter ANSI A Landscape 2 fixed legend";
             template.preserveScale = false;
             /*var trendsLegendLayer = new LegendLayer();
             trendsLegendLayer.layerId = "1";*/

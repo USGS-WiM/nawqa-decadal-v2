@@ -1365,3 +1365,10 @@ input[type="checkbox"], input[type="radio"] {
     transition: background 0.5s linear;
     border-radius: 4px;
 }
+
+.constituentTable .constTable {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 5px;
+    text-align: center;
+ }
