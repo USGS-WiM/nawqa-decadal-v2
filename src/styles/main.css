@@ -209,6 +209,7 @@ a:hover{
 #legendCollapse {
   height: 500px !important;
     /*max-height: inherit;*/
+    overflow: hidden;
 }
 
 /*#legendElement {*/
@@ -1029,9 +1030,7 @@ input[type="checkbox"], input[type="radio"] {
 
 
 /*Data table header hover for more info*/
-.htCore th{
 
-}
 .htCore th:after{
     display: none;
     position: fixed;
