@@ -207,9 +207,17 @@ a:hover{
 }
 
 #legendCollapse {
-  height: 500px !important;
+  /*max-height: 500px !important;*/
+  height: auto !important;
     /*max-height: inherit;*/
-    overflow: hidden;
+    overflow-y: hidden;
+}
+#legendElement{
+    right: 20px !important;
+    height: auto !important;
+    max-height: 500px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
 }
 
 /*#legendElement {*/
@@ -1350,10 +1358,10 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 /* Circle for site Information well */
-#circle { 
+#circle {
     width: 9px;
     height: 9px;
-    background: #00ee3c; 
+    background: #00ee3c;
     border-radius: 70px;
     border: solid 1.5px #333333;
     display: inline-block;
