@@ -2016,6 +2016,27 @@ require([
                 }, 800);
             });
 
+            // Lindsey
+            $('.showReferencedCitesEPA').click(function () {
+                $('#dataModal').modal('show');
+                $('#citeTab').trigger('click');
+
+                setTimeout(function () {
+                    $("#epa2012").toggleClass("highlighted");
+                }, 1000);
+                setTimeout(function () {
+                        $("#epa2012").toggleClass('highlighted');
+                    },
+                    4000
+                );
+
+                setTimeout(function () {
+                    $('#dataModal').animate({
+                        scrollTop: $("#epa2012").offset().top - 80
+                    }, 500);
+                }, 800);
+            });
+
             // Show About > learn more tab
             $('.showLearnMore').click(function () {
                 $('#geosearchModal').modal('hide');
