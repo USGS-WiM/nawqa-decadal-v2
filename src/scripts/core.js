@@ -1028,8 +1028,8 @@ require([
                         }
                     });
 
-                    var depth25 = attr["tbl_Networks2.Depth25thpercentile"];
-                    var depth75 = attr["tbl_Networks2.Depth75thpercentile"];
+                    var depth25 = attr["tbl_Networks.Depth25thpercentile"];
+                    var depth75 = attr["tbl_Networks.Depth75thpercentile"];
 
                     sucode4FeatureLinkZoom = attr["network_centroids.SUCode"];
 
@@ -1055,20 +1055,20 @@ require([
                         var cycle2
                         var cycle3
 
-                        if (attr["tbl_Networks2.Cycle1_ActiveFlag"] == "Yes") {
-                            cycle1 = attr["tbl_Networks2.Cycle1_SampleFY"];
+                        if (attr["tbl_Networks.Cycle1_ActiveFlag"] == "Yes") {
+                            cycle1 = attr["tbl_Networks.Cycle1_SampleFY"];
                         } else {
                             cycle1 = "NA"
                         }
                         
-                        if (attr["tbl_Networks2.Cycle2_ActiveFlag"] == "Yes") {
-                            cycle2 = attr["tbl_Networks2.Cycle2_SampleFY"];
+                        if (attr["tbl_Networks.Cycle2_ActiveFlag"] == "Yes") {
+                            cycle2 = attr["tbl_Networks.Cycle2_SampleFY"];
                         } else {
                             cycle2 = "NA"
                         }
                         
-                        if ((attr["tbl_Networks2.Cycle3_ActiveFlag"] == "Yes") && (attr["tbl_Networks2.Cycle3_SampleFY"] < 2015)) {
-                            cycle3 = attr["tbl_Networks2.Cycle3_SampleFY"];
+                        if ((attr["tbl_Networks.Cycle3_ActiveFlag"] == "Yes") && (attr["tbl_Networks.Cycle3_SampleFY"] < 2015)) {
+                            cycle3 = attr["tbl_Networks.Cycle3_SampleFY"];
                         } else {
                             cycle3 = "NA"
                         }
@@ -1095,19 +1095,19 @@ require([
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
                             "<tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
-                            "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks2.WellTypeDesc"] + "</td></tr>" +
+                            "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
                             "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
 
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
-                            "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks2.PrincipleAquifer"] + "</td></tr>" +
-                            "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks2.RegionalAquifer"] + "</td></tr>" +
-                            "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks2.AquiferMaterial"] + "</td></tr>" +
+                            "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
+                            "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
+                            "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
 
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
-                            "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks2.AdditionalInfo"] + "</td></tr>" +
-                            "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks2.SUCode"] + "</td></tr>" +
+                            "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
+                            "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
                             "<tr><td><b>Sample dates</b></td><td>" + cycle1 + ", " + cycle2 + ", " + cycle3 + "</td></tr>" +
 
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
@@ -1210,14 +1210,14 @@ require([
                             //var currentConst = organicConstituentSelect.selectedOptions[0].attributes.constituent.value;
                             //var displayConst = organicConstituentSelect.selectedOptions[0].attributes.displayname.value;
 
-                            /*var template = new esri.InfoTemplate("Trends Info: " + attr["tbl_Networks2.SUCode"],
+                            /*var template = new esri.InfoTemplate("Trends Info: " + attr["tbl_Networks.SUCode"],
                                 "<b>Network type:</b> " + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "<br/>"+
-                                "<p><b>Description:</b> " + attr["tbl_Networks2.NetDescMedium"] + "<br/><br/>" +
+                                "<p><b>Description:</b> " + attr["tbl_Networks.NetDescMedium"] + "<br/><br/>" +
                                 "<b>Well type:</b></p>" +
                                 "<br/><p><a id='infoWindowLink' href='javascript:void(0)'>Zoom to Network</a></p>");*/
 
-                            var depth25 = attr["tbl_Networks2.Depth25thpercentile"];
-                            var depth75 = attr["tbl_Networks2.Depth75thpercentile"];
+                            var depth25 = attr["tbl_Networks.Depth25thpercentile"];
+                            var depth75 = attr["tbl_Networks.Depth75thpercentile"];
 
                             $("#networkInfoDiv").css("visibility", "visible");
                             var instance = $('#networkInfoDiv').data('lobiPanel');
@@ -1243,19 +1243,19 @@ require([
 
                                 $("#networkInfoPanel").append("<table class='infoTable'><tr><td><b>" + "</b></td><td><span class='" + "'>" + "</span></td></tr>" +
                                     "<table class='infoTable'><tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
-                                    "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks2.WellTypeDesc"] + "</td></tr>" +
+                                    "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
                                     "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
 
                                     "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
-                                    "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks2.PrincipleAquifer"] + "</td></tr>" +
-                                    "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks2.RegionalAquifer"] + "</td></tr>" +
-                                    "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks2.AquiferMaterial"] + "</td></tr>" +
+                                    "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
+                                    "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
+                                    "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
 
                                     "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
-                                    "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks2.AdditionalInfo"] + "</td></tr>" +
-                                    "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks2.SUCode"] + "</td></tr>" +
+                                    "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
+                                    "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
 
                                     "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
