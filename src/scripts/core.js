@@ -554,6 +554,12 @@ require([
             $('#latitude').html(initMapCenter.y.toFixed(3));
             $('#longitude').html(initMapCenter.x.toFixed(3));
 
+
+            $('#networkExpl').html("<h5 style='margin-left:-10px;font-weight:bold;'>&nbsp Network Boundaries" +  "<h5>" +
+            "<p class='legendSpacing'>" + "<div class='squareDiv ag'></div>" +  "&nbsp; Agricultural land use network" + "</p>" +
+            "<p class='legendSpacing'>" + "<div class='squareDiv res'></div>" + "&nbsp Urban land use network" + "</p>" +
+            "<p class='legendSpacing'>" + "<div class='squareDiv other'></div>" + "&nbsp Domestic supply well network" + "</p>");
+
             /* map.reorderLayer(map.layerIds[0],8); */
 
             //code for adding draggability to infoWindow. http://www.gavinr.com/2015/04/13/arcgis-javascript-draggable-infowindow/
@@ -1055,19 +1061,28 @@ require([
                         var cycle2
                         var cycle3
 
-                        if (attr["tbl_Networks.Cycle1_ActiveFlag"] == "Yes") {
+                        // if you want to use the Active flag then use this
+                        /* if (attr["tbl_Networks.Cycle1_ActiveFlag"] == "Yes") {
+                            cycle1 = attr["tbl_Networks.Cycle1_SampleFY"];
+                        } else {
+                            cycle1 = "NA"
+                        } */
+
+                        
+
+                        if (attr["tbl_Networks.Cycle1_SampleFY"] != "") {
                             cycle1 = attr["tbl_Networks.Cycle1_SampleFY"];
                         } else {
                             cycle1 = "NA"
                         }
                         
-                        if (attr["tbl_Networks.Cycle2_ActiveFlag"] == "Yes") {
+                        if (attr["tbl_Networks.Cycle2_SampleFY"] != "") {
                             cycle2 = attr["tbl_Networks.Cycle2_SampleFY"];
                         } else {
                             cycle2 = "NA"
                         }
                         
-                        if ((attr["tbl_Networks.Cycle3_ActiveFlag"] == "Yes") && (attr["tbl_Networks.Cycle3_SampleFY"] < 2015)) {
+                        if ((attr["tbl_Networks.Cycle3_SampleFY"] != "") && (attr["tbl_Networks.Cycle3_SampleFY"] < 2015)) {
                             cycle3 = attr["tbl_Networks.Cycle3_SampleFY"];
                         } else {
                             cycle3 = "NA"
@@ -2787,20 +2802,30 @@ require([
 
                             //$('#' + camelize(layerName)).toggle();
 
-                            //layer toggle
+                            //layer toggles
                             if (layer.visible) {
                                 layer.setVisibility(false);
 
                                 if (layer.id == "networkLocations") {
                                     $("#constitExp").css("visibility", "hidden");
-                                } 
-                            } else {
-                                layer.setVisibility(true);
-                                $("#constitExp").css("visibility", "visible");
-                            }
+                                }
 
-                            
-                            
+                                if (layer.id == "networkBoundaries") {
+                                    $("#networkExpl").css("visibility", "hidden");
+                                }
+
+                            } else {
+                                if (layer.id == "networkLocations") {
+                                    layer.setVisibility(true);
+                                    $("#constitExp").css("visibility", "visible");
+                                }
+
+                                if (layer.id == "networkBoundaries") {
+                                    layer.setVisibility(true);
+                                    $("#networkExpl").css("visibility", "visible");
+                                }
+                                layer.setVisibility(true);
+                            }         
 
                             if (wimOptions.otherLayersToggled) {
                                 $.each(wimOptions.otherLayersToggled, function (key, value) {

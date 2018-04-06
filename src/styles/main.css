@@ -582,6 +582,16 @@ input[type="checkbox"], input[type="radio"] {
     padding-left: 5px;
 }
 
+#networkExpl {
+    font-size: 14px;
+    font-weight: normal;
+    width: 280px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    margin-top: -20px;
+}
+
 /*Additional styles - mitch 12/13/2016*/
 .constituent-panel{
     box-sizing: border-box;
@@ -1379,3 +1389,28 @@ input[type="checkbox"], input[type="radio"] {
     padding: 5px;
     text-align: center;
  }
+
+ /* Custom Legend Squares */
+
+.squareDiv {
+    float: left;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .ag {
+    background: #A18072;
+    border-width: 1.5px;
+  }
+  .res {
+    background: #E394FD;
+    border-width: 1.5px;
+  }
+  .other {
+    background: #949DC8;
+    border-width: 1.5px;
+  }
+
+  .legendSpacing {
+    margin-bottom: 15px;
+  }

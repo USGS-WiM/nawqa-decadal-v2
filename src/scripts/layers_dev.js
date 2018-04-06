@@ -177,7 +177,7 @@ require([
                         "layerType": "agisDynamic",
                         "includeInLayerList": true,
                         "hasOpacitySlider": true,
-                        "includeLegend" : true
+                        "includeLegend" : false
                     }
                 },
                 "Magnitude of change": {
