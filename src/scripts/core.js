@@ -795,20 +795,30 @@ require([
 
             var astText = "";
 
-            if (select[select.selectedIndex].attributes.hasOwnProperty("GenDescLargeChg") == true) {
+            var benchmarkText = (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString();
+            // setting the text for the legend.
+            if ((select[select.selectedIndex].attributes.hasOwnProperty("gendescsmallchg") == true) && (select[select.selectedIndex].attributes.hasOwnProperty("gendesclargechg") == true) && (benchmarkText.match("No benchmark available") != "null") && (select[select.selectedIndex].attributes.hasOwnProperty("gendescbenchmark") == true)){
                 astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p><p>" +
                     (select[select.selectedIndex].attributes.GenDescLargeChg.value).toString() + "</p>" +
                     "<p>" + (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString() + "</p>";
-            } else {
+            }
+            if ((select[select.selectedIndex].attributes.hasOwnProperty("gendesclargechg") == false) && (select[select.selectedIndex].attributes.hasOwnProperty("gendescsmallchg") == true) && (select[select.selectedIndex].attributes.hasOwnProperty("gendescbenchmark") == true)){
+                astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p>"
+            }
+
+            /* if (select[select.selectedIndex].attributes.hasOwnProperty("GenDescSmallChg") != "null") {
                 astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p><p>" +
+                    (select[select.selectedIndex].attributes.GenDescLargeChg.value).toString() + "</p>" +
+                    "<p>" + (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString() + "</p>";
+            }  */
+            /* if (select[select.selectedIndex].attributes.hasOwnProperty("GenDescLargeChg") != "null") {
+                astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p><p>" +
+                (select[select.selectedIndex].attributes.GenDescLargeChg.value).toString() + "</p>" +
                     "<p>" + (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString() + "</p>";
             }
-
-            var benchmarkText = (select[select.selectedIndex].attributes.GenDescBenchmark.value).toString();
-
-            if (astText.match("No benchmark available") != null && astText.match("No benchmark available").length > 0) {
-                astText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p>";
-            }
+            if (benchmarkText.match("No benchmark available") != "null" && benchmarkText.match("No benchmark available").length > 0) {
+                benchmarkText = "<p>" + (select[select.selectedIndex].attributes.GenDescSmallChg.value).toString() + "</p>";
+            } */
 
             if (select.id == "organicConstituentSelect") {
                 $('#constitExp').html(astText);
