@@ -626,7 +626,6 @@ require([
             removeManualLayers();
         });
         on(dom.byId('btnShadedRelief'), 'click', function () {
-            map.setBasemap('topo');
             map.addLayer(referenceMapBasemap, 1);
             map.addLayer(shadedReliefBasemap, 1);
             map.removeLayer(nationalMapBasemap);
@@ -652,7 +651,6 @@ require([
             removeManualLayers();
         });
         on(dom.byId('btnTopo'), 'click', function () {
-            map.setBasemap('topo');
             removeManualLayers();
         });
 
@@ -3115,7 +3113,7 @@ function linkClick() {
     map.setCursor("wait");
     console.log(sucode4FeatureLinkZoom);
     var query = new esri.tasks.Query();
-    query.where = "SUCODE = '" + sucode4FeatureLinkZoom + "'";
+    query.where = "network_polygons.SUCODE = '" + sucode4FeatureLinkZoom + "'";
     query.returnGeometry = true;
     var queryTask = new esri.tasks.QueryTask(map.getLayer("networkBoundaries").url + "/0");
     queryTask.execute(query, function (results) {
