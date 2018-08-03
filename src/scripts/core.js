@@ -651,6 +651,7 @@ require([
             removeManualLayers();
         });
         on(dom.byId('btnTopo'), 'click', function () {
+            map.setBasemap('topo');
             removeManualLayers();
         });
 
@@ -2477,8 +2478,12 @@ require([
 
         function printMap() {
 
+            /* map._layers["networkLocations"].fields = undefined; */ //oddly this semi-fixes it for print, but then having the field underfined breaks the results on the map when switching constituents
+
             var printParams = new PrintParameters();
             printParams.map = map;
+
+            /* allLayers[0].layers["Magnitude of change"].setVisibility(true); */
 
             var template = new PrintTemplate();
             template.exportOptions = {
@@ -2489,12 +2494,20 @@ require([
             template.format = "PDF";
             template.layout = "Letter ANSI A Landscape 2 fixed legend";
             template.preserveScale = false;
-            /*var trendsLegendLayer = new LegendLayer();
-            trendsLegendLayer.layerId = "1";*/
-            //legendLayer.subLayerIds = [*];
+            /* var trendsLegendLayer = new LegendLayer(); */
+            /* trendsLegendLayer.layerId = "1"; */
+            /* legendLayer.subLayerIds = ["*"]; */
+
+            /* var layersVisible = []; 
+            layersVisible.push(map.graphicsLayerIds); */
+
+            /* var visibleLayerIds = [] */
+           /*  map.graphics.add(); */
+
+           /* map.graphics.add(map._layers.networkLocations.graphics["*"]); */
 
             var legendLayers = [];
-            //legendLayers.push(trendsLegendLayer);
+            /* legendLayers.push(trendsLegendLayer); */
 
             var printTitle = getPrintTitle();
 
@@ -2503,7 +2516,7 @@ require([
                 "authorText": "NAWQA",
                 "copyrightText": "This page was produced by the nawqa decadal trends mapper"
             }
-
+            
             var docTitle = template.layoutOptions.titleText;
 
             printParams.template = template;
