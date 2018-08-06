@@ -260,12 +260,29 @@ require([
             }
         });
 
+        var shadedReliefBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/arcgis/rest/services/World_Shaded_Relief/MapServer');
+        var referenceMapBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer');
+        var nationalMapBasemap = new ArcGISTiledMapServiceLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer');
+
+        var bounds = new Extent({
+            "xmin":-16045622,
+            "ymin":-811556,
+            "xmax":7297718,
+            "ymax":11142818,
+            "spatialReference":{"wkid":102100}
+          });
+
         map = Map('mapDiv', {
-            basemap: 'topo',
+            /* basemap: 'topo', */
             //center: [-95.6, 38.6],
+            extent: bounds,
             center: defaultMapCenter,
             zoom: 5
         });
+        map.addLayer(shadedReliefBasemap, 1);
+        map.addLayer(referenceMapBasemap, 1);
+        map.removeLayer(nationalMapBasemap);
+        
         //button for returning to initial extent
         var home = new HomeButton({
             map: map
@@ -547,7 +564,7 @@ require([
             /*map.addLayer(shadedReliefBasemap);
             map.addLayer(referenceMapBasemap);
             map.removeLayer(nationalMapBasemap);*/
-            $("#btnShadedRelief").click();//
+            //$("#btnShadedRelief").click();//
             var scale = map.getScale().toFixed(0);
             $('#scale')[0].innerHTML = addCommas(scale);
             var initMapCenter = webMercatorUtils.webMercatorToGeographic(map.extent.getCenter());
@@ -604,9 +621,7 @@ require([
             $('#longitude').html(geographicMapCenter.x.toFixed(3));
         });
 
-        var nationalMapBasemap = new ArcGISTiledMapServiceLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer');
-        var shadedReliefBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/arcgis/rest/services/World_Shaded_Relief/MapServer');
-        var referenceMapBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer');
+        
         ///on clicks to swap basemap. map.removeLayer is required for nat'l map b/c it is not technically a basemap, but a tiled layer.
         function removeManualLayers() {
             map.removeLayer(nationalMapBasemap);
