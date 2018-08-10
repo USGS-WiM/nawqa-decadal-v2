@@ -260,12 +260,20 @@ require([
             }
         });
 
+        var shadedReliefBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/arcgis/rest/services/World_Shaded_Relief/MapServer');
+        var referenceMapBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer');
+        var nationalMapBasemap = new ArcGISTiledMapServiceLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer');
+
         map = Map('mapDiv', {
             basemap: 'topo',
             //center: [-95.6, 38.6],
             center: defaultMapCenter,
-            zoom: 5
+            zoom: 5,
         });
+
+        map.addLayer(referenceMapBasemap, 1);
+        map.addLayer(shadedReliefBasemap, 1);
+        map.removeLayer(nationalMapBasemap);
         //button for returning to initial extent
         var home = new HomeButton({
             map: map
@@ -547,7 +555,7 @@ require([
             /*map.addLayer(shadedReliefBasemap);
             map.addLayer(referenceMapBasemap);
             map.removeLayer(nationalMapBasemap);*/
-            $("#btnShadedRelief").click();//
+            //$("#btnShadedRelief").click();//
             var scale = map.getScale().toFixed(0);
             $('#scale')[0].innerHTML = addCommas(scale);
             var initMapCenter = webMercatorUtils.webMercatorToGeographic(map.extent.getCenter());
@@ -604,9 +612,7 @@ require([
             $('#longitude').html(geographicMapCenter.x.toFixed(3));
         });
 
-        var nationalMapBasemap = new ArcGISTiledMapServiceLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer');
-        var shadedReliefBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/arcgis/rest/services/World_Shaded_Relief/MapServer');
-        var referenceMapBasemap = new ArcGISTiledMapServiceLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer');
+        
         ///on clicks to swap basemap. map.removeLayer is required for nat'l map b/c it is not technically a basemap, but a tiled layer.
         function removeManualLayers() {
             map.removeLayer(nationalMapBasemap);
@@ -2433,18 +2439,26 @@ require([
 
             $("#cycle12input").click(function () {
                 document.getElementById('selectedTrendImage').src = "images/timeline/cycle-1-2.png";
+                $("#siteInfoClose").click();
+                $("#networkInfoClose").click();
             });
 
             $("#cycle13input").click(function () {
                 document.getElementById('selectedTrendImage').src = "images/timeline/cycle-1-3.png";
+                $("#siteInfoClose").click();
+                $("#networkInfoClose").click();
             });
 
             $("#cycle23input").click(function () {
                 document.getElementById('selectedTrendImage').src = "images/timeline/cycle-2-3.png";
+                $("#siteInfoClose").click();
+                $("#networkInfoClose").click();
             });
 
             $("#cycle123input").click(function () {
                 document.getElementById('selectedTrendImage').src = "images/timeline/cycle-full.png";
+                $("#siteInfoClose").click();
+                $("#networkInfoClose").click();
             });
         });
 
