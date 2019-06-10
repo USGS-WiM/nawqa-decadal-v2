@@ -4,7 +4,8 @@
 var allLayers;
 var renderer;
 
-var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal/MapServer/6/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
+var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/decadaltest_06_10_2019/MapServer/6/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
+//PROD == NAWQA/decadal
 
 require([
     "esri/geometry/Extent",
@@ -147,7 +148,7 @@ require([
             "includeInLayerList": false,
             "layers": {
                 "All Networks": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal/MapServer/0",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/decadaltest_06_10_2019/MapServer/0", //PROD == NAWQA/decadal
                     "options": {
                         "id": "allNetworks",
                         /* "visibleLayers": [0], */
@@ -181,7 +182,7 @@ require([
                     }
                 },
                 "Magnitude of change": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal/MapServer/0",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/decadaltest_06_10_2019/MapServer/0", //PROD == NAWQA/decadal
                     "options": {
                         "id": "networkLocations",
                         /* "visibleLayers": [0], */
@@ -244,7 +245,7 @@ require([
                         "moreinfo": "https://water.usgs.gov/ogw/aquifer/principal/aquifrp025.xml",
                     }
                 }, "Glacial Aquifer" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal/MapServer",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/decadaltest_06_10_2019/MapServer", //PROD == NAWQA/decadal
                     "visibleLayers": [2],
                     "options": {
                         "id": "glacialAquifer",
