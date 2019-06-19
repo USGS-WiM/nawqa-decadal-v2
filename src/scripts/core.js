@@ -1103,7 +1103,7 @@ require([
                             cycle2 = "NA"
                         }
                         
-                        if ((attr["tbl_Networks.Cycle3_SampleFY"] != "") && (attr["tbl_Networks.Cycle3_SampleFY"] < 2015)) {
+                        if ((attr["tbl_Networks.Cycle3_SampleFY"] != "") && (attr["tbl_Networks.Cycle3_SampleFY"] < 2017)) {
                             cycle3 = attr["tbl_Networks.Cycle3_SampleFY"];
                             if (attr["tbl_Networks.Cycle3_SampleFY"] == null) {
                                 cycle3 = "NA"
