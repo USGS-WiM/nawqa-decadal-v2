@@ -201,8 +201,8 @@ require([
                     }
                 },
                  "Land use 2001" : {
-                    "url": "https://www.mrlc.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
-                    "visibleLayers": [24],
+                    "url": "https://smallscale.nationalmap.gov/arcgis/rest/services/LandCover/MapServer",
+                    "visibleLayers": [2],
                     "options": {
                         "id": "nlcd",
                         "opacity": 0.75,
@@ -269,3 +269,30 @@ require([
 
 
 
+/* "Land use 2001" : {
+    "url": "https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2001_Land_Cover_L48/wms",
+    //"visibleLayers": [24],
+    "options": {
+        "id": "nlcd",
+        "opacity": 0.75,
+        "visible": false,
+        "resourceInfo": {
+            extent: new Extent(-8.64846,49.8638,1.76767,60.8612,
+                {wkid: 4326
+                }),
+                "layerInfos": [new WMSLayerInfo({
+                    "name": 'NLCD_2001_Land_Cover_L48',
+                    "title": 'NLCD_2001_Land_Cover_L48',
+                    "transparent": false
+                })]
+        },
+        visibleLayers: ['NLCD_2001_Land_Cover_L48']
+    },
+    "wimOptions": {
+        "type": "layer",
+        "layerType": "agisWMS",
+        "includeInLayerList": true,
+        "hasOpacitySlider": true,
+        "includeLegend" : true
+    }
+}, */
