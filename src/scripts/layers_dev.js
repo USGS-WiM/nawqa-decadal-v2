@@ -165,7 +165,7 @@ require([
                         "renderer": renderer3
                     }
                 }, "Network Boundaries" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/DChangeTestMap8/MapServer",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/networks/MapServer",
                     "visibleLayers": [0],
                     "options": {
                         "id": "networkBoundaries",
