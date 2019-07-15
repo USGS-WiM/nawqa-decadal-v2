@@ -19,12 +19,17 @@ body {
     font-weight: 500 !important;
 }
 
+a {
+    color:#003cff;
+}
+
 a:hover{
     cursor: pointer;
 }
 
 #aboutNav,
 #userGuideNav,
+#dataNav,
 #faqNav{
     /*background-color: #474747;*/
     background: 0 0;
@@ -47,6 +52,7 @@ a:hover{
 
 #aboutNav,
 #userGuideNav,
+#dataNav,
 #faqNav{
     letter-spacing: 2px;
     position: relative; top: 2px;
@@ -55,6 +61,7 @@ a:hover{
 }
 #aboutNav:hover,
 #userGuideNav:hover,
+#dataNav:hover,
 #faqNav:hover{
     cursor: pointer;
     color: rgba(255,255,255,1);
@@ -62,6 +69,7 @@ a:hover{
 }
 #aboutNav:focus,
 #userGuideNav:focus,
+#dataNav:focus,
 #faqNav:focus{
     outline: none;
 }
@@ -131,6 +139,11 @@ a:hover{
     z-index: 50;
 }
 
+#supportedSearchText {
+    text-align: left;
+    display: inline-block;
+}
+
 .hover-content {
     display:none;
 }
@@ -194,8 +207,40 @@ a:hover{
 }
 
 #legendCollapse {
+  /*max-height: 500px !important;*/
+  height: auto !important;
     /*max-height: inherit;*/
+    overflow-y: hidden;
 }
+#legendElement{
+    right: 20px !important;
+    height: auto !important;
+    max-height: 500px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+@media (max-width: 990px) {
+    #swLink {
+      display: none;
+    }
+
+    #navbar button i {
+        margin-right: 15px;
+    }
+
+    .navbar-brand {
+        display: none;
+    }
+
+  }
+
+  @media (max-width: 1025px) {
+    #swLink {
+      display: none;
+    }
+
+  }
 
 /*#legendElement {*/
 /*position:absolute;*/
@@ -230,6 +275,8 @@ a:hover{
     box-shadow: 0 1px 5px rgba(0,0,0,0.65);
     /*min-width: 150px;*/
     border-radius: 4px;
+    overflow: scroll !important;
+    height: 500px !important;
 }
 
 .legendHeading {
@@ -292,6 +339,8 @@ a.lgi-zoom:hover {
     background-color: black;
     z-index: 1000;
     border-radius: 5px;
+    margin: 2.5px;
+    padding-left: 2px;
 }
 
 .modal-dialog {
@@ -304,6 +353,10 @@ a.lgi-zoom:hover {
 .modal{
     overflow-y: scroll !important;
     overflow-x: hidden !important;
+}
+
+#explanationModal {
+    z-index: 1000000;
 }
 
 #chartModal {
@@ -325,7 +378,73 @@ a.lgi-zoom:hover {
     width: 90%;
 }
 
+table.infoTable {
+    font-size: 12px;
+    width: 100%;
+    /*border-collapse: collapse;
+    border: 1px solid black;*/
+}
 
+table.infoTable th td  {
+    border: 1px solid black;
+    height: 15px;
+}
+
+table.infoTable td {
+    padding: 15px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+table.infoTable tr {
+    min-height: 15px;
+}
+
+table.infoTable th {
+    /*background-color: #f37a49;*/
+    background-color: black;
+    /*color: white;*/
+    color: #f37a49;
+    font-weight: bold;
+    padding: 15px;
+}
+
+table.infoTable tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+table.infoTable td:nth-child(odd) {
+    width: 160px;
+}
+
+.largeIncrease {
+    color: #f37a49;
+    font-weight: bold;
+}
+
+.smallIncrease {
+    color: #f37a49;
+    font-weight: bold;
+}
+
+.noChange {
+    color: black;
+}
+
+.smallDecrease {
+    color: green;
+    font-weight: bold;
+}
+
+.largeDecrease {
+    color: green;
+    font-weight: bold;
+}
+
+.zoomTo {
+    visibility: hidden;
+}
 
 .handsontable table thead th {
     white-space: pre-line;
@@ -334,8 +453,8 @@ a.lgi-zoom:hover {
 
 .siteInfoClass {
     position:absolute;
-    width:450px;
-    height:325px;
+    width:400px;
+    height:450px;
     z-index:2;
     color: black;
     background-color: rgb(255,255,255);
@@ -344,6 +463,23 @@ a.lgi-zoom:hover {
     /*min-width: 150px;*/
     border-radius: 4px;
     visibility: hidden;
+}
+
+.aquiferInfoClass {
+    position:absolute;
+    width:300px;
+    height:130px;
+    z-index:2;
+    color: black;
+    background-color: rgb(255,255,255);
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+    /*min-width: 150px;*/
+    border-radius: 4px;
+    visibility: hidden;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .charts-sbdown {
@@ -461,6 +597,22 @@ input[type="checkbox"], input[type="radio"] {
     color: white;
 }
 
+#constitExp {
+    font-size: 14px;
+    font-weight: normal;
+    width: 280px;
+    padding-left: 5px;
+}
+
+#networkExpl {
+    font-size: 14px;
+    font-weight: normal;
+    width: 280px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    margin-top: -20px;
+}
 
 /*Additional styles - mitch 12/13/2016*/
 .constituent-panel{
@@ -498,6 +650,14 @@ input[type="checkbox"], input[type="radio"] {
     box-sizing: border-box;
     padding: 3px 10px;
 }
+#networkInfoClose{
+    box-sizing: border-box;
+    padding: 3px 10px;
+}
+#glacialInfoClose{
+    box-sizing: border-box;
+    padding: 3px 10px;
+}
 
 .charts-modal{
     display: -webkit-flex;
@@ -530,7 +690,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .esriLegendLayer svg{
-    height: 30px;
+    height: 40px;
     line-height: 30px;
 }
 
@@ -632,6 +792,25 @@ input[type="checkbox"], input[type="radio"] {
 
 /*Geosearch Form*/
 
+.search-help{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 12px;
+  }
+  .search-help b{
+    display: block;
+    margin: 0 auto;
+    font-size: 14px;
+    margin-bottom: 8px;
+    margin-top: 25px;
+  }
+  .search-help code{
+    display: inline-block;
+    margin: 2px;
+  }
+
 .geosearch-form{
     display: block;
     margin: 0 auto;
@@ -709,20 +888,32 @@ input[type="checkbox"], input[type="radio"] {
     padding-bottom: 10px;
 }
 
-
+/* Site Modal */
+.cites-item {
+    box-sizing: border-box;
+    padding: 35px 15px 35px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
 
 /*Nav Tweaks*/
 #aboutNav,
 #faqNav,
+#dataNav,
 #userGuideNav{
     color: rgba(255,255,255,0.8);
 }
 #geosearchNav{
-    background-color: rgba(69,116,204, 0.5) !important;
+    background-color: rgba(69,116,204, 0.5);
     border: none !important;
 }
 #geosearchNav:hover{
-    background-color: rgba(69,116,204, 1) !important;
+    background-color: rgba(69,116,204, 0.5) !important;
+}
+
+/* .btn,
+.btn-secondary, */
+.dataButton{
+ margin-bottom: 10px;
 }
 
 
@@ -730,6 +921,8 @@ input[type="checkbox"], input[type="radio"] {
 /*Legend Adjustments*/
 #legendDiv{
     min-height: 220px;
+    max-height: none !important;
+    overflow: visible !important;
 }
 
 
@@ -787,9 +980,10 @@ input[type="checkbox"], input[type="radio"] {
 
 
 .aboutImg {
-    width: 40%;
+    width: 50%;
+    height: auto;
     float: left;
-    padding: 15px;
+    padding: 15px 15px 0 15px;
 }
 
 .fullsize:hover{
@@ -876,9 +1070,7 @@ input[type="checkbox"], input[type="radio"] {
 
 
 /*Data table header hover for more info*/
-.htCore th{
 
-}
 .htCore th:after{
     display: none;
     position: fixed;
@@ -990,3 +1182,257 @@ input[type="checkbox"], input[type="radio"] {
   font-weight: 500;
   padding-top: 5px;
 }
+
+/*Alert box for networks */
+.network-alert-box{
+  display: block;
+  position: fixed;
+  top: 65px;
+  left: 50%;
+  margin-left: -150px;
+  width: 300px;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: white;
+  z-index: 5000000;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  color: black;
+  border-left: 8px solid #379AFF;
+  display: none;
+}
+.network-alert-box h1{
+  display: block;
+  font-size: 12pt;
+  font-weight: bolder;
+  margin: 0;
+  padding: 0;
+}
+.network-alert-box b{
+  display: block;
+  font-size: 10pt;
+  font-weight: 500;
+  padding-top: 5px;
+}
+
+/* rotating arrows css */
+
+#angle1 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle2 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle3 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle4 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle5 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle6 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle7 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle8 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle9 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle10 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle11 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle12 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle13 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle14 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle15 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle16 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle17 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle18 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle19 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle20 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle21 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle22 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle23 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle24 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle25 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle26 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle27 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle28 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+#angle29 {
+    transition-duration: 0.5s;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+}
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+    padding: 0 0 0 10px;
+    font-weight: 100;
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.esriLegendLayerLabel {
+    display: none;
+}
+
+/* Styles for link to SW in nav bar */
+
+#swLink {
+    font-size: 11px;
+    width: 118px;
+    margin: 9px;
+    cursor: pointer;
+}
+
+/* Circle for site Information well */
+#circle {
+    width: 9px;
+    height: 9px;
+    background: #00ee3c;
+    border-radius: 70px;
+    border: solid 1.5px #333333;
+    display: inline-block;
+ }
+
+ .highlighted{
+    background-color: #00ee9e2e;
+    transition: background 0.5s linear;
+    border-radius: 4px;
+}
+
+.constituentTable .constTable {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 5px;
+    text-align: center;
+ }
+
+ /* Custom Legend Squares */
+
+.squareDiv {
+    float: left;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .ag {
+    background: #A18072;
+    border-width: 1.5px;
+  }
+  .res {
+    background: #E394FD;
+    border-width: 1.5px;
+  }
+  .other {
+    background: #949DC8;
+    border-width: 1.5px;
+  }
+
+  .legendSpacing {
+    margin-bottom: 15px;
+  }

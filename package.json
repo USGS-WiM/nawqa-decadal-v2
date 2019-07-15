@@ -1,6 +1,6 @@
 {
-	"name": "nawqa-sw-trends",
-	"version": "0.0.0",
+	"name": "nawqa-decadal-v2",
+	"version": "1.0.0",
 	"description": "WiM generator",
 	"repository": {
 		"type": "git",
