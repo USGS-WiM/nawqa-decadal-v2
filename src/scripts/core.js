@@ -1129,33 +1129,32 @@ require([
                         $('#networkInfoDiv').hide();
                         $('#glacialInfoDiv').hide();
 
-                        $("#siteInfoPanel").append("<table class='infoTable'><tr><td><b>" + displayConst + "</b></td><td><span class='" + camelize(getValue(attr[attField])) + "'>" + getValue(attr[attField]) + "</span></td></tr>" +
+                            $("#siteInfoPanel").append("<table class='infoTable'><tr><td><b>" + displayConst + "</b></td><td><span class='" + camelize(getValue(attr[attField])) + "'>" + getValue(attr[attField]) + "</span></td></tr>" +
 
-                            "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
-                            "<tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
-                            "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
-                            "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
+                                "<tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
+                                "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
+                                "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(depth25) + " to " + checkSigFigs(depth75) + " feet</td></tr>" +
 
-                            "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
-                            "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
-                            "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
-                            "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
+                                "<tr><td><b>Principal aquifer</b></td><td>" + attr["tbl_Networks.PrincipleAquifer"] + "</td></tr>" +
+                                "<tr><td><b>Regional aquifer</b></td><td>" + attr["tbl_Networks.RegionalAquifer"] + "</td></tr>" +
+                                "<tr><td><b>Aquifer material</b></td><td>" + attr["tbl_Networks.AquiferMaterial"] + "</td></tr>" +
 
-                            "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
-                            "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
-                            "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
-                            "<tr><td><b>Sample dates</b></td><td>" + cycle1 + ", " + cycle2 + ", " + cycle3 + "</td></tr>" +
+                                "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
+                                "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
+                                "<tr><td><b>Sample dates</b></td><td>" + cycle1 + ", " + cycle2 + ", " + cycle3 + "</td></tr>" +
 
-                            "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+                                "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
-                            "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
-                            "<tr><td colspan='2' align='center'><a id='explanation' href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr>" +
-                            "<tr><td colspan='2' align='center'><div id='circle'></div><b> = Well</b></td></tr></table>");
-                    }
-
+                                "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
+                                "<tr><td colspan='2' align='center'><a id='explanation' href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr>" +
+                                "<tr><td colspan='2' align='center'><div id='circle'></div><b> = Well</b></td></tr></table>");
+                        }
                     OID = feature.attributes["network_centroids.OBJECTID"];
                     oldValue = getValue(attr[attField]);
 
@@ -1206,8 +1205,25 @@ require([
                 deferredResult.addCallback(function (response) {
 
                     if (response.length > 0 && map.getLayer("networkBoundaries").visible) {
+                        
+                        // exception for network hpgwlusag3a which is sitting on under another network
+                        var doubleNetwork = false;
+                        var hpgwlusag3a;
+                        var otherDepth25;
+                        var otherDepth75;
+                        
+                        if (response.length > 1) {
+                            if (response[1].feature.attributes.SUCODE == "hpgwlusag3a") {
+                                hpgwlusag3a = response[1].feature.attributes;
+
+                                otherDepth25 = hpgwlusag3a["Depth25thpercentile"];
+                                otherDepth75 = hpgwlusag3a["Depth75thpercentile"];
+                                doubleNetwork = true;
+                            }
+                        }
 
                         var feature = response[0].feature;
+                        
                         var networkFeature = response[0].feature;
                         var attr = feature.attributes;
 
@@ -1280,6 +1296,33 @@ require([
                                 instance.unpin();
                             }
 
+                            if (doubleNetwork == true) {
+                                $("#networkInfoPanel").append("<table class='infoTable'><tr><td><b>" + "</b></td><td><span class='" + "'>" + "</span></td></tr>" +
+                                    "<table class='infoTable'><tr><td><b>Network type</b></td><td>" + networkTypeFind(hpgwlusag3a["NetworkType"]) + "</td></tr>" +
+                                    "<tr><td><b>Types of wells</b></td><td>" + hpgwlusag3a["WellTypeDesc"] + "</td></tr>" +
+                                    "<tr><td><b>Typical depth range</b></td><td>" + checkSigFigs(otherDepth25) + " to " + checkSigFigs(otherDepth75) + " feet</td></tr>" +
+
+                                    "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                                    "<tr><td><b>Principal aquifer</b></td><td>" + hpgwlusag3a["PrincipleAquifer"] + "</td></tr>" +
+                                    "<tr><td><b>Regional aquifer</b></td><td>" + hpgwlusag3a["RegionalAquifer"] + "</td></tr>" +
+                                    "<tr><td><b>Aquifer material</b></td><td>" + hpgwlusag3a["AquiferMaterial"] + "</td></tr>" +
+
+                                    "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                                    "<tr><td><b>Additional information</b></td><td>" + hpgwlusag3a["AdditionalInfo"] + "</td></tr>" +
+                                    "<tr><td><b>NAWQA network code</b></td><td>" + hpgwlusag3a["SUCode"] + "</td></tr>" +
+
+                                    "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
+
+                                    "<tr><td colspan='2' align='center'><b><a id='infoWindowLink' href='javascript:linkClick()'>ZOOM TO NETWORK</a></b></td></tr>" +
+                                    "<tr><td colspan='2' align='center'><a href='javascript:showTermExp()'>For explanation of table entries click here</a></td></tr></table>");
+
+                                    $("#infoWindowLink").on('click', linkClick);
+                                    $("#explanation").on('click', showTermExp);
+
+                            } else {
+
                                 $("#networkInfoPanel").append("<table class='infoTable'><tr><td><b>" + "</b></td><td><span class='" + "'>" + "</span></td></tr>" +
                                     "<table class='infoTable'><tr><td><b>Network type</b></td><td>" + networkTypeFind(attr["network_centroids.NETWORK_TYPE"]) + "</td></tr>" +
                                     "<tr><td><b>Types of wells</b></td><td>" + attr["tbl_Networks.WellTypeDesc"] + "</td></tr>" +
@@ -1338,6 +1381,7 @@ require([
 
                                 
                             } 
+                        }
 
                             catch(err) {
                                 $(".network-alert-box").show();
@@ -1506,7 +1550,7 @@ require([
             } else if (networkType == "AG") {
                 networkText = "Agricultural land use network";
             }
-
+            
             return networkText;
         }
 
