@@ -4,7 +4,7 @@
 var allLayers;
 var renderer;
 
-var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer/4/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
+var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer/6/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
 //PROD == NAWQA/decadal
 
 require([
@@ -166,7 +166,7 @@ require([
                         "renderer": renderer3
                     }
                 }, "Network Boundaries" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/networks/MapServer",
+                    "url": "https://gis.usgs.gov/sciencebase2/rest/services/Catalog/5dbb40a7e4b06957974ed55e/MapServer",
                     "visibleLayers": [0],
                     "options": {
                         "id": "networkBoundaries",
