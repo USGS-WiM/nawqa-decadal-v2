@@ -4,7 +4,8 @@
 var allLayers;
 var renderer;
 
-var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal/MapServer/6/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
+var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer/6/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
+//PROD == NAWQA/decadal
 
 require([
     "esri/geometry/Extent",
@@ -147,7 +148,7 @@ require([
             "includeInLayerList": false,
             "layers": {
                 "All Networks": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal/MapServer/0",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer/0", //PROD == NAWQA/decadal
                     "options": {
                         "id": "allNetworks",
                         /* "visibleLayers": [0], */
@@ -165,7 +166,7 @@ require([
                         "renderer": renderer3
                     }
                 }, "Network Boundaries" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/networks/MapServer",
+                    "url": "https://gis.usgs.gov/sciencebase2/rest/services/Catalog/5dbb40a7e4b06957974ed55e/MapServer",
                     "visibleLayers": [0],
                     "options": {
                         "id": "networkBoundaries",
@@ -181,7 +182,7 @@ require([
                     }
                 },
                 "Magnitude of change": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal/MapServer/0",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer/0", //PROD == NAWQA/decadal
                     "options": {
                         "id": "networkLocations",
                         /* "visibleLayers": [0], */
@@ -200,8 +201,8 @@ require([
                     }
                 },
                  "Land use 2001" : {
-                    "url": "https://www.mrlc.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
-                    "visibleLayers": [24],
+                    "url": "https://smallscale.nationalmap.gov/arcgis/rest/services/LandCover/MapServer",
+                    "visibleLayers": [2],
                     "options": {
                         "id": "nlcd",
                         "opacity": 0.75,
@@ -215,7 +216,7 @@ require([
                         "includeLegend" : true
                     }
                 }, "Trend sites" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites_test/MapServer",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites_test_07292019/MapServer",
                     "options": {
                         "id": "trendSites",
                         "opacity": 1.0,
@@ -244,7 +245,7 @@ require([
                         "moreinfo": "https://water.usgs.gov/ogw/aquifer/principal/aquifrp025.xml",
                     }
                 }, "Glacial Aquifer" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal/MapServer",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer", //PROD == NAWQA/decadal
                     "visibleLayers": [2],
                     "options": {
                         "id": "glacialAquifer",
@@ -268,3 +269,30 @@ require([
 
 
 
+/* "Land use 2001" : {
+    "url": "https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2001_Land_Cover_L48/wms",
+    //"visibleLayers": [24],
+    "options": {
+        "id": "nlcd",
+        "opacity": 0.75,
+        "visible": false,
+        "resourceInfo": {
+            extent: new Extent(-8.64846,49.8638,1.76767,60.8612,
+                {wkid: 4326
+                }),
+                "layerInfos": [new WMSLayerInfo({
+                    "name": 'NLCD_2001_Land_Cover_L48',
+                    "title": 'NLCD_2001_Land_Cover_L48',
+                    "transparent": false
+                })]
+        },
+        visibleLayers: ['NLCD_2001_Land_Cover_L48']
+    },
+    "wimOptions": {
+        "type": "layer",
+        "layerType": "agisWMS",
+        "includeInLayerList": true,
+        "hasOpacitySlider": true,
+        "includeLegend" : true
+    }
+}, */

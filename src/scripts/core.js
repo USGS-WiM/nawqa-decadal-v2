@@ -1085,20 +1085,29 @@ require([
 
                         
 
-                        if (attr["tbl_Networks.Cycle1_SampleFY"] != "") {
+                        if (attr["tbl_Networks.Cycle1_SampleFY"] != ""){
                             cycle1 = attr["tbl_Networks.Cycle1_SampleFY"];
+                            if (attr["tbl_Networks.Cycle1_SampleFY"] == null) {
+                                cycle1 = "NA"
+                            }     
                         } else {
                             cycle1 = "NA"
                         }
                         
                         if (attr["tbl_Networks.Cycle2_SampleFY"] != "") {
                             cycle2 = attr["tbl_Networks.Cycle2_SampleFY"];
+                            if (attr["tbl_Networks.Cycle2_SampleFY"] == null) {
+                                cycle2 = "NA"
+                            }
                         } else {
                             cycle2 = "NA"
                         }
                         
-                        if ((attr["tbl_Networks.Cycle3_SampleFY"] != "") && (attr["tbl_Networks.Cycle3_SampleFY"] < 2015)) {
+                        if ((attr["tbl_Networks.Cycle3_SampleFY"] != "") && (attr["tbl_Networks.Cycle3_SampleFY"] < 2017)) {
                             cycle3 = attr["tbl_Networks.Cycle3_SampleFY"];
+                            if (attr["tbl_Networks.Cycle3_SampleFY"] == null) {
+                                cycle3 = "NA"
+                            }
                         } else {
                             cycle3 = "NA"
                         }
