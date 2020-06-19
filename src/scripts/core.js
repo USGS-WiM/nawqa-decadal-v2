@@ -2447,25 +2447,25 @@ require([
             });
 
             $("#cycle12input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/cycle-1-2.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/cycle-1-2-version3.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
 
             $("#cycle13input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/cycle-1-3.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/cycle-1-3-version3.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
 
             $("#cycle23input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/cycle-2-3.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/cycle-2-3-version3.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
 
             $("#cycle123input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/cycle-full.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/cycle-full-version3.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
