@@ -29,9 +29,9 @@ require([
     var defaultSymbol = null;
 
 	var count = 2;
-    renderer = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C12_P00940_Chloride");
+    renderer = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C23_P00940_Chloride");
     renderer2 = new esri.renderer.UniqueValueRenderer(defaultSymbol);
-    renderer3 = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C12_P00940_Chloride");
+    renderer3 = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C23_P00940_Chloride");
 
 	orangeBigSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/orange_large.png", 45, 45);
 	greenBigSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/green_large.png", 45, 45);
