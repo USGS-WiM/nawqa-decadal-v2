@@ -4,7 +4,7 @@
 var allLayers;
 var renderer;
 
-var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer/6/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
+var constituentDropURl = 'https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/network_centroids_polys_aquifer/MapServer/6/query?where=OBJECTID+%3E+0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=ConstituentType,DisplayName&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=json';
 //PROD == NAWQA/decadal
 
 require([
@@ -29,9 +29,9 @@ require([
     var defaultSymbol = null;
 
 	var count = 2;
-    renderer = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C12_P00940_Chloride");
+    renderer = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C23_P00940_Chloride");
     renderer2 = new esri.renderer.UniqueValueRenderer(defaultSymbol);
-    renderer3 = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C12_P00940_Chloride");
+    renderer3 = new esri.renderer.UniqueValueRenderer(defaultSymbol, "ChemData.C23_P00940_Chloride");
 
 	orangeBigSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/orange_large.png", 45, 45);
 	greenBigSymbol = new esri.symbol.PictureMarkerSymbol("https://nawqatrends.wim.usgs.gov/nawqaimages/green_large.png", 45, 45);
@@ -148,7 +148,7 @@ require([
             "includeInLayerList": false,
             "layers": {
                 "All Networks": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer/0", //PROD == NAWQA/decadal
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/network_centroids_polys_aquifer/MapServer/0", //PROD == NAWQA/decadal
                     "options": {
                         "id": "allNetworks",
                         /* "visibleLayers": [0], */
@@ -182,7 +182,7 @@ require([
                     }
                 },
                 "Magnitude of change": {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer/0", //PROD == NAWQA/decadal
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/network_centroids_polys_aquifer/MapServer/0", //PROD == NAWQA/decadal
                     "options": {
                         "id": "networkLocations",
                         /* "visibleLayers": [0], */
@@ -216,7 +216,7 @@ require([
                         "includeLegend" : true
                     }
                 }, "Trend sites" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/trendSites_test_07292019/MapServer",
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/2020_trend_sites/MapServer",
                     "options": {
                         "id": "trendSites",
                         "opacity": 1.0,
@@ -245,7 +245,7 @@ require([
                         "moreinfo": "https://water.usgs.gov/ogw/aquifer/principal/aquifrp025.xml",
                     }
                 }, "Glacial Aquifer" : {
-                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/decadal_test_07291029/MapServer", //PROD == NAWQA/decadal
+                    "url": "https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/network_centroids_polys_aquifer/MapServer", //PROD == NAWQA/decadal
                     "visibleLayers": [2],
                     "options": {
                         "id": "glacialAquifer",
