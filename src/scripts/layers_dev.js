@@ -140,6 +140,11 @@ require([
 		symbol: allNetworksSymbol,
 		label: "Network"
 	});
+    renderer3.addValue({
+		value: "null", 
+		symbol: allNetworksSymbol,
+		label: "Network"
+	});
 
     allLayers = [//
         {
