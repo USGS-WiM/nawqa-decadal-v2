@@ -1546,49 +1546,6 @@ require([
             }
         }); */
 
-        // USGS Geosearch
-
-        search_api.create("geosearch", {
-            on_result: function (o) {
-                // what to do when a location is found
-                // o.result is geojson point feature of location with properties
-                // zoom to location
-                require(["esri/geometry/Extent"], function (Extent) {
-                    var noExtents = ["GNIS_MAJOR", "GNIS_MINOR", "ZIPCODE", "AREACODE"];
-                    var noExtentCheck = noExtents.indexOf(o.result.properties["Source"])
-                    $("#geosearchModal").modal('hide');
-                    if (noExtentCheck == -1) {
-                        map.setExtent(
-                            new esri.geometry.Extent({
-                                xmin: o.result.properties.LonMin,
-                                ymin: o.result.properties.LatMin,
-                                xmax: o.result.properties.LonMax,
-                                ymax: o.result.properties.LatMax,
-                                spatialReference: { "wkid": 4326 }
-                            }),
-                            true
-                        );
-                    } else {
-                        //map.setCenter();
-                        require(["esri/geometry/Point"], function (Point) {
-                            map.centerAndZoom(
-                                new Point(o.result.properties.Lon, o.result.properties.Lat),
-                                12
-                            );
-                        });
-                    }
-                });
-
-            },
-            include_state: true,
-            include_zip_code: true
-
-            /*on_failure: function(o){  
-            $("#test").html("Sorry, a location could not be found in search for '"+o.val()+"'");
-               $("#invalidSearchLocationModal").modal('show');
-            }*/
-        });
-
         // Symbols
         var sym = createPictureSymbol('../images/purple-pin.png', 0, 12, 13, 24);
 
@@ -1696,7 +1653,66 @@ require([
             }
             // Geosearch nav menu is selected
             $('#geosearchNav').click(function () {
-                showModal();
+                var isItUP = true;
+                try {
+                    search_api
+                }
+                catch (err) {
+                    isItUP = false;
+                    console.log("did not work")
+                }
+                if (isItUP) {
+                    // USGS Geosearch
+
+        search_api.create("geosearch", {
+            on_result: function (o) {
+                // what to do when a location is found
+                // o.result is geojson point feature of location with properties
+                // zoom to location
+                require(["esri/geometry/Extent"], function (Extent) {
+                    var noExtents = ["GNIS_MAJOR", "GNIS_MINOR", "ZIPCODE", "AREACODE"];
+                    var noExtentCheck = noExtents.indexOf(o.result.properties["Source"])
+                    $("#geosearchModal").modal('hide');
+                    if (noExtentCheck == -1) {
+                        map.setExtent(
+                            new esri.geometry.Extent({
+                                xmin: o.result.properties.LonMin,
+                                ymin: o.result.properties.LatMin,
+                                xmax: o.result.properties.LonMax,
+                                ymax: o.result.properties.LatMax,
+                                spatialReference: { "wkid": 4326 }
+                            }),
+                            true
+                        );
+                    } else {
+                        //map.setCenter();
+                        require(["esri/geometry/Point"], function (Point) {
+                            map.centerAndZoom(
+                                new Point(o.result.properties.Lon, o.result.properties.Lat),
+                                12
+                            );
+                        });
+                    }
+                });
+
+            },
+            include_state: true,
+            include_zip_code: true
+
+            /*on_failure: function(o){  
+            $("#test").html("Sorry, a location could not be found in search for '"+o.val()+"'");
+               $("#invalidSearchLocationModal").modal('show');
+            }*/
+        });
+                    showModal();
+                } else {
+
+                showsearchDownModal();
+                }
+
+                function showsearchDownModal() {
+                    $('#searchDownModal').modal('show');
+                }
             });
 
             //mclModal
