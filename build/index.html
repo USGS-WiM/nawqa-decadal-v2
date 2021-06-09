@@ -131,6 +131,26 @@
     </div><!-- /.modal-dialog -->
 </div>
 
+<!-- USGS Search down modal -->
+<div id="searchDownModal" aria-hidden="true" class="modal fade overflow-y-hidden" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="text-align: center">The USGS Search is currently down.</h3>
+            </div>
+            <div class="modal-body">
+                <p>Unfortunately, the Find Location tool is not available at the moment.</p>
+            </div>
+            <div class="modal-footer">
+                <div style="text-align: center">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color: #ffd1d1">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End USGS Search down modal -->
+
 <div class="modal fade overflow-y-hidden" id="chartModal" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -277,7 +297,7 @@
                     <div role="tabpanel" class="tab-pane" id="learnMoreTabPane">
                         <h3>Learn More</h3>
                         <h3 style="border-bottom: 1px solid rgba(0,0,0,0.4); padding: 15px 0 8px 0; margin-bottom: 8px;display:inline-block;">Evaluating Decadal Changes in Groundwater Quality</h3>
-                        <p>Groundwater-quality data were collected from 5,000 wells between 1988-2001 (first decadal sampling event) by the U.S. Geological Survey&#39;s National Water-Quality Assessment Project. Samples are collected in groups of 20-30 wells with similar characteristics called networks.  About 1,500 of these wells in 67 networks were sampled again approximately 10 years later between 2002-2012 (second sampling event) to evaluate decadal changes in groundwater quality. Between 2012 and 2018 (third sampling event), a subset of these networks was sampled again, allowing additional results to be displayed on the web page: Decadal changes in groundwater quality. This is the fourth iteration of data added to the website. With the additional data, it is possible to evaluate changes in water quality between the 2nd and 3rd sampling events for 21 additional networks (56 total), changes in water quality between the 1st and 3rd sampling events for 18 additional networks (45 total), and changes across all 3 sampling events for 18 additional networks (45 total). A total of 83 networks have been sampled at least twice. Samples were obtained from monitoring wells, domestic-supply wells, and some public-supply wells before any treatment on the system.</p>
+                        <p>Groundwater-quality data were collected from 5,000 wells between 1988-2001 (first decadal sampling event) by the U.S. Geological Survey&#39;s National Water-Quality Assessment Project. Samples are collected in groups of 20-30 wells with similar characteristics called networks.  About 1,500 of these wells in 67 networks were sampled again approximately 10 years later between 2002-2012 (second sampling event) to evaluate decadal changes in groundwater quality. Between 2012 and 2020 (third sampling event), a subset of these networks was sampled again, allowing additional results to be displayed on the web page: Decadal changes in groundwater quality. This is the fifth iteration of data added to the website. With the additional data, it is possible to evaluate changes in water quality between the 2nd and 3rd sampling events for 67 networks, changes in water quality between the 1st and 3rd sampling events for 54 additional networks, and changes across all 3 sampling events for 52 additional networks. Samples were obtained from monitoring wells, domestic-supply wells, and some public-supply wells before any treatment on the system.</p>
                         <p>Groundwater samples used to evaluate decadal change were collected from networks of wells with similar characteristics. Some networks, consisting of domestic or public supply wells, were used to assess changes in the quality of groundwater used for drinking water supply. Other networks, consisting of monitoring wells, assessed changes in the quality of shallow groundwater underlying key land-use types such as agricultural or urban lands. Networks were chosen based on geographic distribution across the Nation and to represent the most important water-supply aquifers and specific land-use types.</p>
                         <br/><br/>
                         <h3 style="border-bottom: 1px solid rgba(0,0,0,0.4); padding: 15px 0 8px 0; margin-bottom: 8px;display:inline-block;">Decadal changes in groundwater quality were assessed for these constituents:</h3>
@@ -295,6 +315,7 @@
                                     <li>Molybdenum</li>
                                     <li>Nitrate</li>
                                     <li>Orthophosphate</li>
+                                    <li>Radium</li>
                                     <li>Sodium</li>
                                     <li>Strontium</li>
                                     <li>Sulfate</li>
@@ -331,14 +352,14 @@
 
                         <img src="images/explanation.png" style="display: block; margin: 0 auto; width: 90%; max-width: 220px; max-height: 220px; margin-top: 15px; margin-bottom: 15px;"/>
 
-                        <p>Decadal changes in concentrations of nutrients, metals, and pesticides and other organic contaminants in groundwater were evaluated in a total of 83 networks across the Nation by comparing changes between selected sampling events.</p>
+                        <p>Decadal changes in concentrations of nutrients, metals, and pesticides and other organic contaminants in groundwater were evaluated in a total of 88 networks across the Nation by comparing changes between selected sampling events.</p>
                         <p>Decadal changes in median concentrations for a network are classified as large, small, or no change in comparison to a benchmark concentration. For example, a large change in chloride concentrations indicates that the median of all differences in concentrations in a network is greater than 5 percent of the chloride benchmark per decade. For chloride, which has a Secondary Maximum Contaminant level of 250 milligrams per liter, this would mean the change in concentration exceeded 12.5 milligrams per liter (mg/L), or 5 percent of the benchmark.</p>
 
                         <h3 style="border-bottom: 1px solid rgba(0,0,0,0.4); padding: 15px 0 8px 0; margin-bottom: 8px;display:inline-block;">Decadal Groundwater Quality Networks</h3>
                         
-                        <img src="images/webmap_10262020.jpg" style="display: block; margin: 0 auto; width: 90%; max-width: 600px;margin-top: 15px; margin-bottom: 15px;"/>
+                        <img src="images/mapimage2021.jpg" style="display: block; margin: 0 auto; width: 90%; max-width: 600px;margin-top: 15px; margin-bottom: 15px;"/>
 
-                        <p style="text-align:center;">230 networks were sampled from 1988 to 2001 to assess the status of the Nation's groundwater quality. Each dot on the above map represents the center point of a network of about 20 to 30 wells. Networks sampled in the first sampling event only are shown in green. There were 67 networks resampled from 2002 to 2012 to assess decadal changes in groundwater quality. Networks sampled from 2012 to 2018 and at least one previous sampling event are shown in orange and trend networks that have not yet been resampled in the third decadal sampling event are shown in blue. Networks sampled in the first and second sampling events but are no longer being sampled are shown in gray.</p>
+                        <p style="text-align:center;">230 networks were sampled from 1988 to 2001 to assess the status of the Nation's groundwater quality. Each dot on the above map represents the center point of a network of about 20 to 30 wells. Networks sampled in the first sampling event only are shown in green. There were 67 networks resampled from 2002 to 2012 to assess decadal changes in groundwater quality. Networks sampled from 2012 to 2020 and at least one previous sampling event are shown in orange and trend networks that have not yet been resampled in the third decadal sampling event are shown in blue. Networks sampled in the first and second sampling events but are no longer being sampled are shown in gray.</p>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="waterResourcesTabPane">
                         <h3>Related Resources</h3>
@@ -382,40 +403,48 @@
                     <div role="tabpanel" class="tab-pane" id="updatesTabPane">
                         <h4><b>Updates to Decadal Changes in Groundwater Quality</b></h4>
                         <br>
-                        This web mapping application is based on a data release that updates Decadal changes in groundwater quality: U.S. Geological Survey Web page, Lindsey and others, 2018. The initial data release documented decadal changes in groundwater quality for 67 networks that had been sampled by the National Water-Quality Assessment Project. The results were based on analysis of 1,509 wells in the 67 networks that had been sampled during 1988-2001 and again between 2002-2012. Subsequent data releases updated the website with results from 2012-2014, 2015-16, and 2017-18.
+                        This web mapping application is based on a data release that updates Decadal changes in groundwater quality: U.S. Geological Survey Web page, Lindsey and others, 2018. The initial data release documented decadal changes in groundwater quality for 67 networks that had been sampled by the National Water-Quality Assessment Project. The results were based on analysis of 1,509 wells in the 67 networks that had been sampled during 1988-2001 and again between 2002-2012. Subsequent data releases updated the website with results from 2012-2014, 2015-16, 2017-18 and 2019-20.
                         The table below shows the numbers of wells and networks that can be compared across any 2 or 3 time periods:</p>
                         <table class="constituentTable" style="border: 1px solid black;">
                             <thead>
                                 <tr>
                                     <td class="constTable"></td>
-                                    <td class="constTable">Sampled in Decade 1 and 2</td>
-                                    <td class="constTable">Sampled in Decade 1 and 3</td>
-                                    <td class="constTable">Sampled in Decade 2 and 3</td>
-                                    <td class="constTable">Sampled in Decade 1, 2, and 3</td>
-                                    <td class="constTable" style="background-color: #ededed">Number of wells or networks with at least 2 decadal sampling events</td>
+                                    <td class="constTable">Sample pairs in Decade 1 and 2</td>
+                                    <td class="constTable">Sample pairs in Decade 1 and 3</td>
+                                    <td class="constTable">Sample pairs in Decade 2 and 3</td>
+                                    <td class="constTable">Sample sets in Decade 1, 2, and 3</td>
+                                    <td class="constTable" style="background-color: #ededed">Number of wells or networks with at least 2 decadal sampling pairs</td>
                                 </tr>
                             </thead>
                             </tbody>
                                 <tr>
                                     <td class="constTable">Numbers of wells sampled</td>
-                                    <td class="constTable">1,509</td>
-                                    <td class="constTable">891</td>
-                                    <td class="constTable">1,239</td>
-                                    <td class="constTable">1,213</td>
-                                    <td class="constTable" style="background-color: #ededed">2,057</td>
+                                    <td class="constTable">1,515</td>
+                                    <td class="constTable">1,030</td>
+                                    <td class="constTable">1,476</td>
+                                    <td class="constTable">1,398</td>
+                                    <td class="constTable" style="background-color: #ededed">2,196</td>
                                 </tr>
                                 <tr>
                                     <td class="constTable">Numbers of Networks sampled</td>
                                     <td class="constTable">67</td>
-                                    <td class="constTable">45</td>
-                                    <td class="constTable">56</td>
-                                    <td class="constTable">45</td>
-                                    <td class="constTable" style="background-color: #ededed">83</td>
+                                    <td class="constTable">54</td>
+                                    <td class="constTable">67</td>
+                                    <td class="constTable">52</td>
+                                    <td class="constTable" style="background-color: #ededed">89</td>
                                 </tr>
                             </tbody>
                         </table>
                         <br>
-                        <p>New data added from the time period 2017-18 include: 362 wells sampled in 18 networks that could be compared to the same wells and networks sampled during 1988-2001; 473 wells sampled in  21 networks that could be compared to the same wells and networks sampled during 2002-2012; and 492 wells in 18 networks with sufficient data to evaluate changes across all three events. The results across multiple time periods allow the user to select the time period of interest for display. The comparison of 1988-2001 to 2002-2012 displays the same results as all previous versions, with exception of the errata listed below. The new options allow the user to select comparisons for new time periods: 1988-2001 to 2012-2018, 2002-2012 to 2012-2016, and also results for data collected across all three time periods. The updated map has results for 2,057 wells in 83 networks. Health-based screening levels were updated in 2018 to include lithium, which is now included on the map for the 2nd to 3rd time interval. Previous time intervals lack sufficient data to evaluate changes in lithium concentrations. Changes in lithium concentrations were evaluated for 1,157 wells in 53 networks. The criteria for mapping, benchmarks, data preparation, and statistical analysis are described in the Technical Information tab. In order to make the evaluations of the magnitude of change comparable, the magnitude of change is displayed based the change in concentration per decade. For comparisons between the first to third sampling period (approximately two decades), the median change is divided by two. For comparisons across three or more time periods, the statistical test result of change in concentration per year is multiplied by ten.</p>
+                        <p>New data added from the time period 2019-2020 include: wells sampled in 89 networks that could be compared to the same wells and networks sampled during 1988-2001; wells sampled in 11 networks that could be compared to the same wells and networks sampled during 2002-2012; and wells in 7 networks with sufficient data to evaluate changes across all three events. The results across multiple time periods allow the user to select the time period of interest for display. The comparison of 1988-2001 to 2002-2012 displays the same results as all previous versions, with exception of the errata listed below. The new options allow the user to select comparisons for new time periods: 1988-2001 to 2012-2020, 2002-2012 to 2012-2020, and also results for data collected across all three time periods. The updated map has results for 2,196 wells in 88 networks. Health-based screening levels were updated in 2020 to include radium, which is now included on the map for the 2nd to 3rd time interval. Previous time intervals lack sufficient data to evaluate changes in radium concentrations. Changes in radium concentrations were evaluated for 237 wells in 10 networks. The criteria for mapping, benchmarks, data preparation, and statistical analysis are described in the Technical Information tab. In order to make the evaluations of the magnitude of change comparable, the magnitude of change is displayed based the change in concentration per decade. For comparisons between the first to third sampling period (approximately two decades), the median change is divided by two. For comparisons across three or more time periods, the statistical test result of change in concentration per year is multiplied by ten.</p>
+                        <p>
+                            <b>Change from versions prior to 2021:</b>
+                            <ol>
+                                <li>Networks dlmvluscr1 and dlmvsus1 have been sampled in 1988, 2001, and 2013. In previous versions of the mapper, the comparison from 2001 to 2013 was considered a Decade 1 to Decade 2 comparison because of operational reasons. However, to align more closely with the timing of other sampling, 1988 to 2001 comparisons are shown as a Decade 1-2 result and 2001 to 2013 are shown as a Decade 2-3 result. 1988-2013 is shown as a Decade 1-3 result. Results for two other networks sampled in 2001 - sanjlusor1a (1993, 2001, 2013) and sanjlusor2a (1994, 2001, 2014) – are displayed the same as in previous versions.</li>
+                                <li>The maximum common reporting limit for dissolved solids has been changed from 10 to 20 mg/L to allow comparisons across all sampling periods. This results in small changes in previously reported median differences but does not affect the results displayed on the mapper with the exception of santlusrc1 which was a small increase and now is no change.</li>
+                                <li>The data release describes changes in results from the previous data release. The table includes the network name, time period, constituent, previous result, and corrected result. The issues causing these changes include a network that should not have been included because it had insufficient data for analysis, 8 cases where new data became available which changed the results, 8 cases where results were recalculated and corrected, and 18 cases where the results were calculated correctly, reported correctly in the inorganic constituent table, but transcribed incorrectly to the mapper.</li>
+                            </ol>
+                        </p>
                         <p>
                         <b>Errata from V1, corrected in V2</b>:
                         The following corrections have been made in version 2 of the web site, and thus appear as a change from version 1 for comparison of changes between Decade 1 and Decade 2:
@@ -543,7 +572,7 @@
                 <h4 style="margin-bottom: 15px; font-weight: 600;">Study scope</h4>
                 <div class="faq-header" id="faq1header">1. What is the purpose of this study? <div id="angle1" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
                 <div class="faq-body" id="faq1body">
-                    The purpose of this study is to determine if the quality of the Nation&#39;s groundwater has become better, worse, or stayed the same during 1988-2018. Evaluating changes in groundwater quality at the decadal scale is one component of a larger effort to understand the quality of the Nation&#39;s water resources and how water quality conditions are changing with time.
+                    The purpose of this study is to determine if the quality of the Nation&#39;s groundwater has become better, worse, or stayed the same during 1988-2020. Evaluating changes in groundwater quality at the decadal scale is one component of a larger effort to understand the quality of the Nation&#39;s water resources and how water quality conditions are changing with time.
                 </div>
 
                 <div class="faq-header" id="faq2header">2. Who completed this study? <div id="angle2" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
@@ -568,17 +597,17 @@
 
                 <div class="faq-header" id="faq6header">6. How many wells were sampled for this study, and what time period is represented? <div id="angle6" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
                 <div class="faq-body" id="faq6body">
-                    The dataset consists of of 2,057 wells in 83 groups of wells called networks in various principal aquifers across the country from the U.S. Geological Survey National Water-Quality Assessment project. A network typically is a group of 20&#45;30 wells representing an aquifer (major aquifer study), or a specific depth and (or) land use (land-use study) <a class="showReferencesCitedLapham">(Lapham and others, 1995)</a>. Each network has been sampled at least two times during the periods of 1988&#45;2001, 2002&#45;12, and 2012-18.
+                    The dataset consists of 2,196 wells in 89 groups of wells called networks in various principal aquifers across the country from the U.S. Geological Survey National Water-Quality Assessment project. A network typically is a group of 20&#45;30 wells representing an aquifer (major aquifer study), or a specific depth and (or) land use (land-use study) <a class="showReferencesCitedLapham">(Lapham and others, 1995)</a>. Each network has been sampled at least two times during the periods of 1988&#45;2001, 2002&#45;12, and 2012-20.
                 </div>
 
                 <div class="faq-header" id="faq7header">7. What does the term &#34;Decade&#34; mean as used in the &#34;Trend Period&#34; selector? <div id="angle7" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
                 <div class="faq-body" id="faq7body">
-                    The National Water&#45;Quality Assessment project evaluates changes groundwater quality at the network level on approximately a 10&#45;year time scale. The first decade, previously referred to in the program as a &#34;cycle&#34;, was from 1988 to 2001 (including pilot studies). The second decade was between 2001 and 2012. And the third decade is from 2012 to 2018. Additional data will be added to the third decade as data are approved and statistical analysis completed.
+                    The National Water&#45;Quality Assessment project evaluates changes groundwater quality at the network level on approximately a 10&#45;year time scale. The first decade, previously referred to in the program as a &#34;cycle&#34;, was from 1988 to 2001 (including pilot studies). The second decade was between 2001 and 2012. And the third decade is from 2012 to 2020. Additional data will be added to the third decade as data are approved and statistical analysis completed.
                 </div>
 
                 <div class="faq-header" id="faq8header">8. How did you determine which constituents to display on the map? <div id="angle8" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
                 <div class="faq-body" id="faq8body">
-                    More than 300 constituents were sampled at most of the wells during the two decades. Constituents were prioritized for analysis of decadal change if they met the following criteria: (1) they exceeded a human health benchmark in at least 1 percent of the wells used as a source of drinking water from public-supply wells <a class="showReferencedCitesToccalino2010">(Toccalino and Hopple, 2010)</a> or domestic-supply wells <a class="showReferencedCitesDesimone2009">(Desimone, 2009)</a>, (2) they exceeded a U.S. Environmental Protection Agency (EPA) secondary maximum contaminant level (SMCL) <a class="showReferencedCitesEPA">(U.S. Environmental Protection Agency, 2012)</a> in at least 1 percent of the wells used as a source of drinking water <a class="showReferencedCitesEPA">(U.S. Environmental Protection Agency, 2012)</a>, (3) they were among the five most frequently detected volatile organic compounds (VOCs) in the Nation <a class="showReferencedCitesZogorski">(Zogorski and others, 2006)</a>, or (4) they were among the five most frequently detected pesticides in the Nation <a class="showReferencedCitesGilliom">(Gilliom and others, 2006)</a>. Other constituents were added to this list based on regional importance. Radium, radon, and gross alpha (&alpha;) activity met the criteria for analysis but do not have sufficient data for analysis; thus, they are not included in the mapping tool. In all, 27 constituents were selected for analysis of decadal change and inclusion in the mapping tool. Constituents are only displayed for time periods where sufficient data were available and analytical methods were comparable across the sampling events. For a listing of the 27 constituents selected for analysis and the reason they were selected, <a id="mclOnTopFAQ8">click here</a>.
+                    More than 300 constituents were sampled at most of the wells during the two decades. Constituents were prioritized for analysis of decadal change if they met the following criteria: (1) they exceeded a human health benchmark in at least 1 percent of the wells used as a source of drinking water from public-supply wells <a class="showReferencedCitesToccalino2010">(Toccalino and Hopple, 2010)</a> or domestic-supply wells <a class="showReferencedCitesDesimone2009">(Desimone, 2009)</a>, (2) they exceeded a U.S. Environmental Protection Agency (EPA) secondary maximum contaminant level (SMCL) <a class="showReferencedCitesEPA">(U.S. Environmental Protection Agency, 2012)</a> in at least 1 percent of the wells used as a source of drinking water <a class="showReferencedCitesEPA">(U.S. Environmental Protection Agency, 2012)</a>, (3) they were among the five most frequently detected volatile organic compounds (VOCs) in the Nation <a class="showReferencedCitesZogorski">(Zogorski and others, 2006)</a>, or (4) they were among the five most frequently detected pesticides in the Nation <a class="showReferencedCitesGilliom">(Gilliom and others, 2006)</a>. Other constituents were added to this list based on regional importance. Radon and gross alpha (&alpha;) activity met the criteria for analysis but do not have sufficient data for analysis; thus, they are not included in the mapping tool. In all, 28 constituents were selected for analysis of decadal change and inclusion in the mapping tool. Constituents are only displayed for time periods where sufficient data were available and analytical methods were comparable across the sampling events. For a listing of the 28 constituents selected for analysis and the reason they were selected, <a id="mclOnTopFAQ8">click here</a>.
                 </div>
 
                 <div class="faq-header" id="faq9header">9. Where can I find help navigating this web page? <div id="angle9" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
@@ -663,12 +692,12 @@
 
                 <div class="faq-header" id="faq22header">22. Will other constituents be added to this tool? <div id="angle22" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
                 <div class="faq-body" id="faq22body">
-                    The 27 constituents displayed were selected as the most important for statistical analysis as described in the &#39;Criteria for analyzing constituents&#39; table. Constituents that meet those criteria in future sampling events will be added to the map. Because of changes in data collection and analytical methods, some constituents that meet those criteria cannot be analyzed for statistical change across all time periods.
+                    The 28 constituents displayed were selected as the most important for statistical analysis as described in the &#39;Criteria for analyzing constituents&#39; table. Constituents that meet those criteria in future sampling events will be added to the map. Because of changes in data collection and analytical methods, some constituents that meet those criteria cannot be analyzed for statistical change across all time periods.
                 </div>
 
-                <div class="faq-header" id="faq23header">23. The data show results through 2018. Are data still being collected and will those results be displayed? <div id="angle23" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
+                <div class="faq-header" id="faq23header">23. The data show results through 2020. Are data still being collected and will those results be displayed? <div id="angle23" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
                 <div class="faq-body" id="faq23body">
-                    A third decade of data collection is underway, and these results will be compared to results from the previous two decades. Data collected after 2018 will be analyzed and the results will be added to this map on an annual basis after quality checks on the data.
+                    A third decade of data collection is underway, and these results will be compared to results from the previous two decades. Data collected after 2020 will be analyzed and the results will be added to this map on an annual basis after quality checks on the data.
                 </div>
 
                 <div class="faq-header" id="faq24header">24. Are some areas likely to see faster changes in groundwater quality than others?  Why? <div id="angle24" style="display: -webkit-inline-box;"><i class="fa fa-angle-right"></i></div></div>
@@ -855,7 +884,7 @@
                     <div role="tabpanel" class="tab-pane" id="techPane">
                         <div class="user-guide-item">
                             <p><b>Mapping Criteria and Benchmarks</b>
-                            The NAWQA Project has developed an interactive mapping tool that displays decadal changes in concentrations. From among the more than 300 constituents sampled during the two decades, up to 27 constituents were prioritized for analysis for decadal change based on the following criteria:
+                            The NAWQA Project has developed an interactive mapping tool that displays decadal changes in concentrations. From among the more than 300 constituents sampled during the two decades, up to 28 constituents were prioritized for analysis for decadal change based on the following criteria:
                                 <ol>
                                     <li> The constituent exceeded a human health benchmark in at least 1 percent of the wells used as a source of drinking-water public supply wells <a class="showReferencedCitesToccalino2010">(Toccalino and Hopple, 2010)</a> or domestic supply wells <a class="showReferencedCitesDesimone2009">(Desimone, 2009)</a>,</li> 
                                     <li> The constituent exceeded a U.S. Environmental Protection Agency (EPA) secondary maximum contaminant level (SMCL) <a class="showReferencedCitesEPA">(U.S. Environmental Protection Agency, 2012)</a> or taste threshold in at least 1 percent of the wells used as a source of drinking water,</li> 
@@ -864,13 +893,13 @@
                                     <li> Constituents of special or regional interest.</li>
                                 </ol>
                             <br>
-                            For the two constituents included in the analysis based on regional importance, orthophosphate does not have a health benchmark but is important for ecological health of surface-water systems; 1,2-Dibromo-3-chloropropane (DBCP) was not widely used nationwide, but it is important in regions where it was used in the past. Radium, radon, and gross alpha (&alpha;) activity met the criteria for analysis, but do not have sufficient data for analysis; thus, they are not included in the mapping tool.
+                            For the two constituents included in the analysis based on regional importance, orthophosphate does not have a health benchmark but is important for ecological health of surface-water systems; 1,2-Dibromo-3-chloropropane (DBCP) was not widely used nationwide, but it is important in regions where it was used in the past. Radon and gross alpha (&alpha;) activity met the criteria for analysis, but do not have sufficient data for analysis; thus, they are not included in the mapping tool.
                             <br>
                             <br>
-                            Because of changes in sampling design and laboratory methods, results for pesticides, VOCs, and orthophosphate are not included in comparisons beyond the second decade; however, the results from previous pairs of samples for these compounds are still displayed. Thus comparisons of changes between the first and second decadal sampling events display results for 26 constituents, but, with the addition of lithium, comparisons between the second and third decade display results for 14 constituents.
+                            Because of changes in sampling design and laboratory methods, results for pesticides, VOCs, and orthophosphate are not included in comparisons beyond the second decade; however, the results from previous pairs of samples for these compounds are still displayed. Thus comparisons of changes between the first and second decadal sampling events display results for 26 constituents, but, with the addition of radium, comparisons between the second and third decade display results for 15 constituents.
                             <br>
                             <br>
-                            Benchmarks used to prioritize constituents include the following: EPA maximum contaminant levels (MCLs) <a class="showReferencedCitesEPA">(U.S. Environmental Protection Agency, 2012)</a>, USGS Health-Based Screening Levels (HBSLs) <a class="showReferencedCitesToccalino2014b">(Toccalino and others, (2014b)</a>, and nonregulatory SMCLs <a class="showReferencedCitesEPA">(U.S. Environmental Protection Agency, 2012)</a>. Of these benchmarks, only MCLs are enforceable (regulatory) drinking-water standards; all but SMCLs are human-health benchmarks. For more information about these benchmarks, <a id="showFAQ15">click here</a>. For a listing of the 27 constituents selected for analysis and the reason they were selected, <a id="mclOnTopTechPane">click here</a>.
+                            Benchmarks used to prioritize constituents include the following: EPA maximum contaminant levels (MCLs) <a class="showReferencedCitesEPA">(U.S. Environmental Protection Agency, 2012)</a>, USGS Health-Based Screening Levels (HBSLs) <a class="showReferencedCitesToccalino2014b">(Toccalino and others, (2014b)</a>, and nonregulatory SMCLs <a class="showReferencedCitesEPA">(U.S. Environmental Protection Agency, 2012)</a>. Of these benchmarks, only MCLs are enforceable (regulatory) drinking-water standards; all but SMCLs are human-health benchmarks. For more information about these benchmarks, <a id="showFAQ15">click here</a>. For a listing of the 28 constituents selected for analysis and the reason they were selected, <a id="mclOnTopTechPane">click here</a>.
                             <br>
                             <br>
                             </p>
@@ -944,6 +973,9 @@
                         </div>
                         <div>
                             <p id="epa2012">U.S. Environmental Protection Agency, 2012, 2012 edition of the drinking water standards and health advisories: U.S. Environmental Protection Agency, Office of Water, EPA 822&#45;S&#45;12&#45;001, 20 p. [Also available at <a href="https://nepis.epa.gov/Exe/ZyPDF.cgi/P100N01H.PDF?Dockey=P100N01H.PDF" target="_blank">https://nepis.epa.gov/Exe/ZyPDF.cgi/P100N01H.PDF?Dockey=P100N01H.PDF</a>.]</p>
+                        </div>
+                        <div>
+                            <p id="epa2018">U.S. Environmental Protection Agency, 2018, 2018 edition of the drinking water standards and health advisories: U.S. Environmental Protection Agency, Office of Water, EPA 822&#45;F&#45;18&#45;001, 20 p. [Also available at <a href="https://www.epa.gov/sites/production/files/2018-03/documents/dwtable2018.pdf" target="_blank">https://www.epa.gov/sites/production/files/2018-03/documents/dwtable2018.pdf</a>.]</p>
                         </div>
                         <div>
                             <p>U.S. Environmental Protection Agency, 2013, Human health benchmarks for pesticides&#45;2013 update: U.S. Environmental Protection Agency, Office of Water, EPA&#45;820&#45;F&#45;13&#45;019, 2 p. [Also available at <a href="https://www.epa.gov/sites/production/files/2015-10/documents/hh-benchmarks-factsheet.pdf" target="_blank">https://www.epa.gov/sites/production/files/2015-10/documents/hh-benchmarks-factsheet.pdf</a>.]</p>
@@ -1069,6 +1101,13 @@
                                 <td class="constTable">None</td>
                                 <td class="constTable">mg/L</td>
                                 <td class="constTable">Constituent of special or regional interest: Possible source of discharge to surface water bodies</td>
+                            </tr>
+                            <tr>
+                                <td class="constTable">Radium 226 plus Radium 228</td>
+                                <td class="constTable">inorganic</td>
+                                <td class="constTable">5</td>
+                                <td class="constTable">picocuries per liter</td>
+                                <td class="constTable">Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
                             </tr>
                             <tr>
                                 <td class="constTable">Sodium</td>
@@ -1211,13 +1250,6 @@
                                 <td class="constTable">Gross alpha (&#945;)</td>
                                 <td class="constTable">inorganic</td>
                                 <td class="constTable">15</td>
-                                <td class="constTable">picocuries per liter</td>
-                                <td class="constTable">Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
-                            </tr>
-                            <tr>
-                                <td class="constTable">Radium 226 plus Radium 228</td>
-                                <td class="constTable">inorganic</td>
-                                <td class="constTable">5</td>
                                 <td class="constTable">picocuries per liter</td>
                                 <td class="constTable">Exceeded human&#45;health benchmark in more than 1 percent of domestic or public&#45;supply wells</td>
                             </tr>
