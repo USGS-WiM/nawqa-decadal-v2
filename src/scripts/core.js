@@ -848,12 +848,7 @@ require([
             var mapFields = map.getLayer("networkLocations").fields;
             var trendPeriodVal = $('input[name=trendPeriod]:checked').val();
             $.each(mapFields, function (index, value) {
-                // EXCEPTION HERE: This was written because the name for the radium entry in ChemData does not match its name in the ConstituentKey, so it wasn't getting
-                // match in the else if below. I request the name be updated so it would be in the same format as the others but there were too many characters for 
-                // and esri field.
-                if (select[select.selectedIndex].attributes.constituent.value === "P09503_P81366_Radium226_plus_Radium228") {
-                    if (trendPeriodVal === "C23_") { attField = "ChemData.C23_Radium"; }
-                } else if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1 &&
+                if (mapFields[index].name.toLowerCase().indexOf(select[select.selectedIndex].attributes.constituent.value.toLowerCase()) != -1 &&
                     mapFields[index].name.toLowerCase().indexOf(trendPeriodVal.toLowerCase()) != -1) {
                     attField = mapFields[index].name;
                 }
