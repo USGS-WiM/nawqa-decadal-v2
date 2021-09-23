@@ -42,8 +42,8 @@ To push tags to remote origin: `git push origin --tags`
 
 ## Authors
 
-* **[Nicholas Estes](https://www.usgs.gov/staff-profiles/nicholas-j-estes)**  - *Lead Developer* - [USGS Web Informatics & Mapping](https://wim.usgs.gov/)
-* **[Lauren Privette](https://www.usgs.gov/staff-profiles/lauren-privette)**  - *Developer* - [USGS Web Informatics & Mapping](https://wim.usgs.gov/)
+* **[Lauren Privette](https://www.usgs.gov/staff-profiles/lauren-privette)**  - *Lead Developer* - [USGS Web Informatics & Mapping](https://wim.usgs.gov/)
+* **[Nicholas Estes](https://www.usgs.gov/staff-profiles/nicholas-j-estes)**  - *Developer* - [USGS Web Informatics & Mapping](https://wim.usgs.gov/)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
