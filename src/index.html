@@ -30,12 +30,7 @@
     <!-- endbuild -->
 
     <link rel="shortcut icon" id="favicon" type="image/ico" href="images/favicon-dark.png" />
-
-    <!-- USGS Geosearch -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="https://txpub.usgs.gov/DSS/search_api/2.1/api/search_api.min.js"></script>
     
-
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -48,6 +43,9 @@
     <script src="bower_components/bootstrap-map-js/dist/js/bootstrapmap.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
+    <!-- USGS Geosearch - must be loaded after jquery -->
+    <script type="text/javascript" src="https://txpub.usgs.gov/DSS/search_api/2.1/api/search_api.min.js"></script>
 
     <!-- build:js scripts/handsontable.js -->
     <!-- bower:js -->
