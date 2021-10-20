@@ -3,7 +3,7 @@
   "name": "nawqa-decadal-v2",
   "organization": "U.S. Geological Survey",
   "description": "Decadal Change in Groundwater Quality",
-  "version": "v4.0.1",
+  "version": "v4.0.2",
   "status": "Development",
   "homepage": "https://test.wim.usgs.gov/decadal/",
   "downloadURL": "https://github.com/usgs-wim/nawqa-decadal-v2/archive/master.zip",
