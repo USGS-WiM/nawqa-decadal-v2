@@ -265,7 +265,7 @@ require([
         var nationalMapBasemap = new ArcGISTiledMapServiceLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer');
 
         map = Map('mapDiv', {
-            basemap: 'topo',
+            basemap: 'topo-vector',
             //center: [-95.6, 38.6],
             center: defaultMapCenter,
             zoom: 5,
@@ -657,7 +657,7 @@ require([
             removeManualLayers();
         });
         on(dom.byId('btnTopo'), 'click', function () {
-            map.setBasemap('topo');
+            map.setBasemap('topo-vector');
             removeManualLayers();
         });
 
@@ -1146,7 +1146,7 @@ require([
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
                             "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
-                            "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
+                            "<tr><td><b>Network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
                             "<tr><td><b>Sample dates</b></td><td>" + cycle1 + ", " + cycle2 + ", " + cycle3 + "</td></tr>" +
 
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
@@ -1294,7 +1294,7 @@ require([
                                     "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
                                     "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
-                                    "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
+                                    "<tr><td><b>Network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
 
                                     "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
@@ -2552,7 +2552,7 @@ require([
 
             template.layoutOptions = {
                 "titleText": printTitle,
-                "authorText": "NAWQA",
+                "authorText": "NWQP",
                 "copyrightText": "This page was produced by the nawqa decadal trends mapper"
             }
             

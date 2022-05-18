@@ -1,7 +1,7 @@
 ![WiM](wimlogo.png)
 
 
-# [National Water-Quality Assessment (NAWQA) Project](https://water.usgs.gov/nawqa/) Decadal Trends in Groundwater
+# [National Water-Quality Program (NWQP) Project](https://water.usgs.gov/nawqa/) Decadal Trends in Groundwater
 
 This mapper shows how concentrations of pesticides, nutrients, metals, and organic contaminants in groundwater are changing during decadal periods across the Nation.
 
