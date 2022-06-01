@@ -265,7 +265,7 @@ require([
         var nationalMapBasemap = new ArcGISTiledMapServiceLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer');
 
         map = Map('mapDiv', {
-            basemap: 'topo-vector',
+            basemap: 'topo',
             //center: [-95.6, 38.6],
             center: defaultMapCenter,
             zoom: 5,
@@ -657,7 +657,7 @@ require([
             removeManualLayers();
         });
         on(dom.byId('btnTopo'), 'click', function () {
-            map.setBasemap('topo-vector');
+            map.setBasemap('topo');
             removeManualLayers();
         });
 
