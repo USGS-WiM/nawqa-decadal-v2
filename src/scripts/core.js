@@ -1424,7 +1424,7 @@ require([
                             identifyParams2.height = map.height;
                             identifyParams2.geometry = evt.mapPoint;
 
-                            var identifyTask2 = new esri.tasks.IdentifyTask("https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/DecadalMap/MapServer");
+                            var identifyTask2 = new esri.tasks.IdentifyTask("https://gis1.wim.usgs.gov/server/rest/services/NAWQA/networksdata/MapServer");
 
                             if (map.getLayer("principalAquifers").visible) {
                                 var deferredResult2 = identifyTask2.execute(identifyParams);
@@ -2559,7 +2559,7 @@ require([
             var docTitle = template.layoutOptions.titleText;
 
             printParams.template = template;
-            var printMap = new PrintTask("https://gis.wim.usgs.gov/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
+            var printMap = new PrintTask("https://gis1.wim.usgs.gov/server/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
             printMap.execute(printParams, printDone, printError);
 
             function printDone(event) {
