@@ -890,12 +890,16 @@ require([
             var query = new esri.tasks.Query();
             var featureLayer = map.getLayer("networkLocations");
             query.returnGeometry = false;
-            query.where = "network_centroids.OBJECTID = " + OID;
+            /* if (OID === "") {
+                query.where = "network_centroids.OBJECTID = ";
+            } else {
+                query.where = "network_centroids.OBJECTID = " + OID; 
+            } */
+            query.where = "network_centroids.OBJECTID = " + OID; 
             featureLayer.queryFeatures(query, function (event) {
 
                 if (event.features.length > 0) {
                     for (var i = 0; i < constObj.features.length; i++) {
-                        //console.log(i);
                         if (constObj.features[i].attributes["DisplayName"] == previousConst) {
                             attFieldSpecial = "ChemData." + $('input[name=trendPeriod]:checked').val() + constObj.features[i].attributes["Constituent"];
                             var constSplit = constObj.features[i].attributes["Constituent"].split("_");
@@ -906,7 +910,6 @@ require([
                     var val = getValue(event.features[0].attributes[attFieldSpecial]);
                     if (val == "") {
                         val = getValue(event.features[0].attributes[attFieldSpecialLower])
-                        //val = "no data";
                     }
                     console.log("val: " + val + ", oldValue: " + oldValue);
                     var info2 = $("#siteInfoPanel").html();
@@ -1146,7 +1149,7 @@ require([
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
                             "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
-                            "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
+                            "<tr><td><b>Network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
                             "<tr><td><b>Sample dates</b></td><td>" + cycle1 + ", " + cycle2 + ", " + cycle3 + "</td></tr>" +
 
                             "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
@@ -1294,7 +1297,7 @@ require([
                                     "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
                                     "<tr><td><b>Additional information</b></td><td>" + attr["tbl_Networks.AdditionalInfo"] + "</td></tr>" +
-                                    "<tr><td><b>NAWQA network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
+                                    "<tr><td><b>Network code</b></td><td>" + attr["tbl_Networks.SUCode"] + "</td></tr>" +
 
                                     "<tr><td><div class='tableSpacer'></div></td><td></td></tr>" +
 
@@ -1352,7 +1355,7 @@ require([
                             
 
                         }, function (error) {
-                            alert('error');
+                            //alert('error');
                         });
 
 
@@ -1424,7 +1427,7 @@ require([
                             identifyParams2.height = map.height;
                             identifyParams2.geometry = evt.mapPoint;
 
-                            var identifyTask2 = new esri.tasks.IdentifyTask("https://gis.wim.usgs.gov/arcgis/rest/services/NAWQA/DecadalMap/MapServer");
+                            var identifyTask2 = new esri.tasks.IdentifyTask("https://gis1.wim.usgs.gov/server/rest/services/NAWQA/networksdata/MapServer");
 
                             if (map.getLayer("principalAquifers").visible) {
                                 var deferredResult2 = identifyTask2.execute(identifyParams);
@@ -1508,10 +1511,6 @@ require([
             }
 
             return networkText;
-        }
-
-        function constituanteUpdates() {
-
         }
 
         function checkSigFigs(value) {
@@ -2463,25 +2462,25 @@ require([
             });
 
             $("#cycle12input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/1_2_2021.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/1-2_2022.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
 
             $("#cycle13input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/1_3_2021.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/1-3_2022.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
 
             $("#cycle23input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/2_3_2021.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/2-3_2022.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
 
             $("#cycle123input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/1_2_3_2021.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/1-2-3_2022.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
@@ -2552,14 +2551,14 @@ require([
 
             template.layoutOptions = {
                 "titleText": printTitle,
-                "authorText": "NAWQA",
+                "authorText": "NWQP",
                 "copyrightText": "This page was produced by the nawqa decadal trends mapper"
             }
             
             var docTitle = template.layoutOptions.titleText;
 
             printParams.template = template;
-            var printMap = new PrintTask("https://gis.wim.usgs.gov/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
+            var printMap = new PrintTask("https://gis1.wim.usgs.gov/server/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
             printMap.execute(printParams, printDone, printError);
 
             function printDone(event) {
