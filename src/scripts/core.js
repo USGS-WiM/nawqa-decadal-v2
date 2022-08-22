@@ -890,12 +890,16 @@ require([
             var query = new esri.tasks.Query();
             var featureLayer = map.getLayer("networkLocations");
             query.returnGeometry = false;
-            query.where = "network_centroids.OBJECTID = " + OID;
+            /* if (OID === "") {
+                query.where = "network_centroids.OBJECTID = ";
+            } else {
+                query.where = "network_centroids.OBJECTID = " + OID; 
+            } */
+            query.where = "network_centroids.OBJECTID = " + OID; 
             featureLayer.queryFeatures(query, function (event) {
 
                 if (event.features.length > 0) {
                     for (var i = 0; i < constObj.features.length; i++) {
-                        //console.log(i);
                         if (constObj.features[i].attributes["DisplayName"] == previousConst) {
                             attFieldSpecial = "ChemData." + $('input[name=trendPeriod]:checked').val() + constObj.features[i].attributes["Constituent"];
                             var constSplit = constObj.features[i].attributes["Constituent"].split("_");
@@ -906,7 +910,6 @@ require([
                     var val = getValue(event.features[0].attributes[attFieldSpecial]);
                     if (val == "") {
                         val = getValue(event.features[0].attributes[attFieldSpecialLower])
-                        //val = "no data";
                     }
                     console.log("val: " + val + ", oldValue: " + oldValue);
                     var info2 = $("#siteInfoPanel").html();
@@ -1352,7 +1355,7 @@ require([
                             
 
                         }, function (error) {
-                            alert('error');
+                            //alert('error');
                         });
 
 
@@ -1508,10 +1511,6 @@ require([
             }
 
             return networkText;
-        }
-
-        function constituanteUpdates() {
-
         }
 
         function checkSigFigs(value) {

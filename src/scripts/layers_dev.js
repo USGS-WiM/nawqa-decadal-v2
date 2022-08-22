@@ -166,11 +166,11 @@ require([
                         "renderer": renderer3
                     }
                 }, "Network Boundaries" : {
-                    "url": "https://gis.usgs.gov/sciencebase2/rest/services/Catalog/5dbb40a7e4b06957974ed55e/MapServer",
-                    "visibleLayers": [0],
+                    "url": "https://gis1.wim.usgs.gov/server/rest/services/NAWQA/2022_networkpolys/MapServer",
+                    "visibleLayers": [1],
                     "options": {
                         "id": "networkBoundaries",
-                        "opacity": 0.75,
+                        "opacity": 100,
                         "visible": true
                     },
                     "wimOptions": {
