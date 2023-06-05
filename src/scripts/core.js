@@ -1923,23 +1923,23 @@ require([
                 }, 800);
             });
 
-            // Toccalino 2014b
-            $('.showReferencedCitesToccalino2014b').click(function () {
+            // Norman et al., 2018
+            $('.showReferencedCitesNorman').click(function () {
                 $('#dataModal').modal('show');
                 $('#citeTab').trigger('click');
 
                 setTimeout(function () {
-                    $("#toccalino2014b").toggleClass("highlighted");
+                    $("#norman").toggleClass("highlighted");
                 }, 1000);
                 setTimeout(function () {
-                        $("#toccalino2014b").toggleClass('highlighted');
+                        $("#norman").toggleClass('highlighted');
                     },
                     4000
                 );
 
                 setTimeout(function () {
                     $('#dataModal').animate({
-                        scrollTop: $("#toccalino2014b").offset().top - 80
+                        scrollTop: $("#norman").offset().top - 80
                     }, 500);
                 }, 800);
             });
