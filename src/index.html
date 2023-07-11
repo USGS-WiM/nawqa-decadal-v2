@@ -62,17 +62,14 @@
     <script src="scripts/core.js"></script>
     <!-- endbuild -->
 
-    <!-- Google Analytics -->
-
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-72JQSV3N47"></script>
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-        ga('create', 'UA-61219868-5', 'auto');
-        ga('send', 'pageview');
-
+    gtag('config', 'G-72JQSV3N47');
     </script>
 
 </head>
@@ -303,9 +300,9 @@
                 <ul class="nav nav-tabs" id="aboutModalTabs">
                     <li role="presentation" class="active"><a id="aboutTab" href="#aboutTabPane" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About</a></li>
                     <li role="presentation"><a id="learnMoreTab" href="#learnMoreTabPane" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Learn More</a></li>
-                    <li role="presentation"><a id="waterResourcesTab" href="#waterResourcesTabPane" data-toggle="tab" onclick="ga('send','event','About Modal','click','Related Resources');"><i class="fa fa-tint"></i>&nbsp;Related Resources</a></li>
-                    <li role="presentation"><a id="updatesTab" href="#updatesTabPane" data-toggle="tab" onclick="ga('send','event','About Modal','click','Disclaimer');"><i class="fa fa-check-circle-o"></i>&nbsp;What's New</a></li>
-                    <li role="presentation"><a id="disclaimerTab" href="#disclaimerTabPane" data-toggle="tab" onclick="ga('send','event','About Modal','click','Disclaimer');"><i class="fa fa-check-circle-o"></i>&nbsp;Disclaimer</a></li>
+                    <li role="presentation"><a id="waterResourcesTab" href="#waterResourcesTabPane" data-toggle="tab" onclick="gtag('send','event','About Modal','click','Related Resources');"><i class="fa fa-tint"></i>&nbsp;Related Resources</a></li>
+                    <li role="presentation"><a id="updatesTab" href="#updatesTabPane" data-toggle="tab" onclick="gtag('send','event','About Modal','click','Disclaimer');"><i class="fa fa-check-circle-o"></i>&nbsp;What's New</a></li>
+                    <li role="presentation"><a id="disclaimerTab" href="#disclaimerTabPane" data-toggle="tab" onclick="gtag('send','event','About Modal','click','Disclaimer');"><i class="fa fa-check-circle-o"></i>&nbsp;Disclaimer</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="aboutTabPane">
@@ -902,7 +899,7 @@
                 <ul class="nav nav-tabs" id="aboutModalTabs">
                     <li role="presentation" class="active"><a id="downloadTab" href="#downloadPane" data-toggle="tab"><i class="fa fa-download"></i>&nbsp;Download the Data</a></li>
                     <li role="presentation"><a id="techTab" href="#techPane" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Technical Information</a></li>
-                    <li role="presentation"><a id="citeTab" href="#citesPane" data-toggle="tab" onclick="ga('send','event','Data Modal','click','References Cited');"><i class="fa fa-bookmark"></i>&nbsp;References Cited</a></li>
+                    <li role="presentation"><a id="citeTab" href="#citesPane" data-toggle="tab" onclick="gtag('send','event','Data Modal','click','References Cited');"><i class="fa fa-bookmark"></i>&nbsp;References Cited</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="downloadPane">
@@ -1575,8 +1572,8 @@
                 <div> test </div>
             </div>
 
-            <div onclick="ga('send','event','Map Button','click','Home icon');"><div id="homeButton"></div></div>
-            <div  onclick="ga('send','event','Map Button','click','Location icon');"><div id="locateButton"></div></div>
+            <div onclick="gtag('send','event','Map Button','click','Home icon');"><div id="homeButton"></div></div>
+            <div  onclick="gtag('send','event','Map Button','click','Location icon');"><div id="locateButton"></div></div>
 
             <div id="latLngScale" class="latLngScale">
                 <span class="hover-content"> <b>Map scale </b></span>
