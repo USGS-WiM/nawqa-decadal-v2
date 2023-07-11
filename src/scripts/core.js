@@ -1427,7 +1427,7 @@ require([
                             identifyParams2.height = map.height;
                             identifyParams2.geometry = evt.mapPoint;
 
-                            var identifyTask2 = new esri.tasks.IdentifyTask("https://gis1.wim.usgs.gov/server/rest/services/NAWQA/networksdata/MapServer");
+                            var identifyTask2 = new esri.tasks.IdentifyTask("https://gis1.wim.usgs.gov/server/rest/services/NAWQA/2023_networksdata/MapServer");
 
                             if (map.getLayer("principalAquifers").visible) {
                                 var deferredResult2 = identifyTask2.execute(identifyParams);
@@ -2462,25 +2462,25 @@ require([
             });
 
             $("#cycle12input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/1-2_2022.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/1_2_2023.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
 
             $("#cycle13input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/1-3_2022.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/1_3_2023.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
 
             $("#cycle23input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/2-3_2022.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/2_3_2023.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
 
             $("#cycle123input").click(function () {
-                document.getElementById('selectedTrendImage').src = "images/timeline/1-2-3_2022.png";
+                document.getElementById('selectedTrendImage').src = "images/timeline/1_2_3_2023.png";
                 $("#siteInfoClose").click();
                 $("#networkInfoClose").click();
             });
